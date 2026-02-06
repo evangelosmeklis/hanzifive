@@ -1,0 +1,302 @@
+#separator:tab
+#html:true
+#deck column:4
+#tags column:3
+你	nǐ<br>you		HanziFive::Lesson 1
+好	hǎo<br>good; well; fine; OK		HanziFive::Lesson 1
+吗	ma<br>Question Particle (yes-no-question)		HanziFive::Lesson 1
+我	wǒ<br>I; me		HanziFive::Lesson 1
+很	hěn<br>very		HanziFive::Lesson 1
+呢	ne<br>Modal Particle (elliptical question)		HanziFive::Lesson 1
+也	yě<br>too; also		HanziFive::Lesson 1
+忙	máng<br>busy		HanziFive::Lesson 2
+爸爸	bà ba<br>dad		HanziFive::Lesson 2
+妈妈	mā ma<br>mom		HanziFive::Lesson 2
+他们	tā men<br>they; them (male)		HanziFive::Lesson 2
+他	tā<br>he; him		HanziFive::Lesson 2
+们	men<br>(denote plurality)		HanziFive::Lesson 2
+都	dōu<br>both; all		HanziFive::Lesson 2
+不	bù<br>not; no		HanziFive::Lesson 2
+男	nán<br>male		HanziFive::Lesson 2
+朋友	péng you<br>friend		HanziFive::Lesson 2
+哥哥	gē ge<br>elder brother		HanziFive::Lesson 2
+要	yào<br>to want		HanziFive::Lesson 2
+咖啡	kā fēi<br>coffee		HanziFive::Lesson 2
+弟弟	dì di<br>younger brother		HanziFive::Lesson 2
+我们	wǒ men<br>we; us		HanziFive::Lesson 2
+喝	hē<br>to drink		HanziFive::Lesson 2
+她	tā<br>she; her		HanziFive::Lesson 3
+是	shì<br>to be; is		HanziFive::Lesson 3
+哪	nǎ<br>which		HanziFive::Lesson 3
+国	gúo<br>(in combination with other characters) country; nation		HanziFive::Lesson 3
+人	rén<br>people; person		HanziFive::Lesson 3
+那	nà<br>that		HanziFive::Lesson 3
+谁	shéi<br>who; whom		HanziFive::Lesson 3
+老师	lǎo shī<br>teacher		HanziFive::Lesson 3
+中国	zhōng gúo<br>China		HanziFive::Lesson 3
+您	nín<br>you (polite form)		HanziFive::Lesson 3
+这	zhè<br>this		HanziFive::Lesson 3
+外语	wài yǔ<br>foreign language		HanziFive::Lesson 3
+医生	yī shēng<br>doctor; physician		HanziFive::Lesson 3
+奶奶	nǎi nai<br>(paternal) grandmother		HanziFive::Lesson 3
+外婆	wài pó<br>(maternal) grandmother		HanziFive::Lesson 3
+认识	rèn shi<br>to know (somebody)		HanziFive::Lesson 4
+高兴	gāo xìng<br>happy; pleased (feeling)		HanziFive::Lesson 4
+高	gāo<br>high; tall		HanziFive::Lesson 4
+可以	kě yǐ<br>may		HanziFive::Lesson 4
+进来	jìn lai<br>to come in		HanziFive::Lesson 4
+进	jìn<br>to enter		HanziFive::Lesson 4
+来	lái<br>to come		HanziFive::Lesson 4
+请	qǐng<br>please		HanziFive::Lesson 4
+记者	jì zhě<br>reporter		HanziFive::Lesson 4
+请问	qǐng wèn<br>May I ask...?		HanziFive::Lesson 4
+问	wèn<br>to ask		HanziFive::Lesson 4
+贵姓	gùi xìng<br>your surname (polite form)		HanziFive::Lesson 4
+姓	xìng<br>one's surname is... /surname		HanziFive::Lesson 4
+叫	jiào<br>to be called		HanziFive::Lesson 4
+先生	xiān sheng<br>mr.; sir		HanziFive::Lesson 4
+语言	yǔ yán<br>language		HanziFive::Lesson 4
+学院	xué yuàn<br>institute; college		HanziFive::Lesson 4
+学	xué<br>to learn; to study (short)		HanziFive::Lesson 4
+的	de<br>of (a possessive or noun modifying particle)		HanziFive::Lesson 4
+学生	xué shēng<br>student		HanziFive::Lesson 4
+什么	shén me<br>what		HanziFive::Lesson 4
+学习	xué xí<br>to learn; to study (long)		HanziFive::Lesson 4
+汉语	hàn yǔ<br>Chinese (spoken language)		HanziFive::Lesson 4
+英国	yīng gúo<br>Great Britain; England		HanziFive::Lesson 4
+加拿大	jiā ná dà<br>Canada		HanziFive::Lesson 4
+美国	měi gúo<br>the United States of America		HanziFive::Lesson 4
+餐厅	cān tīng<br>dining hall		HanziFive::Lesson 5
+在	zài<br>to be (here, there); to be (in, on, at)		HanziFive::Lesson 5
+哪儿	nǎr<br>where		HanziFive::Lesson 5
+宿舍	sù shè<br>dormitory		HanziFive::Lesson 5
+女	nǚ<br>female		HanziFive::Lesson 5
+坐	zùo<br>to sit		HanziFive::Lesson 5
+谢谢	xiè xie<br>to thank		HanziFive::Lesson 5
+对不起	dùi bu qǐ<br>I'm sorry		HanziFive::Lesson 5
+知道	zhī dào<br>to know		HanziFive::Lesson 5
+没关系	méi guān xi<br>never mind; it doesn't matter		HanziFive::Lesson 5
+再见	zài jiàn<br>goodbye		HanziFive::Lesson 5
+再	zài<br>again (future)		HanziFive::Lesson 5
+小姐	xiǎo jiě<br>Miss; young lady		HanziFive::Lesson 5
+二	èr<br>two		HanziFive::Lesson 5
+层	céng<br>story; floor (how many floors)		HanziFive::Lesson 5
+零	líng<br>zero		HanziFive::Lesson 5
+四	sì<br>four		HanziFive::Lesson 5
+号	hào<br>ordinal number		HanziFive::Lesson 5
+不用	bú yòng<br>need not		HanziFive::Lesson 5
+这儿	zhèr<br>here		HanziFive::Lesson 5
+晚	wǎn<br>late		HanziFive::Lesson 5
+了	le<br>(simple past; a modal particle; aspect particle)		HanziFive::Lesson 5
+去	qù<br>to go		HanziFive::Lesson 6
+游泳	yóu yǒng<br>to swim		HanziFive::Lesson 6
+昨天	zúo tiān<br>yesterday		HanziFive::Lesson 6
+京剧	jīng jù<br>Peking/Beijing opera		HanziFive::Lesson 6
+怎么样	zěn me yàng<br>how is ...		HanziFive::Lesson 6
+有意思	yǒu yì si<br>interesting		HanziFive::Lesson 6
+今天	jīn tiān<br>today		HanziFive::Lesson 6
+天	tiān<br>day		HanziFive::Lesson 6
+天气	tiān qì<br>weather		HanziFive::Lesson 6
+太	tài<br>too; extremely		HanziFive::Lesson 6
+时候	shí hou<br>time; moment		HanziFive::Lesson 6
+现在	xiàn zài<br>now		HanziFive::Lesson 6
+明天	míng tiān<br>tomorrow		HanziFive::Lesson 6
+有	yǒu<br>to have		HanziFive::Lesson 6
+时间	shí jiān<br>time		HanziFive::Lesson 6
+说	shūo<br>to say; to speak		HanziFive::Lesson 6
+遍	biàn<br>(a measure word having done something x times)		HanziFive::Lesson 6
+打球	dǎ qiú<br>to play ball games (with hand)		HanziFive::Lesson 6
+打	dǎ<br>to hit		HanziFive::Lesson 6
+球	qiú<br>ball		HanziFive::Lesson 6
+抱歉	bào qiàn<br>sorry		HanziFive::Lesson 6
+恐怕	kǒng pà<br>afraid that ...		HanziFive::Lesson 6
+行	xíng<br>to be OK; it's alright; it works		HanziFive::Lesson 6
+你们	nǐ men<br>you (pl.)		HanziFive::Lesson 6
+开学	kāi xué<br>school opens; term begins		HanziFive::Lesson 7
+开	kāi<br>to open; to start; to drive/operate (a vehicle); to run/operate (a business)		HanziFive::Lesson 7
+看	kàn<br>to watch; to look at		HanziFive::Lesson 7
+一下	yí xià<br>(used after a verb to indicate a short, quick, random, informal action)		HanziFive::Lesson 7
+名片	míng piàn<br>business card		HanziFive::Lesson 7
+啊	à<br>ah; oh		HanziFive::Lesson 7
+教授	jiào shòu<br>professor		HanziFive::Lesson 7
+教	jiāo<br>to teach; to instruct		HanziFive::Lesson 7
+介绍	jiè shào<br>to introduce		HanziFive::Lesson 7
+名字	míng zi<br>name (first name)		HanziFive::Lesson 7
+中文	zhōng wén<br>Chinese		HanziFive::Lesson 7
+专业	zhuān yè<br>major; speciality		HanziFive::Lesson 7
+美术	měi shù<br>fine arts		HanziFive::Lesson 7
+美	měi<br>beautiful		HanziFive::Lesson 7
+文学	wén xué<br>literature		HanziFive::Lesson 7
+家	jiā<br>family; home		HanziFive::Lesson 8
+几	jǐ<br>a few; several; how many; how much		HanziFive::Lesson 8
+口	kǒu<br>(a measure word mainly for the number of people in a family)		HanziFive::Lesson 8
+照片	zhào piàn<br>picture; photo (in photography)		HanziFive::Lesson 8
+和	hé<br>and		HanziFive::Lesson 8
+个	gè<br>(a measure word for general use)		HanziFive::Lesson 8
+姐姐	jiě jie<br>elder sister		HanziFive::Lesson 8
+两	liǎng<br>two (not for counting)		HanziFive::Lesson 8
+一共	yí gòng<br>altogether		HanziFive::Lesson 8
+还	hái<br>in addition; still		HanziFive::Lesson 8
+妹妹	mèi mei<br>younger sister		HanziFive::Lesson 8
+小	xiǎo<br>little; small		HanziFive::Lesson 8
+狗	gǒu<br>dog		HanziFive::Lesson 8
+当然	dāng rán<br>of course		HanziFive::Lesson 8
+张	zhāng<br>(a measure word for flat objects)		HanziFive::Lesson 8
+真	zhēn<br>real; really		HanziFive::Lesson 8
+可爱	ke'3 ài<br>lovely; cute		HanziFive::Lesson 8
+爱	ài<br>to love (verb)		HanziFive::Lesson 8
+没	méi<br>not; none		HanziFive::Lesson 8
+做	zùo<br>to do; to be; to make		HanziFive::Lesson 8
+工作	gōng zùo<br>to work; work; job		HanziFive::Lesson 8
+大	dà<br>big; large		HanziFive::Lesson 8
+多少	dūo shǎo<br>how many; how much		HanziFive::Lesson 8
+多	dūo<br>many; much		HanziFive::Lesson 8
+少	shǎo<br>few; less; little		HanziFive::Lesson 8
+喜欢	xǐ huan<br>to like		HanziFive::Lesson 8
+外	wài<br>foreign; outside		HanziFive::Lesson 8
+语	yǔ<br>(a countries) language		HanziFive::Lesson 8
+外国	wài gúo<br>foreign country		HanziFive::Lesson 8
+百	bǎi<br>hundred		HanziFive::Lesson 8
+今年	jīn nián<br>this year		HanziFive::Lesson 9
+岁	sùi<br>year ('s old)		HanziFive::Lesson 9
+课	kè<br>class; Lesson		HanziFive::Lesson 9
+星期	xīng qī<br>week		HanziFive::Lesson 9
+上午	shàng wǔ<br>morning		HanziFive::Lesson 9
+上	shàng<br>above; up; upper; go up; last; previous		HanziFive::Lesson 9
+下午	xià wǔ<br>afternoon		HanziFive::Lesson 9
+下	xià<br>below; down; to go down; to get off; next		HanziFive::Lesson 9
+星期日	xīng qī rì<br>Sunday		HanziFive::Lesson 9
+生日	shēng rì<br>birthday		HanziFive::Lesson 9
+生	shēng<br>to be born		HanziFive::Lesson 9
+多大	dūo dà<br>how old		HanziFive::Lesson 9
+出生	chū shēng<br>to be born (in the year XXXX)		HanziFive::Lesson 9
+出	chū<br>to go (outside); to come out		HanziFive::Lesson 9
+属	shǔ<br>to be born in the year of (one of the 12 animals)		HanziFive::Lesson 9
+聚会	jù hùi<br>get-together; party		HanziFive::Lesson 9
+会	hùi<br>meeting; to have the knowledge of; can		HanziFive::Lesson 9
+祝贺	zhù hè<br>to congratulate		HanziFive::Lesson 9
+祝	zhù<br>to wish		HanziFive::Lesson 9
+参加	cān jiā<br>to participate; to attend		HanziFive::Lesson 9
+过	gùo<br>to spend (time); to celebrate (someone's birthday, a festival etc.)		HanziFive::Lesson 9
+吃	chī<br>to eat		HanziFive::Lesson 9
+蛋糕	dàn gāo<br>cake		HanziFive::Lesson 9
+蛋	dàn<br>egg		HanziFive::Lesson 9
+糕	gāo<br>(with other characters: used for all kinds of sweets, mainly cakes)		HanziFive::Lesson 9
+买	mǎi<br>to buy		HanziFive::Lesson 9
+瓶	píng<br>bottle		HanziFive::Lesson 9
+红葡萄酒	hóng pú tao jiǔ<br>red wine		HanziFive::Lesson 9
+红	hóng<br>red		HanziFive::Lesson 9
+葡萄	pú tao<br>grape		HanziFive::Lesson 9
+酒	jiǔ<br>wine or liquor		HanziFive::Lesson 9
+北京	běi jīng<br>Beijing		HanziFive::Lesson 9
+快乐	kuài lè<br>happy (birthday)		HanziFive::Lesson 9
+漂亮	piào liang<br>beautiful; nice; cute (for girls)		HanziFive::Lesson 9
+烤鸭	kǎo yā<br>roast duck		HanziFive::Lesson 9
+鸭	yā<br>duck		HanziFive::Lesson 9
+长寿面	cháng shòu miàn<br>(birthday) longevity noodles		HanziFive::Lesson 9
+面	miàn<br>face; side; surface; classifier for flat surfaces		HanziFive::Lesson 9
+光盘	guāng pán<br>CD		HanziFive::Lesson 10
+常	cháng<br>often (single char)		HanziFive::Lesson 10
+跟	gēn<br>with; to follow		HanziFive::Lesson 10
+商场	shāng chǎng<br>market; bazaar; shopping mall		HanziFive::Lesson 10
+商	shāng<br>trade; commerce; business		HanziFive::Lesson 10
+有名	yǒu míng<br>famous		HanziFive::Lesson 10
+书	shū<br>book		HanziFive::Lesson 10
+报纸	bào zhǐ<br>newspaper		HanziFive::Lesson 10
+本子	běn zi<br>exercise book; notebook		HanziFive::Lesson 10
+那儿	nàr<br>there		HanziFive::Lesson 10
+师傅	shī fu<br>master		HanziFive::Lesson 10
+香蕉苹果	xiāng jiāo píng gǔo<br>apple with the taste of a banana		HanziFive::Lesson 10
+香蕉	xiāng jiāo<br>banana		HanziFive::Lesson 10
+苹果	píng gǔo<br>apple		HanziFive::Lesson 10
+怎么	zěn me<br>how		HanziFive::Lesson 10
+容易	róng yì<br>easy		HanziFive::Lesson 10
+斤	jīn<br>(a measure word of weight, it is equal to 500g)		HanziFive::Lesson 10
+钱	qián<br>money		HanziFive::Lesson 10
+块钱	kuài (qian)2<br>(a measure word of a Chinese monetary unit, eq to 10 jiao) kuai		HanziFive::Lesson 10
+毛钱	máo (qian)2<br>(a measure word of a Chinese monetary unit, eq to 1/10 yuan) mao		HanziFive::Lesson 10
+贵	gùi<br>expensive; precious		HanziFive::Lesson 10
+分钱	fēn (qian)2<br>(a measure word of a Chinese monetary unit, eq to 1/100 yuan) fen		HanziFive::Lesson 10
+送	sòng<br>to give (as a present)		HanziFive::Lesson 10
+给	gěi<br>to give (sth)		HanziFive::Lesson 10
+找钱	zhǎo (qian)2<br>to give change		HanziFive::Lesson 10
+（一）点儿	(yi)4 diǎnr<br>a little bit		HanziFive::Lesson 11
+司机	sī jī<br>driver		HanziFive::Lesson 11
+点（钟）	diǎn (zhong)1<br>o'clock		HanziFive::Lesson 11
+差	chà<br>to be short of; to lack		HanziFive::Lesson 11
+刻	kè<br>quarter (of an hour)		HanziFive::Lesson 11
+回	húi<br>to return		HanziFive::Lesson 11
+上课	shàng kè<br>to go to class (for both students and teachers)		HanziFive::Lesson 11
+能	néng<br>to be able to (can)		HanziFive::Lesson 11
+到	dào<br>to arrive		HanziFive::Lesson 11
+哪里	nǎ li<br>no (an expression of mild denial， after a compliment)		HanziFive::Lesson 11
+孙女儿	sūn nvr<br>granddaughter on son's side		HanziFive::Lesson 11
+岁数	sùi shu<br>age (of sb./sth.)		HanziFive::Lesson 11
+数	shù<br>number		HanziFive::Lesson 11
+分（钟）	fēn (zhong)1<br>minute		HanziFive::Lesson 11
+拜拜	bái bái<br>bye-bye (transliteration)		HanziFive::Lesson 11
+为什么	wèi shén me<br>why		HanziFive::Lesson 11
+为	wèi<br>for		HanziFive::Lesson 11
+玩儿	wánr<br>to have fun; to play		HanziFive::Lesson 11
+半	bàn<br>half		HanziFive::Lesson 11
+写	xiě<br>to write		HanziFive::Lesson 11
+汉字	hàn zì<br>Chinese character		HanziFive::Lesson 11
+字	zì<br>character		HanziFive::Lesson 11
+睡觉	shùi jiào<br>to go to bed; to sleep		HanziFive::Lesson 11
+睡	shùi<br>to sleep; to lie down		HanziFive::Lesson 11
+起床	qǐ chuáng<br>to get up (from bed)		HanziFive::Lesson 11
+起	qǐ<br>to get up; to rise		HanziFive::Lesson 11
+床	chuáng<br>bed		HanziFive::Lesson 11
+应该	yīng gāi<br>must; should; ought to		HanziFive::Lesson 11
+该	gāi<br>probably; should; ought to		HanziFive::Lesson 11
+问题	wèn tí<br>question, problem		HanziFive::Lesson 11
+全身	quánshēn<br>all over (the body)		HanziFive::Lesson 12
+舒服	shūfu<br>comfortable, (to feel) well		HanziFive::Lesson 12
+每	měi<br>every, each		HanziFive::Lesson 12
+锻炼	duànliàn<br>to exercise, to work out		HanziFive::Lesson 12
+头	tóu<br>head		HanziFive::Lesson 12
+疼	téng<br>painful, sore		HanziFive::Lesson 12
+嗓子	sǎngzi<br>throat		HanziFive::Lesson 12
+想	xiǎng<br>to think, to want (to do sth.)		HanziFive::Lesson 12
+医院	yīyuàn<br>hospital		HanziFive::Lesson 12
+看病	kànbìng<br>to see a doctor		HanziFive::Lesson 12
+身体	shēntǐ<br>body, health		HanziFive::Lesson 12
+还是	háishi<br>or		HanziFive::Lesson 12
+挂号	guàhào<br>to register (at a hospital, clinic, etc.)	lesson 12	HanziFive::Lesson 12
+有点儿	yǒudiǎnr<br>a little; somewhat	lesson 12	HanziFive::Lesson 12
+发炎	fāyán<br>to be inflamed	lesson 12	HanziFive::Lesson 12
+发烧	fāshāo<br>to have a fever	lesson 12	HanziFive::Lesson 12
+烧	shāo<br>to burn	lesson 12	HanziFive::Lesson 12
+感冒	gǎnmào<br>to have a cold; a cold	lesson 12	HanziFive::Lesson 12
+住院	zhùyuàn<br>to be hospitalized	lesson 12	HanziFive::Lesson 12
+愿意	yuànyì<br>to be willing; to be ready to	lesson 12	HanziFive::Lesson 12
+中药	zhōngyào<br>traditional Chinese medicine	lesson 12	HanziFive::Lesson 12
+西药	xīyào<br>Western medicine	lesson 12	HanziFive::Lesson 12
+西	xī<br>west	lesson 12	HanziFive::Lesson 12
+姑娘	gūniang<br>girl; young woman	lesson 13	HanziFive::Lesson 13
+事儿	shìr<br>matter; affair; thing	lesson 13	HanziFive::Lesson 13
+散步	sànbù<br>to take a walk	lesson 13	HanziFive::Lesson 13
+步	bù<br>step	lesson 13	HanziFive::Lesson 13
+电	diàn<br>electricity	lesson 13	HanziFive::Lesson 13
+影	yǐng<br>shadow	lesson 13	HanziFive::Lesson 13
+可是	kěshì<br>but; however	lesson 13	HanziFive::Lesson 13
+房子	fángzi<br>house	lesson 13	HanziFive::Lesson 13
+租	zū<br>to rent	lesson 13	HanziFive::Lesson 13
+套	tào<br>(measure word for houses)	lesson 13	HanziFive::Lesson 13
+厨房	chúfáng<br>kitchen	lesson 13	HanziFive::Lesson 13
+厕所	cèsuǒ<br>toilet; restroom	lesson 13	HanziFive::Lesson 13
+房租	fángzū<br>rent	lesson 13	HanziFive::Lesson 13
+办	bàn<br>to do; to handle	lesson 13	HanziFive::Lesson 13
+卧室	wòshì<br>bedroom	lesson 13	HanziFive::Lesson 13
+客厅	kètīng<br>living room	lesson 13	HanziFive::Lesson 13
+经理	jīnglǐ<br>manager	lesson 13	HanziFive::Lesson 13
+刚才	gāngcái<br>just now	lesson 14	HanziFive::Lesson 14
+邮局	yóujú<br>post office	lesson 14	HanziFive::Lesson 14
+邮	yóu<br>to post; to mail	lesson 14	HanziFive::Lesson 14
+局	jú<br>office; bureau	lesson 14	HanziFive::Lesson 14
+寄	jì<br>to mail; to send	lesson 14	HanziFive::Lesson 14
+打扫	dǎsǎo<br>to clean	lesson 14	HanziFive::Lesson 14
+扫	sǎo<br>to sweep	lesson 14	HanziFive::Lesson 14
+脏	zāng<br>dirty	lesson 14	HanziFive::Lesson 14
+不好意思	bù hǎoyìsi<br>sorry; embarrassed	lesson 14	HanziFive::Lesson 14
+洗	xǐ<br>to wash	lesson 14	HanziFive::Lesson 14

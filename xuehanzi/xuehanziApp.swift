@@ -14,7 +14,7 @@ struct xuehanziApp: App {
 
     init() {
         do {
-            let schema = Schema([Word.self, ReviewState.self, LevelAchievement.self])
+            let schema = Schema([Word.self, ReviewState.self, LevelAchievement.self, CustomDeck.self, CustomCard.self])
             modelContainer = try ModelContainer(for: schema)
             AppDataSeeder.seedIfNeeded(modelContext: modelContainer.mainContext)
         } catch {

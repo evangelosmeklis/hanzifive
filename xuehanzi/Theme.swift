@@ -53,6 +53,9 @@ enum AppTheme {
         Color(red: 0.80, green: 0.65, blue: 0.26)
     }
 
+    // Custom decks - Teal
+    static let customTeal = Color(red: 0.35, green: 0.72, blue: 0.88)
+
     // MARK: - Celebration Colors
     static let celebrationColors: [Color] = [
         Color(red: 0.85, green: 0.28, blue: 0.20),   // Cinnabar
