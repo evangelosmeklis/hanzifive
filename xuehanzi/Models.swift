@@ -63,5 +63,8 @@ struct LevelSummary: Identifiable {
     let due: Int
     let studied: Int      // Cards studied at least once correctly (repetitions >= 1)
     let mastered: Int     // Cards fully mastered (repetitions >= 3)
-    let achievement: LevelAchievement?
+
+    var isCompleted: Bool {
+        total > 0 && studied >= total
+    }
 }

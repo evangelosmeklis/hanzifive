@@ -27,6 +27,7 @@ struct StudySessionView: View {
     @AppStorage("totalXP") private var totalXP: Int = 0
     @AppStorage("cardsStudiedToday") private var cardsStudiedToday: Int = 0
     @AppStorage("lastCardStudyDate") private var lastCardStudyDate: String = ""
+    @AppStorage("uniqueWordsPerLevel") private var uniqueWordsPerLevel: Bool = false
 
     @State private var sessionCorrect = 0
     @State private var sessionTotal = 0
@@ -382,6 +383,22 @@ struct StudySessionView: View {
         "studyProgress-\(level)"
     }
 
+    private func lowerLevels(than level: String) -> [String] {
+        let num = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 0
+        return (1..<num).map { "HSK\($0)" }
+    }
+
+    private func filterUniqueWords(_ words: [Word], forLevel level: String) -> [Word] {
+        guard uniqueWordsPerLevel else { return words }
+        let lowerLevelNames = Set(lowerLevels(than: level))
+        guard !lowerLevelNames.isEmpty else { return words }
+
+        let allDescriptor = FetchDescriptor<Word>()
+        let allDBWords = (try? modelContext.fetch(allDescriptor)) ?? []
+        let lowerHanzi = Set(allDBWords.filter { lowerLevelNames.contains($0.level) }.map(\.hanzi))
+        return words.filter { !lowerHanzi.contains($0.hanzi) }
+    }
+
     @MainActor
     private func loadSession() async {
         isLoading = true
@@ -391,7 +408,7 @@ struct StudySessionView: View {
         var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
         allDescriptor.sortBy = [SortDescriptor(\.id)]
 
-        let allWords = (try? modelContext.fetch(allDescriptor)) ?? []
+        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
         let now = Date()
 
         let wordsToStudy = allWords.filter { word in
@@ -442,7 +459,7 @@ struct StudySessionView: View {
         var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
         allDescriptor.sortBy = [SortDescriptor(\.id)]
 
-        let allWords = (try? modelContext.fetch(allDescriptor)) ?? []
+        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
         let practiceCount = min(20, allWords.count)
         queue = Array(allWords.shuffled().prefix(practiceCount))
         sessionTotal = queue.count

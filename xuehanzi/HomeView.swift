@@ -1,34 +1,44 @@
 import SwiftUI
 import SwiftData
+import UserNotifications
 
 struct HomeView: View {
     @Query private var words: [Word]
-    @Query private var achievements: [LevelAchievement]
     @State private var showingSettings = false
 
-    // Streak tracking
     @AppStorage("currentStreak") private var currentStreak: Int = 0
     @AppStorage("lastStudyDate") private var lastStudyDateString: String = ""
     @AppStorage("dailyGoal") private var dailyGoal: Int = 10
     @AppStorage("cardsStudiedToday") private var cardsStudiedToday: Int = 0
     @AppStorage("lastCardStudyDate") private var lastCardStudyDate: String = ""
+    @AppStorage("uniqueWordsPerLevel") private var uniqueWordsPerLevel: Bool = false
 
     var body: some View {
         ScrollView(showsIndicators: false) {
-            VStack(alignment: .leading, spacing: 28) {
-                headerSection
-                statsRow
-                dailyProgressCard
-                levelsSectionHeader
+            VStack(spacing: 0) {
+                // Hero banner
+                heroBanner
 
-                ForEach(levelSummaries) { summary in
-                    LevelCardView(summary: summary)
+                VStack(spacing: 20) {
+                    // Quick stats strip
+                    quickStatsStrip
+                        .padding(.top, -28) // overlap into banner
+
+                    // Quick action icon grid
+                    quickActionGrid
+
+                    // Level cards
+                    levelsSectionHeader
+
+                    ForEach(levelSummaries) { summary in
+                        LevelCardView(summary: summary)
+                    }
                 }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 40)
             }
-            .padding(.horizontal, 20)
-            .padding(.bottom, 40)
         }
-        .background(AppTheme.background.ignoresSafeArea())
+        .background(Color(red: 0.96, green: 0.955, blue: 0.94).ignoresSafeArea())
         .onAppear {
             resetDailyProgressIfNeeded()
             updateStreak()
@@ -45,220 +55,289 @@ struct HomeView: View {
         else { return "Good evening" }
     }
 
-    // MARK: - Header Section
-    private var headerSection: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(greeting)
-                    .font(.subheadline.weight(.medium))
-                    .foregroundStyle(AppTheme.secondaryText)
-
-                Text("学汉字")
-                    .font(.system(size: 34, weight: .black, design: .serif))
-                    .foregroundStyle(AppTheme.primaryText)
-            }
-
-            Spacer()
-
-            Button {
-                showingSettings = true
-            } label: {
-                ZStack {
-                    Circle()
-                        .fill(.thinMaterial)
-                        .frame(width: 44, height: 44)
-                        .overlay(
-                            Circle()
-                                .stroke(.black.opacity(0.06), lineWidth: 1)
-                        )
-
-                    Image(systemName: "gearshape.fill")
-                        .font(.system(size: 17))
-                        .foregroundStyle(AppTheme.secondaryText)
-                }
-            }
-        }
-        .padding(.top, 12)
-    }
-
-    // MARK: - Stats Row
-    private var statsRow: some View {
-        HStack(spacing: 12) {
-            // Streak card
-            HStack(spacing: 10) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(AppTheme.streakColor.opacity(0.12))
-                        .frame(width: 38, height: 38)
-
-                    Text("🔥")
-                        .font(.system(size: 18))
-                }
-
-                VStack(alignment: .leading, spacing: 1) {
-                    Text("\(currentStreak)")
-                        .font(.headline.weight(.bold))
-                        .foregroundStyle(AppTheme.primaryText)
-                    Text("Day Streak")
-                        .font(.caption2)
-                        .foregroundStyle(AppTheme.secondaryText)
-                }
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 12)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(.thinMaterial)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(.black.opacity(0.06), lineWidth: 1)
+    // MARK: - Hero Banner (Meituan-style gradient header)
+    private var heroBanner: some View {
+        ZStack(alignment: .topLeading) {
+            // Bold gradient background
+            LinearGradient(
+                colors: [
+                    Color(red: 0.88, green: 0.30, blue: 0.18),
+                    Color(red: 0.92, green: 0.42, blue: 0.15),
+                    Color(red: 0.95, green: 0.55, blue: 0.18)
+                ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
             )
 
-            // Words learned card
-            HStack(spacing: 10) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(AppTheme.success.opacity(0.12))
-                        .frame(width: 38, height: 38)
+            // Decorative circles
+            Circle()
+                .fill(.white.opacity(0.08))
+                .frame(width: 200, height: 200)
+                .offset(x: 220, y: -40)
 
-                    Image(systemName: "character.book.closed.fill")
-                        .font(.system(size: 16))
-                        .foregroundStyle(AppTheme.success)
-                }
+            Circle()
+                .fill(.white.opacity(0.05))
+                .frame(width: 140, height: 140)
+                .offset(x: -30, y: 100)
 
-                VStack(alignment: .leading, spacing: 1) {
-                    Text("\(totalStudied)")
-                        .font(.headline.weight(.bold))
-                        .foregroundStyle(AppTheme.primaryText)
-                    Text("Learned")
-                        .font(.caption2)
-                        .foregroundStyle(AppTheme.secondaryText)
-                }
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 12)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(.thinMaterial)
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .stroke(.black.opacity(0.06), lineWidth: 1)
-            )
+            // Content
+            VStack(alignment: .leading, spacing: 16) {
+                // Top bar
+                HStack {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(greeting)
+                            .font(.caption.weight(.medium))
+                            .foregroundStyle(.white.opacity(0.75))
 
-            Spacer()
-        }
-    }
-
-    // MARK: - Daily Progress Card
-    private var dailyProgressCard: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack {
-                HStack(spacing: 8) {
-                    Image(systemName: "target")
-                        .font(.system(size: 16, weight: .semibold))
-                        .foregroundStyle(AppTheme.accent)
-
-                    Text("Daily Goal")
-                        .font(.headline.weight(.semibold))
-                        .foregroundStyle(AppTheme.primaryText)
-                }
-
-                Spacer()
-
-                if dailyProgress >= 1.0 {
-                    HStack(spacing: 4) {
-                        Image(systemName: "checkmark.circle.fill")
-                            .font(.caption)
-                        Text("Complete!")
-                    }
-                    .font(.caption.weight(.bold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(Capsule().fill(AppTheme.success))
-                }
-            }
-
-            HStack(spacing: 20) {
-                // Progress circle
-                ZStack {
-                    Circle()
-                        .stroke(AppTheme.accent.opacity(0.10), lineWidth: 7)
-                        .frame(width: 72, height: 72)
-
-                    Circle()
-                        .trim(from: 0, to: dailyProgress)
-                        .stroke(AppTheme.accent, style: StrokeStyle(lineWidth: 7, lineCap: .round))
-                        .frame(width: 72, height: 72)
-                        .rotationEffect(.degrees(-90))
-
-                    VStack(spacing: 0) {
-                        Text("\(cardsStudiedToday)")
-                            .font(.title3.weight(.bold))
-                            .foregroundStyle(AppTheme.accent)
-                        Text("/\(dailyGoal)")
-                            .font(.caption2)
-                            .foregroundStyle(AppTheme.secondaryText)
-                    }
-                }
-
-                VStack(alignment: .leading, spacing: 10) {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("Today's Progress")
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(AppTheme.primaryText)
-
-                        Text("\(Int(dailyProgress * 100))% of daily goal")
-                            .font(.caption)
-                            .foregroundStyle(AppTheme.secondaryText)
+                        Text("学汉字")
+                            .font(.system(size: 32, weight: .black, design: .serif))
+                            .foregroundStyle(.white)
                     }
 
-                    // Progress bar
-                    GeometryReader { geometry in
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(AppTheme.accent.opacity(0.10))
-                                .frame(height: 8)
-
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(AppTheme.accent)
-                                .frame(width: max(geometry.size.width * dailyProgress, 0), height: 8)
-                        }
-                    }
-                    .frame(height: 8)
+                    Spacer()
 
                     Button {
                         showingSettings = true
                     } label: {
-                        HStack(spacing: 5) {
-                            Image(systemName: "slider.horizontal.3")
-                                .font(.caption2)
-                            Text("Edit Goal")
+                        ZStack {
+                            Circle()
+                                .fill(.white.opacity(0.20))
+                                .frame(width: 40, height: 40)
+
+                            Image(systemName: "gearshape.fill")
+                                .font(.system(size: 15))
+                                .foregroundStyle(.white)
                         }
-                        .font(.caption.weight(.medium))
-                        .foregroundStyle(AppTheme.accent)
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 7)
-                        .background(
-                            Capsule().fill(AppTheme.accent.opacity(0.10))
-                        )
                     }
-                    .buttonStyle(BounceButtonStyle())
                 }
 
-                Spacer()
+                // Daily progress inline
+                HStack(spacing: 16) {
+                    // Progress ring
+                    ZStack {
+                        Circle()
+                            .stroke(.white.opacity(0.20), lineWidth: 5)
+                            .frame(width: 56, height: 56)
+
+                        Circle()
+                            .trim(from: 0, to: dailyProgress)
+                            .stroke(.white, style: StrokeStyle(lineWidth: 5, lineCap: .round))
+                            .frame(width: 56, height: 56)
+                            .rotationEffect(.degrees(-90))
+
+                        VStack(spacing: 0) {
+                            Text("\(cardsStudiedToday)")
+                                .font(.headline.weight(.black))
+                                .foregroundStyle(.white)
+                            Text("/\(dailyGoal)")
+                                .font(.system(size: 9, weight: .medium))
+                                .foregroundStyle(.white.opacity(0.6))
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack(spacing: 6) {
+                            Text("Daily Goal")
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(.white)
+
+                            if dailyProgress >= 1.0 {
+                                Text("DONE")
+                                    .font(.system(size: 10, weight: .heavy))
+                                    .foregroundStyle(Color(red: 0.88, green: 0.30, blue: 0.18))
+                                    .padding(.horizontal, 6)
+                                    .padding(.vertical, 2)
+                                    .background(
+                                        Capsule().fill(.white)
+                                    )
+                            }
+                        }
+
+                        // Progress bar
+                        GeometryReader { geo in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 3)
+                                    .fill(.white.opacity(0.20))
+                                    .frame(height: 6)
+
+                                RoundedRectangle(cornerRadius: 3)
+                                    .fill(.white)
+                                    .frame(width: max(geo.size.width * dailyProgress, 0), height: 6)
+                            }
+                        }
+                        .frame(height: 6)
+
+                        Text("\(Int(dailyProgress * 100))% complete today")
+                            .font(.caption2.weight(.medium))
+                            .foregroundStyle(.white.opacity(0.65))
+                    }
+                }
+                .padding(.bottom, 36) // space for overlapping stats strip
             }
+            .padding(.horizontal, 20)
+            .padding(.top, 12)
         }
-        .padding(20)
-        .background(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.thinMaterial)
+        .clipShape(
+            UnevenRoundedRectangle(bottomLeadingRadius: 24, bottomTrailingRadius: 24)
         )
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(.black.opacity(0.06), lineWidth: 1)
+    }
+
+    // MARK: - Quick Stats Strip (floating pills overlapping banner)
+    private var quickStatsStrip: some View {
+        HStack(spacing: 10) {
+            // Streak
+            HStack(spacing: 8) {
+                Text("🔥")
+                    .font(.system(size: 16))
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("\(currentStreak)")
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(AppTheme.primaryText)
+                    Text("Day Streak")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(.white)
+                    .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+            )
+
+            // Learned
+            HStack(spacing: 8) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 7, style: .continuous)
+                        .fill(AppTheme.success.opacity(0.15))
+                        .frame(width: 28, height: 28)
+                    Image(systemName: "character.book.closed.fill")
+                        .font(.system(size: 12))
+                        .foregroundStyle(AppTheme.success)
+                }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("\(totalStudied)")
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(AppTheme.primaryText)
+                    Text("Learned")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(.white)
+                    .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+            )
+
+            // Total words
+            HStack(spacing: 8) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 7, style: .continuous)
+                        .fill(AppTheme.info.opacity(0.15))
+                        .frame(width: 28, height: 28)
+                    Image(systemName: "textformat.size.zh")
+                        .font(.system(size: 12))
+                        .foregroundStyle(AppTheme.info)
+                }
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("\(totalUniqueWords)")
+                        .font(.subheadline.weight(.black))
+                        .foregroundStyle(AppTheme.primaryText)
+                    Text("Total")
+                        .font(.system(size: 9, weight: .medium))
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .frame(maxWidth: .infinity)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(.white)
+                    .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
+            )
+        }
+    }
+
+    // MARK: - Quick Action Grid (Chinese super-app icon grid)
+    private var quickActionGrid: some View {
+        let columns = [
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible()),
+            GridItem(.flexible())
+        ]
+
+        return LazyVGrid(columns: columns, spacing: 16) {
+            ForEach(levelSummaries.prefix(6)) { summary in
+                NavigationLink {
+                    StudySessionView(level: summary.level)
+                } label: {
+                    VStack(spacing: 8) {
+                        if levelHasIcon(summary.level) {
+                            Image(levelIconName(summary.level))
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 48, height: 48)
+                                .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        } else {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                    .fill(
+                                        LinearGradient(
+                                            colors: [
+                                                AppTheme.levelTint(for: summary.level),
+                                                AppTheme.levelTint(for: summary.level).opacity(0.7)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .frame(width: 48, height: 48)
+
+                                Text(summary.level)
+                                    .font(.system(size: 11, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
+                        }
+
+                        Text(summary.level)
+                            .font(.caption2.weight(.semibold))
+                            .foregroundStyle(AppTheme.primaryText)
+                    }
+                }
+                .buttonStyle(BounceButtonStyle())
+            }
+
+            // Random practice icon
+            NavigationLink {
+                RandomPracticeView()
+            } label: {
+                VStack(spacing: 8) {
+                    Image("random1")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 48, height: 48)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+
+                    Text("Random")
+                        .font(.caption2.weight(.semibold))
+                        .foregroundStyle(AppTheme.primaryText)
+                }
+            }
+            .buttonStyle(BounceButtonStyle())
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
         )
     }
 
@@ -266,7 +345,7 @@ struct HomeView: View {
     private var levelsSectionHeader: some View {
         HStack {
             Text("HSK Levels")
-                .font(.title3.weight(.bold))
+                .font(.headline.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
 
             Spacer()
@@ -278,21 +357,50 @@ struct HomeView: View {
         .padding(.top, 4)
     }
 
+    // MARK: - Helpers
+    private func levelHasIcon(_ level: String) -> Bool {
+        let num = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 0
+        return num >= 1 && num <= 3
+    }
+
+    private func levelIconName(_ level: String) -> String {
+        let num = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 1
+        return "hsk\(num)"
+    }
+
     // MARK: - Computed Properties
     private var levelSummaries: [LevelSummary] {
         let grouped = Dictionary(grouping: words, by: \.level)
-        return grouped.keys.sorted(by: levelSort).map { level in
-            let levelWords = grouped[level, default: []]
-            let dueCount = levelWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
-            let studiedCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
-            let masteredCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
-            let achievement = achievements.first(where: { $0.level == level })
-            return LevelSummary(level: level, total: levelWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount, achievement: achievement)
+        let sortedLevels = grouped.keys.sorted(by: levelSort)
+
+        if uniqueWordsPerLevel {
+            var previousHanzi: Set<String> = []
+            return sortedLevels.map { level in
+                let levelWords = grouped[level, default: []]
+                let uniqueWords = levelWords.filter { !previousHanzi.contains($0.hanzi) }
+                previousHanzi.formUnion(levelWords.map(\.hanzi))
+                let dueCount = uniqueWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
+                let studiedCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
+                let masteredCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
+                return LevelSummary(level: level, total: uniqueWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount)
+            }
+        } else {
+            return sortedLevels.map { level in
+                let levelWords = grouped[level, default: []]
+                let dueCount = levelWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
+                let studiedCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
+                let masteredCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
+                return LevelSummary(level: level, total: levelWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount)
+            }
         }
     }
 
     private var totalStudied: Int {
         words.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
+    }
+
+    private var totalUniqueWords: Int {
+        Set(words.map(\.hanzi)).count
     }
 
     private var dailyProgress: Double {
@@ -335,10 +443,6 @@ struct HomeView: View {
 struct LevelCardView: View {
     let summary: LevelSummary
 
-    private var isCompleted: Bool {
-        summary.achievement != nil && (summary.achievement?.accuracy ?? 0) >= 0.9
-    }
-
     private var levelColor: Color {
         AppTheme.levelTint(for: summary.level)
     }
@@ -348,189 +452,178 @@ struct LevelCardView: View {
         return Double(summary.studied) / Double(summary.total)
     }
 
-    private var levelIcon: String {
-        let levelNum = Int(summary.level.replacingOccurrences(of: "HSK", with: "")) ?? 1
-        switch levelNum {
-        case 1: return "一"
-        case 2: return "二"
-        case 3: return "三"
-        case 4: return "四"
-        case 5: return "五"
-        case 6: return "六"
-        default: return "书"
-        }
+    private var hasLevelIcon: Bool {
+        let num = Int(summary.level.replacingOccurrences(of: "HSK", with: "")) ?? 0
+        return num >= 1 && num <= 3
+    }
+
+    private var levelIconName: String {
+        let num = Int(summary.level.replacingOccurrences(of: "HSK", with: "")) ?? 1
+        return "hsk\(num)"
     }
 
     var body: some View {
-        VStack(spacing: 16) {
-            // Top: level info
-            HStack(spacing: 14) {
-                // Level badge
-                ZStack {
-                    RoundedRectangle(cornerRadius: 14, style: .continuous)
-                        .fill(
-                            isCompleted ?
-                            LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.8)], startPoint: .topLeading, endPoint: .bottomTrailing) :
-                            LinearGradient(colors: [levelColor, levelColor.opacity(0.75)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                        )
-                        .frame(width: 52, height: 52)
-
-                    if isCompleted {
-                        Image(systemName: "crown.fill")
-                            .font(.title3)
-                            .foregroundStyle(.white)
+        NavigationLink {
+            StudySessionView(level: summary.level)
+        } label: {
+            VStack(spacing: 12) {
+                HStack(spacing: 14) {
+                    // Level icon (60x60)
+                    if hasLevelIcon {
+                        Image(levelIconName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60, height: 60)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                     } else {
-                        Text(levelIcon)
-                            .font(.system(size: 26, weight: .bold, design: .serif))
-                            .foregroundStyle(.white)
-                    }
-                }
-
-                // Content
-                VStack(alignment: .leading, spacing: 5) {
-                    HStack {
-                        Text(summary.level)
-                            .font(.headline.weight(.bold))
-                            .foregroundStyle(AppTheme.primaryText)
-
-                        Text("\(summary.total) words")
-                            .font(.caption)
-                            .foregroundStyle(AppTheme.secondaryText)
-
-                        Spacer()
-
-                        if isCompleted {
-                            HStack(spacing: 3) {
-                                Image(systemName: "star.fill")
-                                    .font(.caption2)
-                                Text("Mastered")
-                            }
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(AppTheme.goldAccent)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(
-                                Capsule().fill(AppTheme.goldAccent.opacity(0.12))
-                            )
-                        } else if summary.studied >= summary.total {
-                            HStack(spacing: 3) {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .font(.caption2)
-                                Text("Completed Learning")
-                            }
-                            .font(.caption2.weight(.bold))
-                            .foregroundStyle(AppTheme.success)
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 3)
-                            .background(
-                                Capsule().fill(AppTheme.success.opacity(0.12))
-                            )
-                        } else {
-                            let remaining = summary.total - summary.studied
-                            HStack(spacing: 4) {
-                                Circle()
-                                    .fill(AppTheme.accent)
-                                    .frame(width: 5, height: 5)
-                                Text("\(remaining) to finish study")
-                            }
-                            .font(.caption.weight(.medium))
-                            .foregroundStyle(AppTheme.accent)
-                        }
-                    }
-
-                    // Progress info
-                    HStack(spacing: 4) {
-                        Text("\(summary.studied)")
-                            .font(.subheadline.weight(.bold))
-                            .foregroundStyle(levelColor)
-                        Text("of \(summary.total) learned")
-                            .font(.caption)
-                            .foregroundStyle(AppTheme.secondaryText)
-                    }
-
-                    // Progress bar
-                    GeometryReader { geometry in
-                        ZStack(alignment: .leading) {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(levelColor.opacity(0.12))
-                                .frame(height: 6)
-
-                            RoundedRectangle(cornerRadius: 4)
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
                                 .fill(
-                                    isCompleted ?
-                                    LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
-                                    LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .leading, endPoint: .trailing)
+                                    LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
                                 )
-                                .frame(width: max(geometry.size.width * progress, 0), height: 6)
+                                .frame(width: 60, height: 60)
+
+                            Text(summary.level)
+                                .font(.system(size: 13, weight: .bold))
+                                .foregroundStyle(.white)
                         }
                     }
-                    .frame(height: 6)
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack {
+                            Text(summary.level)
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(AppTheme.primaryText)
+
+                            Spacer()
+
+                            // Status badge
+                            if summary.isCompleted {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "crown.fill")
+                                        .font(.system(size: 8))
+                                    Text("Completed")
+                                }
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundStyle(AppTheme.goldAccent)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 3)
+                                .background(
+                                    Capsule().fill(AppTheme.goldAccent.opacity(0.12))
+                                )
+                            } else {
+                                let remaining = summary.total - summary.studied
+                                Text("\(remaining) left")
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .foregroundStyle(AppTheme.danger)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(
+                                        Capsule().fill(AppTheme.danger.opacity(0.10))
+                                    )
+                            }
+                        }
+
+                        // Progress bar (8pt height)
+                        GeometryReader { geometry in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(levelColor.opacity(0.12))
+                                    .frame(height: 8)
+
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(
+                                        summary.isCompleted ?
+                                        LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
+                                        LinearGradient(colors: [levelColor, levelColor.opacity(0.6)], startPoint: .leading, endPoint: .trailing)
+                                    )
+                                    .frame(width: max(geometry.size.width * progress, 0), height: 8)
+                            }
+                        }
+                        .frame(height: 8)
+
+                        // Stats row
+                        HStack {
+                            HStack(spacing: 4) {
+                                Text("\(summary.studied)")
+                                    .font(.caption2.weight(.bold))
+                                    .foregroundStyle(levelColor)
+                                Text("of \(summary.total) learned")
+                                    .font(.caption2)
+                                    .foregroundStyle(AppTheme.secondaryText)
+                            }
+
+                            if !summary.isCompleted {
+                                let remaining = summary.total - summary.studied
+                                Text("•")
+                                    .font(.caption2)
+                                    .foregroundStyle(AppTheme.tertiaryText)
+                                HStack(spacing: 2) {
+                                    Image(systemName: "flag.fill")
+                                        .font(.system(size: 8))
+                                    Text("\(remaining) to finish")
+                                        .font(.caption2.weight(.medium))
+                                }
+                                .foregroundStyle(AppTheme.coral)
+                            }
+
+                            Spacer()
+
+                            // Tap hint
+                            HStack(spacing: 2) {
+                                Text("Tap to study")
+                                    .font(.system(size: 9, weight: .medium))
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 7, weight: .semibold))
+                            }
+                            .foregroundStyle(AppTheme.tertiaryText)
+                        }
+                    }
                 }
             }
-
-            // Action buttons
-            HStack(spacing: 10) {
-                NavigationLink {
-                    StudySessionView(level: summary.level)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "book.fill")
-                            .font(.caption)
-                        Text("Study")
-                    }
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(levelColor)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 11)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(levelColor.opacity(0.10))
-                    )
-                }
-                .buttonStyle(BounceButtonStyle())
-
-                NavigationLink {
-                    TestSessionView(level: summary.level)
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "pencil.and.list.clipboard")
-                            .font(.caption)
-                        Text("Test")
-                    }
-                    .font(.subheadline.weight(.semibold))
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 11)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(levelColor)
-                    )
-                }
-                .buttonStyle(BounceButtonStyle())
-            }
+            .padding(14)
+            .background(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(.white)
+                    .shadow(color: summary.isCompleted ? .clear : .black.opacity(0.05), radius: 6, y: 2)
+            )
+            .modifier(ConditionalShimmer(isActive: summary.isCompleted))
         }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(.thinMaterial)
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .stroke(.black.opacity(0.06), lineWidth: 1)
-        )
+        .buttonStyle(BounceButtonStyle())
     }
+}
+
+// MARK: - Conditional Shimmer Modifier
+struct ConditionalShimmer: ViewModifier {
+    let isActive: Bool
+
+    func body(content: Content) -> some View {
+        if isActive {
+            content.shimmeringGoldBorder(cornerRadius: 18)
+        } else {
+            content
+        }
+    }
+}
+
+// MARK: - Study Reminder Model
+struct StudyReminder: Codable, Identifiable {
+    var id: UUID = UUID()
+    var time: Date
+    var isEnabled: Bool
 }
 
 // MARK: - Settings View
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @AppStorage("dailyGoal") private var dailyGoal: Int = 10
-    @AppStorage("currentStreak") private var currentStreak: Int = 0
-    @AppStorage("cardsStudiedToday") private var cardsStudiedToday: Int = 0
+    @AppStorage("uniqueWordsPerLevel") private var uniqueWordsPerLevel: Bool = false
 
-    @State private var selectedGoal: Int = 10
+    @State private var reminders: [StudyReminder] = []
+    @State private var notificationsAuthorized = false
 
     let goalOptions = [5, 10, 15, 20, 30, 50]
+    private let defaultTimes: [(Int, Int)] = [(9, 0), (13, 0), (19, 0)]
 
     var body: some View {
         NavigationStack {
@@ -554,100 +647,24 @@ struct SettingsView: View {
                     }
                     .padding(.top, 20)
 
-                    // Daily Goal Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        HStack {
-                            Image(systemName: "target")
-                                .font(.title3)
-                                .foregroundStyle(AppTheme.accent)
+                    // Daily Goal - Dropdown
+                    dailyGoalSection
 
-                            VStack(alignment: .leading, spacing: 2) {
-                                Text("Daily Goal")
-                                    .font(.headline.weight(.semibold))
-                                    .foregroundStyle(AppTheme.primaryText)
-                            }
+                    // Study Reminders
+                    remindersSection
 
-                            Spacer()
-
-                            Text("\(selectedGoal) cards")
-                                .font(.subheadline.weight(.medium))
-                                .foregroundStyle(AppTheme.accent)
-                        }
-
-                        Text("How many cards do you want to study each day?")
-                            .font(.subheadline)
-                            .foregroundStyle(AppTheme.secondaryText)
-
-                        LazyVGrid(columns: [
-                            GridItem(.flexible()),
-                            GridItem(.flexible()),
-                            GridItem(.flexible())
-                        ], spacing: 12) {
-                            ForEach(goalOptions, id: \.self) { goal in
-                                Button {
-                                    selectedGoal = goal
-                                } label: {
-                                    VStack(spacing: 4) {
-                                        Text("\(goal)")
-                                            .font(.title3.weight(.bold))
-                                        Text("cards")
-                                            .font(.caption)
-                                    }
-                                    .foregroundStyle(selectedGoal == goal ? .white : AppTheme.primaryText)
-                                    .frame(maxWidth: .infinity)
-                                    .padding(.vertical, 16)
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                                            .fill(selectedGoal == goal ? AppTheme.accent : AppTheme.accent.opacity(0.08))
-                                    )
-                                }
-                                .buttonStyle(BounceButtonStyle())
-                            }
-                        }
-                    }
-                    .padding(20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(.thinMaterial)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .stroke(.black.opacity(0.06), lineWidth: 1)
-                    )
-
-                    // Stats Section
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("Your Stats")
-                            .font(.headline.weight(.semibold))
-                            .foregroundStyle(AppTheme.primaryText)
-
-                        HStack(spacing: 16) {
-                            StatCard(icon: "flame.fill", value: "\(currentStreak)", label: "Day Streak", color: AppTheme.streakColor)
-                            StatCard(icon: "checkmark.circle.fill", value: "\(cardsStudiedToday)", label: "Today", color: AppTheme.success)
-                        }
-
-                        HStack(spacing: 16) {
-                            StatCard(icon: "target", value: "\(dailyGoal)", label: "Goal", color: AppTheme.accent)
-                        }
-                    }
-                    .padding(20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .fill(.thinMaterial)
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16, style: .continuous)
-                            .stroke(.black.opacity(0.06), lineWidth: 1)
-                    )
+                    // Word Display Mode
+                    wordModeSection
                 }
                 .padding(20)
             }
-            .background(AppTheme.background.ignoresSafeArea())
+            .background(Color(red: 0.96, green: 0.955, blue: 0.94).ignoresSafeArea())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        dailyGoal = selectedGoal
+                        saveReminders()
+                        scheduleNotifications()
                         dismiss()
                     }
                     .font(.headline.weight(.semibold))
@@ -655,39 +672,278 @@ struct SettingsView: View {
                 }
             }
             .onAppear {
-                selectedGoal = dailyGoal
+                loadReminders()
+                checkNotificationAuth()
             }
         }
     }
-}
 
-// MARK: - Stat Card
-struct StatCard: View {
-    let icon: String
-    let value: String
-    let label: String
-    let color: Color
+    // MARK: - Daily Goal Section
+    private var dailyGoalSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "target")
+                    .font(.title3)
+                    .foregroundStyle(AppTheme.accent)
 
-    var body: some View {
-        VStack(spacing: 8) {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundStyle(color)
+                Text("Daily Goal")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.primaryText)
 
-            Text(value)
-                .font(.title3.weight(.bold))
-                .foregroundStyle(color)
+                Spacer()
 
-            Text(label)
-                .font(.caption)
+                Menu {
+                    ForEach(goalOptions, id: \.self) { goal in
+                        Button {
+                            dailyGoal = goal
+                        } label: {
+                            if dailyGoal == goal {
+                                Label("\(goal) cards", systemImage: "checkmark")
+                            } else {
+                                Text("\(goal) cards")
+                            }
+                        }
+                    }
+                } label: {
+                    HStack(spacing: 6) {
+                        Text("\(dailyGoal) cards")
+                            .font(.subheadline.weight(.semibold))
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.system(size: 10, weight: .semibold))
+                    }
+                    .foregroundStyle(AppTheme.accent)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 8)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(AppTheme.accent.opacity(0.10))
+                    )
+                }
+            }
+
+            Text("How many cards do you want to study each day?")
+                .font(.subheadline)
                 .foregroundStyle(AppTheme.secondaryText)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
+        .padding(20)
         .background(
-            RoundedRectangle(cornerRadius: 12, style: .continuous)
-                .fill(color.opacity(0.08))
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
         )
+    }
+
+    // MARK: - Reminders Section
+    private var remindersSection: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack {
+                Image(systemName: "bell.fill")
+                    .font(.title3)
+                    .foregroundStyle(AppTheme.streakColor)
+
+                Text("Study Reminders")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.primaryText)
+
+                Spacer()
+
+                if reminders.count < 3 {
+                    Button {
+                        addReminder()
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "plus")
+                                .font(.system(size: 11, weight: .bold))
+                            Text("Add")
+                                .font(.caption.weight(.bold))
+                        }
+                        .foregroundStyle(AppTheme.accent)
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8, style: .continuous)
+                                .fill(AppTheme.accent.opacity(0.10))
+                        )
+                    }
+                    .buttonStyle(BounceButtonStyle())
+                }
+            }
+
+            Text("Get daily reminders to keep your streak going.")
+                .font(.subheadline)
+                .foregroundStyle(AppTheme.secondaryText)
+
+            if reminders.isEmpty {
+                HStack {
+                    Spacer()
+                    VStack(spacing: 8) {
+                        Image(systemName: "bell.slash")
+                            .font(.title2)
+                            .foregroundStyle(AppTheme.tertiaryText)
+                        Text("No reminders set")
+                            .font(.caption)
+                            .foregroundStyle(AppTheme.tertiaryText)
+                    }
+                    .padding(.vertical, 12)
+                    Spacer()
+                }
+            } else {
+                ForEach(Array(reminders.enumerated()), id: \.element.id) { index, _ in
+                    HStack(spacing: 12) {
+                        Toggle("", isOn: $reminders[index].isEnabled)
+                            .labelsHidden()
+                            .tint(AppTheme.accent)
+
+                        DatePicker(
+                            "",
+                            selection: $reminders[index].time,
+                            displayedComponents: .hourAndMinute
+                        )
+                        .labelsHidden()
+
+                        Spacer()
+
+                        Button {
+                            withAnimation(.spring(response: 0.3)) {
+                                removeReminder(at: index)
+                            }
+                        } label: {
+                            Image(systemName: "trash")
+                                .font(.system(size: 14))
+                                .foregroundStyle(AppTheme.danger.opacity(0.7))
+                        }
+                    }
+                    .padding(12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(reminders[index].isEnabled ? AppTheme.streakColor.opacity(0.06) : Color.gray.opacity(0.06))
+                    )
+                }
+            }
+
+            if !notificationsAuthorized && !reminders.isEmpty {
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.warning)
+                    Text("Enable notifications in Settings to receive reminders.")
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                        .fill(AppTheme.warning.opacity(0.08))
+                )
+            }
+        }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
+        )
+    }
+
+    // MARK: - Word Mode Section
+    private var wordModeSection: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack {
+                Image(systemName: "textformat.size.zh")
+                    .font(.title3)
+                    .foregroundStyle(AppTheme.info)
+
+                Text("Word Display")
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.primaryText)
+            }
+
+            Toggle(isOn: $uniqueWordsPerLevel) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Unique words per level")
+                        .font(.subheadline.weight(.medium))
+                        .foregroundStyle(AppTheme.primaryText)
+
+                    Text(uniqueWordsPerLevel
+                         ? "Each level shows only its own new words."
+                         : "Higher levels include words from previous levels.")
+                        .font(.caption)
+                        .foregroundStyle(AppTheme.secondaryText)
+                }
+            }
+            .tint(AppTheme.accent)
+        }
+        .padding(20)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
+        )
+    }
+
+    // MARK: - Reminder Helpers
+    private func addReminder() {
+        guard reminders.count < 3 else { return }
+        let defaultTime = defaultTimes[reminders.count]
+        let date = Calendar.current.date(from: DateComponents(hour: defaultTime.0, minute: defaultTime.1)) ?? Date()
+        withAnimation(.spring(response: 0.3)) {
+            reminders.append(StudyReminder(time: date, isEnabled: true))
+        }
+        requestNotificationPermission()
+    }
+
+    private func removeReminder(at index: Int) {
+        reminders.remove(at: index)
+    }
+
+    private func loadReminders() {
+        if let data = UserDefaults.standard.data(forKey: "studyReminders"),
+           let decoded = try? JSONDecoder().decode([StudyReminder].self, from: data) {
+            reminders = decoded
+        }
+    }
+
+    private func saveReminders() {
+        if let data = try? JSONEncoder().encode(reminders) {
+            UserDefaults.standard.set(data, forKey: "studyReminders")
+        }
+    }
+
+    private func scheduleNotifications() {
+        let center = UNUserNotificationCenter.current()
+        center.removeAllPendingNotificationRequests()
+
+        for (index, reminder) in reminders.enumerated() where reminder.isEnabled {
+            let content = UNMutableNotificationContent()
+            content.title = "Time to Study!"
+            content.body = "Keep your streak going \u{2014} practice your Chinese characters today."
+            content.sound = .default
+
+            let components = Calendar.current.dateComponents([.hour, .minute], from: reminder.time)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+            let request = UNNotificationRequest(
+                identifier: "studyReminder-\(index)",
+                content: content,
+                trigger: trigger
+            )
+            center.add(request)
+        }
+    }
+
+    private func requestNotificationPermission() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            DispatchQueue.main.async {
+                notificationsAuthorized = granted
+            }
+        }
+    }
+
+    private func checkNotificationAuth() {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            DispatchQueue.main.async {
+                notificationsAuthorized = settings.authorizationStatus == .authorized
+            }
+        }
     }
 }
 
