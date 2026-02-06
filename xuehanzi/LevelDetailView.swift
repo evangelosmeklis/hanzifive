@@ -5,7 +5,7 @@ struct LevelDetailView: View {
     let level: String
     @Query private var words: [Word]
     @Query private var achievements: [LevelAchievement]
-    
+
     @State private var showStats = false
 
     init(level: String) {
@@ -17,13 +17,8 @@ struct LevelDetailView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
-                // Header
                 headerSection
-                
-                // Stats Card
                 statsCard
-                
-                // Action Cards
                 actionCards
             }
             .padding(20)
@@ -35,7 +30,7 @@ struct LevelDetailView: View {
             }
         }
     }
-    
+
     // MARK: - Header Section
     private var headerSection: some View {
         HStack {
@@ -44,7 +39,7 @@ struct LevelDetailView: View {
                     Text(level)
                         .font(.title.weight(.bold))
                         .foregroundStyle(AppTheme.primaryText)
-                    
+
                     if let achievement = achievements.first, achievement.accuracy >= 0.9 {
                         HStack(spacing: 4) {
                             Image(systemName: "checkmark.seal.fill")
@@ -57,49 +52,48 @@ struct LevelDetailView: View {
                         .padding(.vertical, 5)
                         .background(
                             Capsule()
-                                .fill(AppTheme.goldAccent.opacity(0.15))
+                                .fill(AppTheme.goldAccent.opacity(0.12))
                         )
                     }
                 }
-                
+
                 Text("\(words.count) words to learn")
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.secondaryText)
             }
-            
+
             Spacer()
         }
     }
-    
+
     // MARK: - Stats Card
     private var statsCard: some View {
         VStack(spacing: 16) {
-            // Progress header
             HStack {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Progress")
                         .font(.headline.weight(.semibold))
                         .foregroundStyle(AppTheme.primaryText)
-                    
+
                     Text("\(studiedCount)/\(words.count) cards learned")
                         .font(.caption)
                         .foregroundStyle(AppTheme.secondaryText)
                 }
-                
+
                 Spacer()
-                
+
                 Text("\(Int(masteryProgress * 100))%")
                     .font(.title3.weight(.bold))
                     .foregroundStyle(levelTint)
             }
-            
+
             // Progress bar
             GeometryReader { geometry in
                 ZStack(alignment: .leading) {
                     RoundedRectangle(cornerRadius: 4)
-                        .fill(levelTint.opacity(0.15))
+                        .fill(levelTint.opacity(0.12))
                         .frame(height: 8)
-                    
+
                     RoundedRectangle(cornerRadius: 4)
                         .fill(levelTint)
                         .frame(width: showStats ? max(geometry.size.width * masteryProgress, 0) : 0, height: 8)
@@ -107,7 +101,7 @@ struct LevelDetailView: View {
                 }
             }
             .frame(height: 8)
-            
+
             // Stats grid
             HStack(spacing: 12) {
                 StatBox(
@@ -116,7 +110,7 @@ struct LevelDetailView: View {
                     label: "Learned",
                     color: levelTint
                 )
-                
+
                 StatBox(
                     icon: "clock.fill",
                     value: "\(dueCount)",
@@ -127,12 +121,12 @@ struct LevelDetailView: View {
         }
         .padding(20)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(AppTheme.card)
-                .shadow(color: Color.black.opacity(0.04), radius: 10, x: 0, y: 4)
         )
+        .warmShadow(0.06)
     }
-    
+
     // MARK: - Action Cards
     private var actionCards: some View {
         VStack(spacing: 12) {
@@ -143,12 +137,11 @@ struct LevelDetailView: View {
                     icon: "book.fill",
                     title: "Study Session",
                     subtitle: "Focus on words that need review",
-                    color: AppTheme.mint
+                    color: AppTheme.accent
                 )
             }
             .buttonStyle(PressableCardStyle())
 
-            // For HSK3, show part options. For others, show single test
             if level == "HSK3" {
                 testPartCards
             } else {
@@ -166,36 +159,34 @@ struct LevelDetailView: View {
             }
         }
     }
-    
+
     // MARK: - HSK3 Test Part Cards
     @ViewBuilder
     private var testPartCards: some View {
         VStack(spacing: 12) {
-            // Info banner
             HStack(spacing: 12) {
                 Image(systemName: "info.circle.fill")
                     .font(.title3)
                     .foregroundStyle(levelTint)
-                
+
                 VStack(alignment: .leading, spacing: 2) {
                     Text("HSK3 is split into 2 parts")
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(AppTheme.primaryText)
-                    
+
                     Text("Part 1: \(words.count / 2) words • Part 2: \(words.count - (words.count / 2)) words")
                         .font(.caption)
                         .foregroundStyle(AppTheme.secondaryText)
                 }
-                
+
                 Spacer()
             }
             .padding(16)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(levelTint.opacity(0.1))
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(levelTint.opacity(0.08))
             )
-            
-            // Part buttons
+
             NavigationLink {
                 TestSessionView(level: level, part: 1)
             } label: {
@@ -207,7 +198,7 @@ struct LevelDetailView: View {
                 )
             }
             .buttonStyle(PressableCardStyle())
-            
+
             NavigationLink {
                 TestSessionView(level: level, part: 2)
             } label: {
@@ -221,16 +212,16 @@ struct LevelDetailView: View {
             .buttonStyle(PressableCardStyle())
         }
     }
-    
+
     // MARK: - Computed Properties
     private var dueCount: Int {
         words.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
     }
-    
+
     private var studiedCount: Int {
         words.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
     }
-    
+
     private var masteredCount: Int {
         words.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
     }
@@ -238,7 +229,7 @@ struct LevelDetailView: View {
     private var levelTint: Color {
         AppTheme.levelTint(for: level)
     }
-    
+
     private var masteryProgress: Double {
         guard words.count > 0 else { return 0 }
         return Double(studiedCount) / Double(words.count)
@@ -251,17 +242,17 @@ struct StatBox: View {
     let value: String
     let label: String
     let color: Color
-    
+
     var body: some View {
         VStack(spacing: 8) {
             Image(systemName: icon)
                 .font(.title3)
                 .foregroundStyle(color)
-            
+
             Text(value)
                 .font(.headline.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
-            
+
             Text(label)
                 .font(.caption)
                 .foregroundStyle(AppTheme.secondaryText)
@@ -269,8 +260,8 @@ struct StatBox: View {
         .frame(maxWidth: .infinity)
         .padding(.vertical, 16)
         .background(
-            RoundedRectangle(cornerRadius: 12)
-                .fill(color.opacity(0.1))
+            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                .fill(color.opacity(0.08))
         )
     }
 }
@@ -281,41 +272,41 @@ struct ActionCardClean: View {
     let title: String
     let subtitle: String
     let color: Color
-    
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(color.opacity(0.15))
+                RoundedRectangle(cornerRadius: 12, style: .continuous)
+                    .fill(color.opacity(0.12))
                     .frame(width: 50, height: 50)
-                
+
                 Image(systemName: icon)
                     .font(.title3)
                     .foregroundStyle(color)
             }
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
                     .font(.headline.weight(.semibold))
                     .foregroundStyle(AppTheme.primaryText)
-                
+
                 Text(subtitle)
                     .font(.caption)
                     .foregroundStyle(AppTheme.secondaryText)
             }
-            
+
             Spacer()
-            
+
             Image(systemName: "chevron.right")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(AppTheme.tertiaryText)
         }
         .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(AppTheme.card)
-                .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 2)
         )
+        .warmShadow(0.06)
     }
 }
 
@@ -325,14 +316,14 @@ struct TestPartButton: View {
     let wordCount: Int
     let color: Color
     let isCompleted: Bool
-    
+
     var body: some View {
         HStack(spacing: 16) {
             ZStack {
                 Circle()
                     .fill(isCompleted ? AppTheme.goldAccent : color)
                     .frame(width: 44, height: 44)
-                
+
                 if isCompleted {
                     Image(systemName: "checkmark")
                         .font(.headline.weight(.bold))
@@ -343,13 +334,13 @@ struct TestPartButton: View {
                         .foregroundStyle(.white)
                 }
             }
-            
+
             VStack(alignment: .leading, spacing: 4) {
                 HStack(spacing: 8) {
                     Text("Start Part \(partNumber)")
                         .font(.subheadline.weight(.semibold))
                         .foregroundStyle(AppTheme.primaryText)
-                    
+
                     if isCompleted {
                         Text("✓ Passed")
                             .font(.caption2.weight(.semibold))
@@ -362,28 +353,24 @@ struct TestPartButton: View {
                             )
                     }
                 }
-                
+
                 Text("\(wordCount) words • ~\(max(1, (wordCount * 10) / 60)) min")
                     .font(.caption)
                     .foregroundStyle(AppTheme.secondaryText)
             }
-            
+
             Spacer()
-            
+
             Image(systemName: "chevron.right")
                 .font(.caption.weight(.semibold))
                 .foregroundStyle(AppTheme.tertiaryText)
         }
         .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
                 .fill(AppTheme.card)
-                .shadow(color: Color.black.opacity(0.04), radius: 8, x: 0, y: 2)
         )
-        .overlay(
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(isCompleted ? AppTheme.goldAccent.opacity(0.3) : Color.clear, lineWidth: 1.5)
-        )
+        .warmShadow(0.06)
     }
 }
 
@@ -393,7 +380,7 @@ struct HSK3TestPartButton: View {
     let wordCount: Int
     let color: Color
     let isCompleted: Bool
-    
+
     var body: some View {
         TestPartButton(partNumber: partNumber, wordCount: wordCount, color: color, isCompleted: isCompleted)
     }
@@ -404,7 +391,7 @@ struct TestPartCard: View {
     let wordCount: Int
     let color: Color
     let isCompleted: Bool
-    
+
     var body: some View {
         TestPartButton(partNumber: partNumber, wordCount: wordCount, color: color, isCompleted: isCompleted)
     }
@@ -417,7 +404,7 @@ struct ActionCardNew: View {
     let description: String
     let color: Color
     let gradient: LinearGradient
-    
+
     var body: some View {
         ActionCardClean(icon: icon, title: title, subtitle: description, color: color)
     }

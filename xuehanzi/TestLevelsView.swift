@@ -15,6 +15,7 @@ struct TestLevelsView: View {
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 24) {
+                // Header
                 VStack(alignment: .leading, spacing: 12) {
                     HStack(spacing: 12) {
                         RoundedRectangle(cornerRadius: 4)
@@ -47,7 +48,7 @@ struct TestLevelsView: View {
 
                 SearchBarView(placeholder: "搜索级别测试")
 
-                // Category Cards inspired by Chinese app design
+                // Quick action cards
                 VStack(spacing: 12) {
                     HStack(spacing: 12) {
                         ForEach(quickActions.prefix(2)) { action in
@@ -88,24 +89,6 @@ struct TestLevelsView: View {
             .padding(24)
         }
         .background(AppTheme.background.ignoresSafeArea())
-        .overlay(alignment: .topTrailing) {
-            ZStack {
-                Circle()
-                    .fill(AppTheme.accent.opacity(0.12))
-                    .frame(width: 250, height: 250)
-                    .offset(x: 100, y: -100)
-                Circle()
-                    .fill(AppTheme.goldAccent.opacity(0.08))
-                    .frame(width: 150, height: 150)
-                    .offset(x: 60, y: -60)
-            }
-        }
-        .overlay(alignment: .bottomLeading) {
-            Circle()
-                .fill(AppTheme.levelColors[3].opacity(0.15))
-                .frame(width: 200, height: 200)
-                .offset(x: -80, y: 100)
-        }
     }
 
     private var levelSummaries: [LevelSummary] {
@@ -153,11 +136,7 @@ struct TestLevelCardView: View {
                         .padding(.vertical, 4)
                         .background(
                             Capsule()
-                                .fill(AppTheme.goldAccent.opacity(0.15))
-                                .overlay(
-                                    Capsule()
-                                        .stroke(AppTheme.goldAccent.opacity(0.4), lineWidth: 1)
-                                )
+                                .fill(AppTheme.goldAccent.opacity(0.12))
                         )
                     }
                 }
@@ -181,12 +160,8 @@ struct TestLevelCardView: View {
         .background(
             RoundedRectangle(cornerRadius: 20, style: .continuous)
                 .fill(AppTheme.card)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .stroke(levelColor.opacity(0.3), lineWidth: 1.5)
-                )
         )
-        .shadow(color: levelColor.opacity(0.2), radius: 12, x: 0, y: 6)
+        .warmShadow(0.07)
     }
 }
 
@@ -195,7 +170,7 @@ struct StatItem: View {
     let title: String
     let value: String
     let color: Color
-    
+
     var body: some View {
         VStack(spacing: 4) {
             Text(value)
