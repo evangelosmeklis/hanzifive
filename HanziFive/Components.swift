@@ -311,37 +311,6 @@ struct ConfettiPiece: Identifiable {
     }
 }
 
-// MARK: - XP Popup View
-struct XPPopupView: View {
-    let amount: Int
-    @State private var offset: CGFloat = 0
-    @State private var opacity: Double = 1
-
-    var body: some View {
-        HStack(spacing: 4) {
-            Text("+\(amount)")
-                .font(.headline.weight(.black))
-            Text("XP")
-                .font(.caption.weight(.bold))
-        }
-        .foregroundStyle(AppTheme.xpColor)
-        .padding(.horizontal, 14)
-        .padding(.vertical, 7)
-        .background(
-            Capsule()
-                .fill(AppTheme.xpColor.opacity(0.12))
-        )
-        .offset(y: offset)
-        .opacity(opacity)
-        .onAppear {
-            withAnimation(.easeOut(duration: 1.0)) {
-                offset = -60
-                opacity = 0
-            }
-        }
-    }
-}
-
 // MARK: - Streak Celebration View
 struct StreakCelebrationView: View {
     let streak: Int

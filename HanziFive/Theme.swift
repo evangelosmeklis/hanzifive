@@ -135,10 +135,8 @@ enum AppTheme {
         )
     }
 
-    // MARK: - XP & Gamification Colors
-    static let xpColor = Color(red: 0.28, green: 0.44, blue: 0.88)
+    // MARK: - Streak Colors
     static let streakColor = Color(red: 0.92, green: 0.48, blue: 0.16)
-    static let levelUpColor = Color(red: 0.55, green: 0.38, blue: 0.85)
 }
 
 // MARK: - Custom Button Style
