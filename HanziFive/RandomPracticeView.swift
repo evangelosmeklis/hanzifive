@@ -32,6 +32,7 @@ struct RandomPracticeView: View {
                     actionButtons
                 }
                 .padding(.vertical, 16)
+                .maxReadableWidth(700)
             }
         }
         .navigationTitle("")

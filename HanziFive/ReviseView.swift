@@ -69,6 +69,7 @@ struct ReviseView: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 40)
+                .maxReadableWidth(720)
             }
         }
         .background(Color(red: 0.96, green: 0.955, blue: 0.94).ignoresSafeArea())
