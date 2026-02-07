@@ -1,46 +1,5 @@
 [
   {
-    "simplified": "爱",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "ài"
-        },
-        "meanings": [
-          "to love; to be fond of; to like",
-          "affection",
-          "to be inclined (to do sth); to tend to (happen)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "八",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "bā"
-        },
-        "meanings": [
-          "eight"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "爸爸",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "bà ba"
-        },
-        "meanings": [
-          "(coll.) father; dad"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "吧",
     "forms": [
       {
@@ -115,48 +74,6 @@
     ]
   },
   {
-    "simplified": "杯子",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "bēi zi"
-        },
-        "meanings": [
-          "cup",
-          "glass"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "北京",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "Běi jīng"
-        },
-        "meanings": [
-          "Beijing municipality, capital of the People's Republic of China (abbr. to 京[Jing1])"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "本",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "běn"
-        },
-        "meanings": [
-          "(bound form) root; stem",
-          "(bound form) origin; source",
-          "(bound form) one's own; this"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "比",
     "forms": [
       {
@@ -202,64 +119,6 @@
     ]
   },
   {
-    "simplified": "不",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "bù"
-        },
-        "meanings": [
-          "not",
-          "no"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "不客气",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "bù kè qi"
-        },
-        "meanings": [
-          "you're welcome",
-          "don't mention it",
-          "impolite"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "菜",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "cài"
-        },
-        "meanings": [
-          "vegetable; greens (CL:棵[ke1])",
-          "dish (of food) (CL:樣|样[yang4],道[dao4],盤|盘[pan2])",
-          "(of one's skills etc) weak; poor"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "茶",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "chá"
-        },
-        "meanings": [
-          "tea",
-          "tea plant"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "长",
     "forms": [
       {
@@ -288,20 +147,6 @@
     ]
   },
   {
-    "simplified": "吃",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "chī"
-        },
-        "meanings": [
-          "to eat",
-          "to consume"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "出",
     "forms": [
       {
@@ -312,20 +157,6 @@
           "to go out; to come out",
           "to arise; to occur",
           "to produce; to yield"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "出租车",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "chū zū chē"
-        },
-        "meanings": [
-          "taxi",
-          "(Tw) rental car"
         ]
       }
     ]
@@ -391,19 +222,6 @@
     ]
   },
   {
-    "simplified": "打电话",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "dǎ diàn huà"
-        },
-        "meanings": [
-          "to make a telephone call"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "打篮球",
     "forms": [
       {
@@ -412,21 +230,6 @@
         },
         "meanings": [
           "to play basketball"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "大",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "dà"
-        },
-        "meanings": [
-          "big; large; great",
-          "older (than another person)",
-          "eldest (as in 大姐[da4 jie3])"
         ]
       }
     ]
@@ -457,21 +260,6 @@
           "to reach; to arrive",
           "to leave for; to go to",
           "to (a place); until (a time); up to (a point)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "的",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "de"
-        },
-        "meanings": [
-          "(possessive particle)",
-          "of",
-          "really and truly"
         ]
       }
     ]
@@ -534,73 +322,6 @@
     ]
   },
   {
-    "simplified": "点",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "diǎn"
-        },
-        "meanings": [
-          "to touch briefly; to tap",
-          "to mark with a dot; to check off (on a list)",
-          "to order (food etc); to select"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "电脑",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "diàn nǎo"
-        },
-        "meanings": [
-          "computer"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "电视",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "diàn shì"
-        },
-        "meanings": [
-          "television; TV"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "电影",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "diàn yǐng"
-        },
-        "meanings": [
-          "movie; film"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "东西",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "dōng xī"
-        },
-        "meanings": [
-          "east and west"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "懂",
     "forms": [
       {
@@ -610,35 +331,6 @@
         "meanings": [
           "to understand",
           "to comprehend"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "都",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "dōu"
-        },
-        "meanings": [
-          "all",
-          "both",
-          "even"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "读",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "dú"
-        },
-        "meanings": [
-          "to read",
-          "to study"
         ]
       }
     ]
@@ -659,92 +351,6 @@
     ]
   },
   {
-    "simplified": "对不起",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "duì bu qǐ"
-        },
-        "meanings": [
-          "I'm sorry; excuse me; I beg your pardon",
-          "to let (sb) down; to disappoint"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "多",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "duō"
-        },
-        "meanings": [
-          "many; much; more; a lot of",
-          "too many; in excess",
-          "(after a numeral) ... odd"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "多少",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "duō shao"
-        },
-        "meanings": [
-          "how much?",
-          "how many?",
-          "number"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "儿子",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "ér zi"
-        },
-        "meanings": [
-          "son"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "二",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "èr"
-        },
-        "meanings": [
-          "two",
-          "2",
-          "(Beijing dialect) stupid"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "饭店",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "fàn diàn"
-        },
-        "meanings": [
-          "restaurant",
-          "hotel"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "房间",
     "forms": [
       {
@@ -753,19 +359,6 @@
         },
         "meanings": [
           "room"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "飞机",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "fēi jī"
-        },
-        "meanings": [
-          "airplane"
         ]
       }
     ]
@@ -780,19 +373,6 @@
         "meanings": [
           "very; really",
           "unusual; extraordinary"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "分钟",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "fēn zhōng"
-        },
-        "meanings": [
-          "minute"
         ]
       }
     ]
@@ -828,21 +408,6 @@
     ]
   },
   {
-    "simplified": "高兴",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "gāo xìng"
-        },
-        "meanings": [
-          "happy",
-          "glad",
-          "willing (to do sth)"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "告诉",
     "forms": [
       {
@@ -871,19 +436,6 @@
     ]
   },
   {
-    "simplified": "个",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "gě"
-        },
-        "meanings": [
-          "used in 自個兒|自个儿[zi4 ge3 r5]"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "给",
     "forms": [
       {
@@ -894,21 +446,6 @@
           "to give",
           "for",
           "to"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "工作",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "gōng zuò"
-        },
-        "meanings": [
-          "to work",
-          "job",
-          "work"
         ]
       }
     ]
@@ -935,19 +472,6 @@
         },
         "meanings": [
           "company; firm; corporation"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "狗",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "gǒu"
-        },
-        "meanings": [
-          "dog"
         ]
       }
     ]
@@ -1011,34 +535,6 @@
     ]
   },
   {
-    "simplified": "汉语",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "Hàn yǔ"
-        },
-        "meanings": [
-          "Chinese language"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "好",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "hǎo"
-        },
-        "meanings": [
-          "good",
-          "appropriate; proper",
-          "all right!"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "好吃",
     "forms": [
       {
@@ -1047,48 +543,6 @@
         },
         "meanings": [
           "tasty; delicious"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "号",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "háo"
-        },
-        "meanings": [
-          "roar",
-          "cry"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "喝",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "hē"
-        },
-        "meanings": [
-          "to drink"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "和",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "hé"
-        },
-        "meanings": [
-          "and",
-          "with",
-          "harmony"
         ]
       }
     ]
@@ -1109,20 +563,6 @@
     ]
   },
   {
-    "simplified": "很",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "hěn"
-        },
-        "meanings": [
-          "very; quite",
-          "(also, often used before an adjective without intensifying its meaning, i.e. as a meaningless syntactic element)"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "红",
     "forms": [
       {
@@ -1131,51 +571,6 @@
         },
         "meanings": [
           "used in 女紅|女红[nu : 3 gong1]"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "后面",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "hòu mian"
-        },
-        "meanings": [
-          "the back; the rear; the last bit",
-          "behind; near the end; at the back",
-          "later; afterwards"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "回",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "huí"
-        },
-        "meanings": [
-          "to circle",
-          "to go back",
-          "to turn around"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "会",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "huì"
-        },
-        "meanings": [
-          "can",
-          "to be able to",
-          "meeting"
         ]
       }
     ]
@@ -1222,34 +617,6 @@
     ]
   },
   {
-    "simplified": "几",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "jǐ"
-        },
-        "meanings": [
-          "how many?",
-          "several",
-          "a few"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "家",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "jiā"
-        },
-        "meanings": [
-          "used in 傢伙|家伙[jia1 huo5] and 傢俱|家俱[jia1 ju4]"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "件",
     "forms": [
       {
@@ -1260,21 +627,6 @@
           "item",
           "component",
           "classifier for events, things, clothes etc"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "叫",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "jiào"
-        },
-        "meanings": [
-          "to shout",
-          "to call",
-          "to order"
         ]
       }
     ]
@@ -1321,20 +673,6 @@
     ]
   },
   {
-    "simplified": "今天",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "jīn tiān"
-        },
-        "meanings": [
-          "today",
-          "the present time; now"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "进",
     "forms": [
       {
@@ -1360,20 +698,6 @@
           "near",
           "close to",
           "approximately"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "九",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "jiǔ"
-        },
-        "meanings": [
-          "nine",
-          "9"
         ]
       }
     ]
@@ -1421,21 +745,6 @@
     ]
   },
   {
-    "simplified": "开",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "kāi"
-        },
-        "meanings": [
-          "to open (transitive or intransitive)",
-          "(of ships, vehicles, troops etc) to start",
-          "to turn on; to put in operation; to operate; to run"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "开始",
     "forms": [
       {
@@ -1446,34 +755,6 @@
           "to begin",
           "to start",
           "beginning"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "看",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "kàn"
-        },
-        "meanings": [
-          "to see",
-          "to look at",
-          "to watch"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "看见",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "kàn jiàn"
-        },
-        "meanings": [
-          "to see; to catch sight of"
         ]
       }
     ]
@@ -1538,21 +819,6 @@
     ]
   },
   {
-    "simplified": "块",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "kuài"
-        },
-        "meanings": [
-          "lump; chunk; piece",
-          "classifier for pieces of cloth, cake, soap etc",
-          "(coll.) classifier for money and currency units"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "快",
     "forms": [
       {
@@ -1581,48 +847,6 @@
     ]
   },
   {
-    "simplified": "来",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "lái"
-        },
-        "meanings": [
-          "to come",
-          "to arrive"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "老师",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "lǎo shī"
-        },
-        "meanings": [
-          "teacher"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "了",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "le"
-        },
-        "meanings": [
-          "(completed action marker)",
-          "to finish",
-          "to understand"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "累",
     "forms": [
       {
@@ -1638,19 +862,6 @@
     ]
   },
   {
-    "simplified": "冷",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "lěng"
-        },
-        "meanings": [
-          "cold"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "离",
     "forms": [
       {
@@ -1661,19 +872,6 @@
           "from",
           "away from",
           "to leave"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "里",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "lǐ"
-        },
-        "meanings": [
-          "variant of 裡|里[li3]"
         ]
       }
     ]
@@ -1709,20 +907,6 @@
     ]
   },
   {
-    "simplified": "六",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "liù"
-        },
-        "meanings": [
-          "six",
-          "6"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "路",
     "forms": [
       {
@@ -1748,48 +932,6 @@
           "trip",
           "journey",
           "tourism"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "妈妈",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "mā ma"
-        },
-        "meanings": [
-          "mama",
-          "mommy",
-          "mother"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "吗",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "má"
-        },
-        "meanings": [
-          "(coll.) what?"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "买",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "mǎi"
-        },
-        "meanings": [
-          "to buy",
-          "to purchase"
         ]
       }
     ]
@@ -1838,49 +980,6 @@
     ]
   },
   {
-    "simplified": "猫",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "māo"
-        },
-        "meanings": [
-          "cat (CL:隻|只[zhi1])",
-          "(dialect) to hide oneself",
-          "(loanword) (coll.) modem"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "没关系",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "méi guān xi"
-        },
-        "meanings": [
-          "it doesn't matter"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "没有",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "méi yǒu"
-        },
-        "meanings": [
-          "haven't",
-          "hasn't",
-          "doesn't exist"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "每",
     "forms": [
       {
@@ -1924,19 +1023,6 @@
     ]
   },
   {
-    "simplified": "米饭",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "mǐ fàn"
-        },
-        "meanings": [
-          "(cooked) rice"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "面条",
     "forms": [
       {
@@ -1945,76 +1031,6 @@
         },
         "meanings": [
           "noodles"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "名字",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "míng zi"
-        },
-        "meanings": [
-          "name (of a person or thing)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "明天",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "míng tiān"
-        },
-        "meanings": [
-          "tomorrow"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "哪",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nǎ"
-        },
-        "meanings": [
-          "which?",
-          "how"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "哪儿",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nǎ r"
-        },
-        "meanings": [
-          "where?",
-          "wherever; anywhere; somewhere",
-          "(used in rhetorical questions) how can ...?; how could ...?"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "那",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nà"
-        },
-        "meanings": [
-          "that",
-          "those",
-          "then"
         ]
       }
     ]
@@ -2029,62 +1045,6 @@
         "meanings": [
           "(bound form) male",
           "baron, the lowest of the five ranks of nobility 五等爵位[wu3 deng3 jue2 wei4]"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "呢",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "ne"
-        },
-        "meanings": [
-          "(sentence-final particle) used in questions to link back to prior discourse or context (\"what about...?\", \"and...?\")",
-          "(sentence-final particle) indicating that a state or situation still holds",
-          "(discourse particle) used to mark a slight pause or emphasis in speech"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "能",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "néng"
-        },
-        "meanings": [
-          "can",
-          "to be able to",
-          "ability"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "你",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nǐ"
-        },
-        "meanings": [
-          "you"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "年",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nián"
-        },
-        "meanings": [
-          "year"
         ]
       }
     ]
@@ -2131,19 +1091,6 @@
     ]
   },
   {
-    "simplified": "女儿",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "nǔ: ér"
-        },
-        "meanings": [
-          "daughter"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "旁边",
     "forms": [
       {
@@ -2172,19 +1119,6 @@
     ]
   },
   {
-    "simplified": "朋友",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "péng you"
-        },
-        "meanings": [
-          "friend"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "便宜",
     "forms": [
       {
@@ -2208,46 +1142,6 @@
           "ticket",
           "ballot",
           "banknote"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "漂亮",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "piào liang"
-        },
-        "meanings": [
-          "pretty; beautiful"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "苹果",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "Píng guǒ"
-        },
-        "meanings": [
-          "Apple (American tech company)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "七",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "qī"
-        },
-        "meanings": [
-          "seven",
-          "7"
         ]
       }
     ]
@@ -2305,36 +1199,6 @@
     ]
   },
   {
-    "simplified": "前面",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "qián miàn"
-        },
-        "meanings": [
-          "ahead",
-          "in front",
-          "preceding"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "钱",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "qián"
-        },
-        "meanings": [
-          "coin",
-          "money",
-          "unit of weight, one tenth of a tael 兩|两[liang3]"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "晴",
     "forms": [
       {
@@ -2344,35 +1208,6 @@
         "meanings": [
           "clear",
           "fine (weather)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "请",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "qǐng"
-        },
-        "meanings": [
-          "to ask",
-          "to invite",
-          "please (do sth)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "去",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "qù"
-        },
-        "meanings": [
-          "to go",
-          "to leave"
         ]
       }
     ]
@@ -2406,49 +1241,6 @@
     ]
   },
   {
-    "simplified": "热",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "rè"
-        },
-        "meanings": [
-          "to warm up",
-          "to heat up",
-          "hot (of weather)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "人",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "rén"
-        },
-        "meanings": [
-          "person; people"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "认识",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "rèn shi"
-        },
-        "meanings": [
-          "to know",
-          "to recognize",
-          "to be familiar with"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "日",
     "forms": [
       {
@@ -2459,46 +1251,6 @@
           "sun",
           "day",
           "date, day of the month"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "三",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "sān"
-        },
-        "meanings": [
-          "three",
-          "3"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "商店",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shāng diàn"
-        },
-        "meanings": [
-          "store; shop"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "上",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shǎng"
-        },
-        "meanings": [
-          "used in 上聲|上声[shang3 sheng1]"
         ]
       }
     ]
@@ -2519,48 +1271,6 @@
     ]
   },
   {
-    "simplified": "上午",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shàng wǔ"
-        },
-        "meanings": [
-          "morning"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "少",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shǎo"
-        },
-        "meanings": [
-          "few",
-          "less",
-          "to lack"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "谁",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shéi"
-        },
-        "meanings": [
-          "who?",
-          "someone"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "身体",
     "forms": [
       {
@@ -2570,21 +1280,6 @@
         "meanings": [
           "the body",
           "one's health"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "什么",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shén me"
-        },
-        "meanings": [
-          "what?",
-          "something",
-          "anything"
         ]
       }
     ]
@@ -2611,35 +1306,6 @@
         },
         "meanings": [
           "birthday"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "十",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shí"
-        },
-        "meanings": [
-          "ten",
-          "10"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "时候",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shí hou"
-        },
-        "meanings": [
-          "time",
-          "length of time",
-          "moment"
         ]
       }
     ]
@@ -2673,21 +1339,6 @@
     ]
   },
   {
-    "simplified": "是",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shì"
-        },
-        "meanings": [
-          "to be",
-          "yes",
-          "correct"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "手表",
     "forms": [
       {
@@ -2714,78 +1365,6 @@
     ]
   },
   {
-    "simplified": "书",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shū"
-        },
-        "meanings": [
-          "book",
-          "letter",
-          "document"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "水",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shuǐ"
-        },
-        "meanings": [
-          "water",
-          "(after a name) ... River",
-          "to swim (used mostly in 會水|会水[hui4 shui3] and 水性[shui3 xing4])"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "水果",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shuǐ guǒ"
-        },
-        "meanings": [
-          "fruit"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "睡觉",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shuì jiào"
-        },
-        "meanings": [
-          "to go to bed",
-          "to sleep"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "说",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "shuō"
-        },
-        "meanings": [
-          "to speak",
-          "to say",
-          "to talk"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "说话",
     "forms": [
       {
@@ -2796,20 +1375,6 @@
           "to speak",
           "to say",
           "to talk"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "四",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "sì"
-        },
-        "meanings": [
-          "four",
-          "4"
         ]
       }
     ]
@@ -2843,34 +1408,6 @@
     ]
   },
   {
-    "simplified": "岁",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "suì"
-        },
-        "meanings": [
-          "variant of 歲|岁[sui4], year",
-          "years old"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "他",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tā"
-        },
-        "meanings": [
-          "he",
-          "him"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "它",
     "forms": [
       {
@@ -2879,35 +1416,6 @@
         },
         "meanings": [
           "it"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "她",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tā"
-        },
-        "meanings": [
-          "she",
-          "her"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "太",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tài"
-        },
-        "meanings": [
-          "highest",
-          "greatest",
-          "too (much)"
         ]
       }
     ]
@@ -2941,19 +1449,6 @@
     ]
   },
   {
-    "simplified": "天气",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tiān qì"
-        },
-        "meanings": [
-          "weather"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "跳舞",
     "forms": [
       {
@@ -2962,36 +1457,6 @@
         },
         "meanings": [
           "to dance"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "听",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tīng"
-        },
-        "meanings": [
-          "to listen",
-          "to hear",
-          "to obey"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "同学",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "tóng xué"
-        },
-        "meanings": [
-          "to study at the same school",
-          "fellow student",
-          "classmate"
         ]
       }
     ]
@@ -3086,21 +1551,6 @@
     ]
   },
   {
-    "simplified": "喂",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "wèi"
-        },
-        "meanings": [
-          "hello (on the phone)",
-          "hey",
-          "to feed"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "问",
     "forms": [
       {
@@ -3125,48 +1575,6 @@
           "question",
           "problem",
           "issue"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "我",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "wǒ"
-        },
-        "meanings": [
-          "I",
-          "me",
-          "my"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "我们",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "wǒ men"
-        },
-        "meanings": [
-          "we; us; ourselves; our"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "五",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "wǔ"
-        },
-        "meanings": [
-          "five",
-          "5"
         ]
       }
     ]
@@ -3215,135 +1623,6 @@
     ]
   },
   {
-    "simplified": "喜欢",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xǐ huan"
-        },
-        "meanings": [
-          "to like",
-          "to be fond of"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "下",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xià"
-        },
-        "meanings": [
-          "down",
-          "downwards",
-          "below"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "下午",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xià wǔ"
-        },
-        "meanings": [
-          "afternoon",
-          "p.m."
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "下雨",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xià yǔ"
-        },
-        "meanings": [
-          "to rain"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "先生",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiān sheng"
-        },
-        "meanings": [
-          "teacher",
-          "gentleman; sir; mister (Mr.)",
-          "husband"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "现在",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiàn zài"
-        },
-        "meanings": [
-          "now; at present; currently"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "想",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiǎng"
-        },
-        "meanings": [
-          "to think",
-          "to want",
-          "to miss"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "小",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiǎo"
-        },
-        "meanings": [
-          "small",
-          "tiny",
-          "few"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "小姐",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiǎo jie"
-        },
-        "meanings": [
-          "young lady",
-          "miss",
-          "(slang) prostitute"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "小时",
     "forms": [
       {
@@ -3370,47 +1649,6 @@
     ]
   },
   {
-    "simplified": "些",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiē"
-        },
-        "meanings": [
-          "classifier indicating a small amount or small number greater than 1: some, a few, several"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "写",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiě"
-        },
-        "meanings": [
-          "to write"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "谢谢",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xiè xie"
-        },
-        "meanings": [
-          "to thank",
-          "thanks",
-          "thank you"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "新",
     "forms": [
       {
@@ -3421,21 +1659,6 @@
           "new",
           "newly",
           "meso- (chemistry)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "星期",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xīng qī"
-        },
-        "meanings": [
-          "week",
-          "day of the week",
-          "Sunday"
         ]
       }
     ]
@@ -3464,47 +1687,6 @@
         "meanings": [
           "rest",
           "to rest"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "学生",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xué sheng"
-        },
-        "meanings": [
-          "student",
-          "schoolchild"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "学习",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xué xí"
-        },
-        "meanings": [
-          "to learn",
-          "to study"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "学校",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "xué xiào"
-        },
-        "meanings": [
-          "school"
         ]
       }
     ]
@@ -3610,34 +1792,6 @@
     ]
   },
   {
-    "simplified": "一",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yī"
-        },
-        "meanings": [
-          "one",
-          "single",
-          "a (article)"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "一点儿",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yī diǎn r"
-        },
-        "meanings": [
-          "erhua variant of 一點|一点[yi1 dian3]"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "一起",
     "forms": [
       {
@@ -3667,45 +1821,6 @@
     ]
   },
   {
-    "simplified": "衣服",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yī fu"
-        },
-        "meanings": [
-          "clothes"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "医生",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yī shēng"
-        },
-        "meanings": [
-          "doctor"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "医院",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yī yuàn"
-        },
-        "meanings": [
-          "hospital"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "已经",
     "forms": [
       {
@@ -3714,19 +1829,6 @@
         },
         "meanings": [
           "already"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "椅子",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yǐ zi"
-        },
-        "meanings": [
-          "chair"
         ]
       }
     ]
@@ -3789,21 +1891,6 @@
     ]
   },
   {
-    "simplified": "有",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yǒu"
-        },
-        "meanings": [
-          "to have",
-          "there is",
-          "to exist"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "右边",
     "forms": [
       {
@@ -3847,21 +1934,6 @@
     ]
   },
   {
-    "simplified": "月",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "yuè"
-        },
-        "meanings": [
-          "moon",
-          "month",
-          "monthly"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "运动",
     "forms": [
       {
@@ -3892,34 +1964,6 @@
     ]
   },
   {
-    "simplified": "再见",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zài jiàn"
-        },
-        "meanings": [
-          "goodbye"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "在",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zài"
-        },
-        "meanings": [
-          "at",
-          "in",
-          "to exist"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "早上",
     "forms": [
       {
@@ -3928,36 +1972,6 @@
         },
         "meanings": [
           "early morning"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "怎么",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zěn me"
-        },
-        "meanings": [
-          "how?",
-          "what?",
-          "why?"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "怎么样",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zěn me yàng"
-        },
-        "meanings": [
-          "how?",
-          "how about?",
-          "how was it?"
         ]
       }
     ]
@@ -3986,20 +2000,6 @@
           "to try to find",
           "to look for",
           "to call on sb"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "这",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zhè"
-        },
-        "meanings": [
-          "this",
-          "these"
         ]
       }
     ]
@@ -4062,48 +2062,6 @@
     ]
   },
   {
-    "simplified": "中国",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "Zhōng guó"
-        },
-        "meanings": [
-          "China"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "中午",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zhōng wǔ"
-        },
-        "meanings": [
-          "noon",
-          "midday"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "住",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zhù"
-        },
-        "meanings": [
-          "to live",
-          "to dwell",
-          "to stay"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "准备",
     "forms": [
       {
@@ -4114,35 +2072,6 @@
           "to prepare",
           "to get ready",
           "preparation"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "桌子",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zhuō zi"
-        },
-        "meanings": [
-          "table",
-          "desk"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "字",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zì"
-        },
-        "meanings": [
-          "letter",
-          "symbol",
-          "character"
         ]
       }
     ]
@@ -4176,19 +2105,6 @@
     ]
   },
   {
-    "simplified": "昨天",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zuó tiān"
-        },
-        "meanings": [
-          "yesterday"
-        ]
-      }
-    ]
-  },
-  {
     "simplified": "左边",
     "forms": [
       {
@@ -4199,36 +2115,6 @@
           "left",
           "the left side",
           "to the left of"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "坐",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zuò"
-        },
-        "meanings": [
-          "to sit",
-          "to take a seat",
-          "to travel by"
-        ]
-      }
-    ]
-  },
-  {
-    "simplified": "做",
-    "forms": [
-      {
-        "transcriptions": {
-          "pinyin": "zuò"
-        },
-        "meanings": [
-          "to do",
-          "to make",
-          "to produce"
         ]
       }
     ]
