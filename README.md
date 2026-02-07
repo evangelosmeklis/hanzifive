@@ -2,4 +2,4 @@
 
 Minimal HSK flashcard app.
 
-![Screenshot](screenshots/main.PNG)
+![Screenshot](screenshots/IMG_9088.PNG)
