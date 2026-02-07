@@ -441,32 +441,26 @@ struct StudySessionView: View {
         queue = Array(queue[...currentIndex]) + newCards + rest
     }
 
-    private func lowerLevels(than level: String) -> [String] {
-        let num = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 0
-        return (1..<num).map { "HSK\($0)" }
-    }
+    private func fetchWordsForLevel() -> [Word] {
+        let allDescriptor = FetchDescriptor<Word>(sortBy: [SortDescriptor(\.id)])
+        let allWords = (try? modelContext.fetch(allDescriptor)) ?? []
 
-    private func filterUniqueWords(_ words: [Word], forLevel level: String) -> [Word] {
-        guard uniqueWordsPerLevel else { return words }
-        let lowerLevelNames = Set(lowerLevels(than: level))
-        guard !lowerLevelNames.isEmpty else { return words }
-
-        let allDescriptor = FetchDescriptor<Word>()
-        let allDBWords = (try? modelContext.fetch(allDescriptor)) ?? []
-        let lowerHanzi = Set(allDBWords.filter { lowerLevelNames.contains($0.level) }.map(\.hanzi))
-        return words.filter { !lowerHanzi.contains($0.hanzi) }
+        if uniqueWordsPerLevel {
+            // Unique mode: only this level's words
+            return allWords.filter { $0.level == level }
+        } else {
+            // Cumulative mode: this level + all lower levels
+            let levelNum = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 1
+            let validLevels = Set((1...levelNum).map { "HSK\($0)" })
+            return allWords.filter { validLevels.contains($0.level) }
+        }
     }
 
     @MainActor
     private func loadSession() async {
         isLoading = true
-        let currentLevel = level
 
-        let allPredicate = #Predicate<Word> { $0.level == currentLevel }
-        var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
-        allDescriptor.sortBy = [SortDescriptor(\.id)]
-
-        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
+        let allWords = fetchWordsForLevel()
         let now = Date()
 
         let wordsToStudy = allWords.filter { word in
@@ -532,12 +526,7 @@ struct StudySessionView: View {
         showAllMastered = false
         isLoading = true
 
-        let currentLevel = level
-        let allPredicate = #Predicate<Word> { $0.level == currentLevel }
-        var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
-        allDescriptor.sortBy = [SortDescriptor(\.id)]
-
-        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
+        let allWords = fetchWordsForLevel()
         let practiceCount = min(20, allWords.count)
         queue = Array(allWords.shuffled().prefix(practiceCount))
         sessionTotal = queue.count
@@ -556,12 +545,7 @@ struct StudySessionView: View {
         showAllMastered = false
         isLoading = true
 
-        let currentLevel = level
-        let allPredicate = #Predicate<Word> { $0.level == currentLevel }
-        var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
-        allDescriptor.sortBy = [SortDescriptor(\.id)]
-
-        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
+        let allWords = fetchWordsForLevel()
         queue = allWords.shuffled()
         sessionTotal = queue.count
         sessionCorrect = 0

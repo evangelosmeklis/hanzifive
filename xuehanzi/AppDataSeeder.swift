@@ -3,7 +3,7 @@ import SwiftData
 
 @MainActor
 enum AppDataSeeder {
-    private static let seedVersion = "2026-02-01-hsk-cedict-v2"
+    private static let seedVersion = "2026-02-07-hsk-deduped-v3"
 
     static func seedIfNeeded(modelContext: ModelContext) {
         let storedVersion = UserDefaults.standard.string(forKey: "seedVersion")

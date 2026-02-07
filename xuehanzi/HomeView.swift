@@ -399,23 +399,23 @@ struct HomeView: View {
         let sortedLevels = grouped.keys.sorted(by: levelSort)
 
         if uniqueWordsPerLevel {
-            var previousHanzi: Set<String> = []
-            return sortedLevels.map { level in
-                let levelWords = grouped[level, default: []]
-                let uniqueWords = levelWords.filter { !previousHanzi.contains($0.hanzi) }
-                previousHanzi.formUnion(levelWords.map(\.hanzi))
-                let dueCount = uniqueWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
-                let studiedCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
-                let masteredCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
-                return LevelSummary(level: level, total: uniqueWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount, isReverseCompleted: reverseCompletedSet.contains(level))
-            }
-        } else {
+            // Unique mode: each level shows only its own words
             return sortedLevels.map { level in
                 let levelWords = grouped[level, default: []]
                 let dueCount = levelWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
                 let studiedCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
                 let masteredCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
                 return LevelSummary(level: level, total: levelWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount, isReverseCompleted: reverseCompletedSet.contains(level))
+            }
+        } else {
+            // Cumulative mode: each level includes all lower levels' words
+            var accumulated: [Word] = []
+            return sortedLevels.map { level in
+                accumulated += grouped[level, default: []]
+                let dueCount = accumulated.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
+                let studiedCount = accumulated.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
+                let masteredCount = accumulated.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
+                return LevelSummary(level: level, total: accumulated.count, due: dueCount, studied: studiedCount, mastered: masteredCount, isReverseCompleted: reverseCompletedSet.contains(level))
             }
         }
     }
