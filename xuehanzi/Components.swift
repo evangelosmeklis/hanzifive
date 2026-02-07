@@ -12,38 +12,38 @@ struct FlashcardView: View {
     var body: some View {
         VStack(spacing: 28) {
             if isReversed {
-                // Reverse mode: meaning + pinyin as prompt, hanzi on reveal
-                VStack(spacing: 16) {
-                    Text(meaning)
-                        .font(.title.weight(.bold))
-                        .foregroundStyle(AppTheme.primaryText)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(4)
-                        .padding(.horizontal, 20)
-
-                    Text(pinyin)
-                        .font(.title2.weight(.bold))
-                        .foregroundStyle(AppTheme.characterPrimary)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 10)
-                        .background(
-                            Capsule()
-                                .fill(AppTheme.characterPrimary.opacity(0.08))
-                        )
-                }
+                // Reverse mode: meaning as prompt, hanzi + pinyin on reveal
+                Text(meaning)
+                    .font(.title.weight(.bold))
+                    .foregroundStyle(AppTheme.primaryText)
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(4)
+                    .padding(.horizontal, 20)
 
                 if isRevealed {
-                    ZStack {
-                        Text(hanzi)
-                            .font(.system(size: 100, weight: .bold, design: .serif))
-                            .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
-                            .blur(radius: 30)
+                    VStack(spacing: 16) {
+                        ZStack {
+                            Text(hanzi)
+                                .font(.system(size: 100, weight: .bold, design: .serif))
+                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
+                                .blur(radius: 30)
 
-                        Text(hanzi)
-                            .font(.system(size: 100, weight: .bold, design: .serif))
-                            .foregroundStyle(AppTheme.characterGradient)
-                            .minimumScaleFactor(0.5)
-                            .lineLimit(1)
+                            Text(hanzi)
+                                .font(.system(size: 100, weight: .bold, design: .serif))
+                                .foregroundStyle(AppTheme.characterGradient)
+                                .minimumScaleFactor(0.5)
+                                .lineLimit(1)
+                        }
+
+                        Text(pinyin)
+                            .font(.title2.weight(.bold))
+                            .foregroundStyle(AppTheme.characterPrimary)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 10)
+                            .background(
+                                Capsule()
+                                    .fill(AppTheme.characterPrimary.opacity(0.08))
+                            )
                     }
                     .transition(.scale.combined(with: .opacity))
                     .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
