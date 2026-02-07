@@ -261,3 +261,45 @@ extension View {
         modifier(ShimmeringBorder(cornerRadius: cornerRadius))
     }
 }
+
+// MARK: - Shimmering Rainbow Border
+struct ShimmeringRainbowBorder: ViewModifier {
+    let cornerRadius: CGFloat
+    @State private var rotation: Double = 0
+
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(
+                        AngularGradient(
+                            gradient: Gradient(colors: [
+                                Color(red: 0.85, green: 0.28, blue: 0.20),   // Cinnabar red
+                                Color(red: 0.92, green: 0.68, blue: 0.22),   // Gold
+                                Color(red: 0.22, green: 0.70, blue: 0.45),   // Jade green
+                                Color(red: 0.24, green: 0.48, blue: 0.90),   // Royal blue
+                                Color(red: 0.52, green: 0.36, blue: 0.82),   // Purple
+                                Color(red: 0.85, green: 0.36, blue: 0.48),   // Rose
+                                Color(red: 0.85, green: 0.28, blue: 0.20),   // Back to cinnabar
+                            ]),
+                            center: .center,
+                            angle: .degrees(rotation)
+                        ),
+                        lineWidth: 3
+                    )
+            )
+            .shadow(color: Color(red: 0.52, green: 0.36, blue: 0.82).opacity(0.25), radius: 12, x: 0, y: 0)
+            .shadow(color: Color(red: 0.22, green: 0.70, blue: 0.45).opacity(0.15), radius: 20, x: 0, y: 0)
+            .onAppear {
+                withAnimation(.linear(duration: 4).repeatForever(autoreverses: false)) {
+                    rotation = 360
+                }
+            }
+    }
+}
+
+extension View {
+    func shimmeringRainbowBorder(cornerRadius: CGFloat = 18) -> some View {
+        modifier(ShimmeringRainbowBorder(cornerRadius: cornerRadius))
+    }
+}

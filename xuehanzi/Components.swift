@@ -6,28 +6,21 @@ struct FlashcardView: View {
     let pinyin: String
     let meaning: String
     let isRevealed: Bool
+    var levelLabel: String? = nil
+    var isReversed: Bool = false
 
     var body: some View {
         VStack(spacing: 28) {
-            // Chinese Character - Large with ink-inspired gradient
-            ZStack {
-                // Soft glow behind character
-                Text(hanzi)
-                    .font(.system(size: 120, weight: .bold, design: .serif))
-                    .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
-                    .blur(radius: 30)
-
-                // Main character
-                Text(hanzi)
-                    .font(.system(size: 120, weight: .bold, design: .serif))
-                    .foregroundStyle(AppTheme.characterGradient)
-                    .minimumScaleFactor(0.5)
-                    .lineLimit(1)
-            }
-
-            if isRevealed {
+            if isReversed {
+                // Reverse mode: meaning + pinyin as prompt, hanzi on reveal
                 VStack(spacing: 16) {
-                    // Pinyin pill
+                    Text(meaning)
+                        .font(.title.weight(.bold))
+                        .foregroundStyle(AppTheme.primaryText)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .padding(.horizontal, 20)
+
                     Text(pinyin)
                         .font(.title2.weight(.bold))
                         .foregroundStyle(AppTheme.characterPrimary)
@@ -37,38 +30,100 @@ struct FlashcardView: View {
                             Capsule()
                                 .fill(AppTheme.characterPrimary.opacity(0.08))
                         )
-                        .transition(.scale.combined(with: .opacity))
-
-                    // Meaning
-                    Text(meaning)
-                        .font(.title3.weight(.medium))
-                        .foregroundStyle(AppTheme.primaryText)
-                        .multilineTextAlignment(.center)
-                        .lineSpacing(4)
-                        .padding(.horizontal, 20)
-                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
-                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
-            } else {
-                // Tap to reveal hint
-                VStack(spacing: 10) {
+
+                if isRevealed {
                     ZStack {
-                        Circle()
-                            .fill(AppTheme.characterPrimary.opacity(0.06))
-                            .frame(width: 56, height: 56)
+                        Text(hanzi)
+                            .font(.system(size: 100, weight: .bold, design: .serif))
+                            .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
+                            .blur(radius: 30)
 
-                        Image(systemName: "hand.tap.fill")
-                            .font(.system(size: 24))
-                            .foregroundStyle(AppTheme.characterPrimary.opacity(0.5))
-                            .symbolEffect(.pulse)
+                        Text(hanzi)
+                            .font(.system(size: 100, weight: .bold, design: .serif))
+                            .foregroundStyle(AppTheme.characterGradient)
+                            .minimumScaleFactor(0.5)
+                            .lineLimit(1)
                     }
+                    .transition(.scale.combined(with: .opacity))
+                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
+                } else {
+                    VStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .fill(AppTheme.characterPrimary.opacity(0.06))
+                                .frame(width: 56, height: 56)
 
-                    Text("Tap to reveal")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(AppTheme.tertiaryText)
+                            Image(systemName: "hand.tap.fill")
+                                .font(.system(size: 24))
+                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.5))
+                                .symbolEffect(.pulse)
+                        }
+
+                        Text("Tap to reveal character")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppTheme.tertiaryText)
+                    }
+                    .padding(.top, 16)
+                    .transition(.opacity)
                 }
-                .padding(.top, 16)
-                .transition(.opacity)
+            } else {
+                // Normal mode: hanzi as prompt, meaning + pinyin on reveal
+                ZStack {
+                    Text(hanzi)
+                        .font(.system(size: 120, weight: .bold, design: .serif))
+                        .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
+                        .blur(radius: 30)
+
+                    Text(hanzi)
+                        .font(.system(size: 120, weight: .bold, design: .serif))
+                        .foregroundStyle(AppTheme.characterGradient)
+                        .minimumScaleFactor(0.5)
+                        .lineLimit(1)
+                }
+
+                if isRevealed {
+                    VStack(spacing: 16) {
+                        Text(pinyin)
+                            .font(.title2.weight(.bold))
+                            .foregroundStyle(AppTheme.characterPrimary)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 10)
+                            .background(
+                                Capsule()
+                                    .fill(AppTheme.characterPrimary.opacity(0.08))
+                            )
+                            .transition(.scale.combined(with: .opacity))
+
+                        Text(meaning)
+                            .font(.title3.weight(.medium))
+                            .foregroundStyle(AppTheme.primaryText)
+                            .multilineTextAlignment(.center)
+                            .lineSpacing(4)
+                            .padding(.horizontal, 20)
+                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                    }
+                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
+                } else {
+                    VStack(spacing: 10) {
+                        ZStack {
+                            Circle()
+                                .fill(AppTheme.characterPrimary.opacity(0.06))
+                                .frame(width: 56, height: 56)
+
+                            Image(systemName: "hand.tap.fill")
+                                .font(.system(size: 24))
+                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.5))
+                                .symbolEffect(.pulse)
+                        }
+
+                        Text("Tap to reveal")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppTheme.tertiaryText)
+                    }
+                    .padding(.top, 16)
+                    .transition(.opacity)
+                }
             }
         }
         .padding(.vertical, 40)
@@ -78,6 +133,20 @@ struct FlashcardView: View {
             RoundedRectangle(cornerRadius: 28, style: .continuous)
                 .fill(Color.white)
         )
+        .overlay(alignment: .topTrailing) {
+            if let levelLabel {
+                Text(levelLabel)
+                    .font(.caption2.weight(.bold))
+                    .foregroundStyle(AppTheme.levelTint(for: levelLabel))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(
+                        Capsule()
+                            .fill(AppTheme.levelTint(for: levelLabel).opacity(0.12))
+                    )
+                    .padding(16)
+            }
+        }
         .warmShadow(0.10)
     }
 }

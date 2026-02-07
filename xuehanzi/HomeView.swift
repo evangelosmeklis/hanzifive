@@ -12,6 +12,11 @@ struct HomeView: View {
     @AppStorage("cardsStudiedToday") private var cardsStudiedToday: Int = 0
     @AppStorage("lastCardStudyDate") private var lastCardStudyDate: String = ""
     @AppStorage("uniqueWordsPerLevel") private var uniqueWordsPerLevel: Bool = false
+    @AppStorage("reverseCompletedLevels") private var reverseCompletedLevels: String = ""
+
+    private var reverseCompletedSet: Set<String> {
+        Set(reverseCompletedLevels.split(separator: ",").map(String.init))
+    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -382,7 +387,7 @@ struct HomeView: View {
                 let dueCount = uniqueWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
                 let studiedCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
                 let masteredCount = uniqueWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
-                return LevelSummary(level: level, total: uniqueWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount)
+                return LevelSummary(level: level, total: uniqueWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount, isReverseCompleted: reverseCompletedSet.contains(level))
             }
         } else {
             return sortedLevels.map { level in
@@ -390,7 +395,7 @@ struct HomeView: View {
                 let dueCount = levelWords.filter { ($0.reviewState?.dueDate ?? .distantPast) <= Date() }.count
                 let studiedCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 1 }.count
                 let masteredCount = levelWords.filter { ($0.reviewState?.repetitions ?? 0) >= 3 }.count
-                return LevelSummary(level: level, total: levelWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount)
+                return LevelSummary(level: level, total: levelWords.count, due: dueCount, studied: studiedCount, mastered: masteredCount, isReverseCompleted: reverseCompletedSet.contains(level))
             }
         }
     }
@@ -463,142 +468,185 @@ struct LevelCardView: View {
     }
 
     var body: some View {
-        NavigationLink {
-            StudySessionView(level: summary.level)
-        } label: {
-            VStack(spacing: 12) {
-                HStack(spacing: 14) {
-                    // Level icon (60x60)
-                    if hasLevelIcon {
-                        Image(levelIconName)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60, height: 60)
-                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    } else {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                .fill(
-                                    LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                                )
+        VStack(spacing: 8) {
+            NavigationLink {
+                StudySessionView(level: summary.level)
+            } label: {
+                VStack(spacing: 12) {
+                    HStack(spacing: 14) {
+                        // Level icon (60x60)
+                        if hasLevelIcon {
+                            Image(levelIconName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
                                 .frame(width: 60, height: 60)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                        } else {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                    .fill(
+                                        LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    )
+                                    .frame(width: 60, height: 60)
 
-                            Text(summary.level)
-                                .font(.system(size: 13, weight: .bold))
-                                .foregroundStyle(.white)
+                                Text(summary.level)
+                                    .font(.system(size: 13, weight: .bold))
+                                    .foregroundStyle(.white)
+                            }
                         }
-                    }
 
-                    VStack(alignment: .leading, spacing: 6) {
-                        HStack {
-                            Text(summary.level)
-                                .font(.subheadline.weight(.bold))
-                                .foregroundStyle(AppTheme.primaryText)
+                        VStack(alignment: .leading, spacing: 6) {
+                            HStack {
+                                Text(summary.level)
+                                    .font(.subheadline.weight(.bold))
+                                    .foregroundStyle(AppTheme.primaryText)
 
-                            Spacer()
+                                Spacer()
 
-                            // Status badge
-                            if summary.isCompleted {
-                                HStack(spacing: 3) {
-                                    Image(systemName: "crown.fill")
-                                        .font(.system(size: 8))
-                                    Text("Completed")
-                                }
-                                .font(.system(size: 10, weight: .bold))
-                                .foregroundStyle(AppTheme.goldAccent)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 3)
-                                .background(
-                                    Capsule().fill(AppTheme.goldAccent.opacity(0.12))
-                                )
-                            } else {
-                                let remaining = summary.total - summary.studied
-                                Text("\(remaining) left")
-                                    .font(.system(size: 10, weight: .semibold))
-                                    .foregroundStyle(AppTheme.danger)
+                                // Status badge
+                                if summary.isCompleted && summary.isReverseCompleted {
+                                    HStack(spacing: 3) {
+                                        Image(systemName: "sparkles")
+                                            .font(.system(size: 8))
+                                        Text("Mastered")
+                                    }
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundStyle(AppTheme.purple)
                                     .padding(.horizontal, 8)
                                     .padding(.vertical, 3)
                                     .background(
-                                        Capsule().fill(AppTheme.danger.opacity(0.10))
+                                        Capsule().fill(AppTheme.purple.opacity(0.12))
                                     )
-                            }
-                        }
-
-                        // Progress bar (8pt height)
-                        GeometryReader { geometry in
-                            ZStack(alignment: .leading) {
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(levelColor.opacity(0.12))
-                                    .frame(height: 8)
-
-                                RoundedRectangle(cornerRadius: 4)
-                                    .fill(
-                                        summary.isCompleted ?
-                                        LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
-                                        LinearGradient(colors: [levelColor, levelColor.opacity(0.6)], startPoint: .leading, endPoint: .trailing)
+                                } else if summary.isCompleted {
+                                    HStack(spacing: 3) {
+                                        Image(systemName: "crown.fill")
+                                            .font(.system(size: 8))
+                                        Text("Completed")
+                                    }
+                                    .font(.system(size: 10, weight: .bold))
+                                    .foregroundStyle(AppTheme.goldAccent)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(
+                                        Capsule().fill(AppTheme.goldAccent.opacity(0.12))
                                     )
-                                    .frame(width: max(geometry.size.width * progress, 0), height: 8)
-                            }
-                        }
-                        .frame(height: 8)
-
-                        // Stats row
-                        HStack {
-                            HStack(spacing: 4) {
-                                Text("\(summary.studied)")
-                                    .font(.caption2.weight(.bold))
-                                    .foregroundStyle(levelColor)
-                                Text("of \(summary.total) learned")
-                                    .font(.caption2)
-                                    .foregroundStyle(AppTheme.secondaryText)
-                            }
-
-                            if !summary.isCompleted {
-                                let remaining = summary.total - summary.studied
-                                Text("•")
-                                    .font(.caption2)
-                                    .foregroundStyle(AppTheme.tertiaryText)
-                                HStack(spacing: 2) {
-                                    Image(systemName: "flag.fill")
-                                        .font(.system(size: 8))
-                                    Text("\(remaining) to finish")
-                                        .font(.caption2.weight(.medium))
+                                } else {
+                                    let remaining = summary.total - summary.studied
+                                    Text("\(remaining) left")
+                                        .font(.system(size: 10, weight: .semibold))
+                                        .foregroundStyle(AppTheme.danger)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 3)
+                                        .background(
+                                            Capsule().fill(AppTheme.danger.opacity(0.10))
+                                        )
                                 }
-                                .foregroundStyle(AppTheme.coral)
                             }
 
-                            Spacer()
+                            // Progress bar (8pt height)
+                            GeometryReader { geometry in
+                                ZStack(alignment: .leading) {
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(levelColor.opacity(0.12))
+                                        .frame(height: 8)
 
-                            // Tap hint
-                            HStack(spacing: 2) {
-                                Text("Tap to study")
-                                    .font(.system(size: 9, weight: .medium))
-                                Image(systemName: "chevron.right")
-                                    .font(.system(size: 7, weight: .semibold))
+                                    RoundedRectangle(cornerRadius: 4)
+                                        .fill(
+                                            summary.isCompleted && summary.isReverseCompleted ?
+                                            LinearGradient(colors: [AppTheme.accent, AppTheme.amber, AppTheme.success, AppTheme.purple], startPoint: .leading, endPoint: .trailing) :
+                                            summary.isCompleted ?
+                                            LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
+                                            LinearGradient(colors: [levelColor, levelColor.opacity(0.6)], startPoint: .leading, endPoint: .trailing)
+                                        )
+                                        .frame(width: max(geometry.size.width * progress, 0), height: 8)
+                                }
                             }
-                            .foregroundStyle(AppTheme.tertiaryText)
+                            .frame(height: 8)
+
+                            // Stats row
+                            HStack {
+                                HStack(spacing: 4) {
+                                    Text("\(summary.studied)")
+                                        .font(.caption2.weight(.bold))
+                                        .foregroundStyle(levelColor)
+                                    Text("of \(summary.total) learned")
+                                        .font(.caption2)
+                                        .foregroundStyle(AppTheme.secondaryText)
+                                }
+
+                                if !summary.isCompleted {
+                                    let remaining = summary.total - summary.studied
+                                    Text("•")
+                                        .font(.caption2)
+                                        .foregroundStyle(AppTheme.tertiaryText)
+                                    HStack(spacing: 2) {
+                                        Image(systemName: "flag.fill")
+                                            .font(.system(size: 8))
+                                        Text("\(remaining) to finish")
+                                            .font(.caption2.weight(.medium))
+                                    }
+                                    .foregroundStyle(AppTheme.coral)
+                                }
+
+                                Spacer()
+
+                                // Tap hint
+                                HStack(spacing: 2) {
+                                    Text("Tap to study")
+                                        .font(.system(size: 9, weight: .medium))
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 7, weight: .semibold))
+                                }
+                                .foregroundStyle(AppTheme.tertiaryText)
+                            }
                         }
                     }
                 }
+                .padding(14)
+                .background(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .fill(.white)
+                        .shadow(color: summary.isCompleted ? .clear : .black.opacity(0.05), radius: 6, y: 2)
+                )
+                .modifier(ConditionalShimmer(isActive: summary.isCompleted, isRainbow: summary.isReverseCompleted))
             }
-            .padding(14)
-            .background(
-                RoundedRectangle(cornerRadius: 18, style: .continuous)
-                    .fill(.white)
-                    .shadow(color: summary.isCompleted ? .clear : .black.opacity(0.05), radius: 6, y: 2)
-            )
-            .modifier(ConditionalShimmer(isActive: summary.isCompleted))
+            .buttonStyle(BounceButtonStyle())
+
+            // Study in Reverse button for completed levels
+            if summary.isCompleted && !summary.isReverseCompleted {
+                NavigationLink {
+                    StudySessionView(level: summary.level, startInReverse: true)
+                } label: {
+                    HStack(spacing: 6) {
+                        Image(systemName: "arrow.left.arrow.right")
+                            .font(.system(size: 11, weight: .semibold))
+                        Text("Study in Reverse")
+                            .font(.caption.weight(.bold))
+                    }
+                    .foregroundStyle(AppTheme.purple)
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12, style: .continuous)
+                            .fill(AppTheme.purple.opacity(0.08))
+                    )
+                }
+                .buttonStyle(BounceButtonStyle())
+            }
         }
-        .buttonStyle(BounceButtonStyle())
     }
 }
 
 // MARK: - Conditional Shimmer Modifier
 struct ConditionalShimmer: ViewModifier {
     let isActive: Bool
+    var isRainbow: Bool = false
 
     func body(content: Content) -> some View {
-        if isActive {
+        if isActive && isRainbow {
+            content.shimmeringRainbowBorder(cornerRadius: 18)
+        } else if isActive {
             content.shimmeringGoldBorder(cornerRadius: 18)
         } else {
             content

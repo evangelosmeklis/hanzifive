@@ -3,6 +3,7 @@ import SwiftData
 
 struct StudySessionView: View {
     let level: String
+    let startInReverse: Bool
     @Environment(\.modelContext) private var modelContext
     @Environment(\.dismiss) private var dismiss
 
@@ -33,9 +34,15 @@ struct StudySessionView: View {
     @State private var sessionTotal = 0
     @State private var isRandomPractice = false
     @State private var showAllMastered = false
+    @State private var hanziOriginalLevel: [String: String] = [:]
+    @State private var isReverseMode = false
+    @State private var attemptedCards: Set<UUID> = []
 
-    init(level: String) {
+    @AppStorage("reverseCompletedLevels") private var reverseCompletedLevels: String = ""
+
+    init(level: String, startInReverse: Bool = false) {
         self.level = level
+        self.startInReverse = startInReverse
     }
 
     var body: some View {
@@ -45,11 +52,13 @@ struct StudySessionView: View {
             if isLoading {
                 LoadingView()
             } else if showAllMastered {
-                AllMasteredView(level: level) {
+                AllMasteredView(level: level, onPracticeRandom: {
                     startRandomPractice()
-                }
+                }, onStudyReverse: {
+                    startReverseStudy()
+                })
             } else if queue.isEmpty || currentIndex >= queue.count {
-                CompletionView(level: level, totalCards: sessionTotal, correctCards: sessionCorrect, xpEarned: sessionXP, isRandomPractice: isRandomPractice)
+                CompletionView(level: level, totalCards: sessionTotal, correctCards: sessionCorrect, xpEarned: sessionXP, isRandomPractice: isRandomPractice, isReverseMode: isReverseMode)
             } else {
                 VStack(spacing: 16) {
                     headerSection
@@ -83,7 +92,14 @@ struct StudySessionView: View {
                         .font(.headline.weight(.bold))
                         .foregroundStyle(AppTheme.levelTint(for: level))
 
-                    if isRandomPractice {
+                    if isReverseMode {
+                        Text("Reverse")
+                            .font(.headline)
+                            .foregroundStyle(AppTheme.purple)
+                        Image(systemName: "arrow.left.arrow.right")
+                            .font(.caption.weight(.bold))
+                            .foregroundStyle(AppTheme.purple)
+                    } else if isRandomPractice {
                         Text("Practice")
                             .font(.headline)
                             .foregroundStyle(AppTheme.purple)
@@ -101,7 +117,12 @@ struct StudySessionView: View {
         .toolbarBackground(.ultraThinMaterial, for: .navigationBar)
         .toolbar(.hidden, for: .tabBar)
         .task {
-            await loadSession()
+            if startInReverse {
+                computeHanziOriginalLevel()
+                startReverseStudy()
+            } else {
+                await loadSession()
+            }
         }
         .onDisappear {
             saveProgress()
@@ -152,9 +173,27 @@ struct StudySessionView: View {
                         }
                     }
 
-                    Text("Card \(currentIndex + 1) of \(queue.count)")
-                        .font(.subheadline.weight(.medium))
-                        .foregroundStyle(AppTheme.secondaryText)
+                    HStack(spacing: 8) {
+                        Text("Card \(currentIndex + 1) of \(queue.count)")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppTheme.secondaryText)
+
+                        if canReorderNewFirst {
+                            Button { reorderRemainingFirst() } label: {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "arrow.up.to.line")
+                                        .font(.system(size: 9, weight: .bold))
+                                    Text("New first")
+                                        .font(.system(size: 10, weight: .bold))
+                                }
+                                .foregroundStyle(AppTheme.info)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Capsule().fill(AppTheme.info.opacity(0.10)))
+                            }
+                            .buttonStyle(BounceButtonStyle())
+                        }
+                    }
                 }
 
                 Spacer()
@@ -231,7 +270,9 @@ struct StudySessionView: View {
                 hanzi: currentWord.hanzi,
                 pinyin: currentWord.pinyin,
                 meaning: currentWord.meaning,
-                isRevealed: isRevealed
+                isRevealed: isRevealed,
+                levelLabel: hanziOriginalLevel[currentWord.hanzi],
+                isReversed: isReverseMode
             )
             .frame(maxWidth: .infinity)
             .shadow(
@@ -383,6 +424,23 @@ struct StudySessionView: View {
         "studyProgress-\(level)"
     }
 
+    private var canReorderNewFirst: Bool {
+        guard currentIndex + 1 < queue.count, !isReverseMode, !isRandomPractice else { return false }
+        let remaining = queue[(currentIndex + 1)...]
+        let hasNew = remaining.contains { ($0.reviewState?.repetitions ?? 0) < 1 && !attemptedCards.contains($0.id) }
+        let hasDueOrRequeued = remaining.contains { ($0.reviewState?.repetitions ?? 0) >= 1 || attemptedCards.contains($0.id) }
+        return hasNew && hasDueOrRequeued
+    }
+
+    private func reorderRemainingFirst() {
+        guard currentIndex + 1 < queue.count else { return }
+        let remaining = Array(queue[(currentIndex + 1)...])
+        // New unlearned cards first, then due/review cards and requeued wrong cards
+        let newCards = remaining.filter { ($0.reviewState?.repetitions ?? 0) < 1 && !attemptedCards.contains($0.id) }
+        let rest = remaining.filter { !(($0.reviewState?.repetitions ?? 0) < 1 && !attemptedCards.contains($0.id)) }
+        queue = Array(queue[...currentIndex]) + newCards + rest
+    }
+
     private func lowerLevels(than level: String) -> [String] {
         let num = Int(level.replacingOccurrences(of: "HSK", with: "")) ?? 0
         return (1..<num).map { "HSK\($0)" }
@@ -419,6 +477,8 @@ struct StudySessionView: View {
 
         let allStudied = allWords.allSatisfy { ($0.reviewState?.repetitions ?? 0) >= 1 }
 
+        computeHanziOriginalLevel()
+
         if wordsToStudy.isEmpty && allStudied {
             showAllMastered = true
             isLoading = false
@@ -449,6 +509,24 @@ struct StudySessionView: View {
         isLoading = false
     }
 
+    private func computeHanziOriginalLevel() {
+        let allDBDescriptor = FetchDescriptor<Word>()
+        let allDBWords = (try? modelContext.fetch(allDBDescriptor)) ?? []
+        var levelMap: [String: String] = [:]
+        for word in allDBWords {
+            let levelNum = Int(word.level.replacingOccurrences(of: "HSK", with: "")) ?? Int.max
+            if let existing = levelMap[word.hanzi],
+               let existingNum = Int(existing.replacingOccurrences(of: "HSK", with: "")) {
+                if levelNum < existingNum {
+                    levelMap[word.hanzi] = word.level
+                }
+            } else {
+                levelMap[word.hanzi] = word.level
+            }
+        }
+        hanziOriginalLevel = levelMap
+    }
+
     private func startRandomPractice() {
         isRandomPractice = true
         showAllMastered = false
@@ -471,6 +549,41 @@ struct StudySessionView: View {
         showUndoButton = false
         correctStreak = 0
         isLoading = false
+    }
+
+    private func startReverseStudy() {
+        isReverseMode = true
+        showAllMastered = false
+        isLoading = true
+
+        let currentLevel = level
+        let allPredicate = #Predicate<Word> { $0.level == currentLevel }
+        var allDescriptor = FetchDescriptor<Word>(predicate: allPredicate)
+        allDescriptor.sortBy = [SortDescriptor(\.id)]
+
+        let allWords = filterUniqueWords((try? modelContext.fetch(allDescriptor)) ?? [], forLevel: currentLevel)
+        queue = allWords.shuffled()
+        sessionTotal = queue.count
+        sessionCorrect = 0
+        sessionXP = 0
+        currentIndex = 0
+        isRevealed = false
+        history = []
+        showUndoButton = false
+        correctStreak = 0
+        attemptedCards = []
+        isLoading = false
+    }
+
+    private func markReverseCompleted() {
+        let completed = Set(reverseCompletedLevels.split(separator: ",").map(String.init))
+        if !completed.contains(level) {
+            if reverseCompletedLevels.isEmpty {
+                reverseCompletedLevels = level
+            } else {
+                reverseCompletedLevels += ",\(level)"
+            }
+        }
     }
 
     private func saveProgress() {
@@ -525,6 +638,7 @@ struct StudySessionView: View {
     }
 
     private func gradeCurrentWord(isCorrect: Bool) {
+        attemptedCards.insert(currentWord.id)
         history.append(currentWord)
         if history.count > 1 {
             showUndoButton = true
@@ -552,11 +666,26 @@ struct StudySessionView: View {
             correctStreak = 0
         }
 
-        if !isRandomPractice {
+        if !isRandomPractice && !isReverseMode {
             let reviewState = currentWord.reviewState ?? ReviewState()
             currentWord.reviewState = reviewState
             modelContext.insert(reviewState)
             SM2Scheduler.applyScore(isCorrect ? 4 : 1, to: reviewState)
+
+            // Cross-level sync: propagate mistakes to same hanzi in other levels
+            if !isCorrect {
+                let currentHanzi = currentWord.hanzi
+                let currentWordID = currentWord.id
+                let allDescriptor = FetchDescriptor<Word>()
+                if let allWords = try? modelContext.fetch(allDescriptor) {
+                    for word in allWords where word.hanzi == currentHanzi && word.id != currentWordID {
+                        if let rs = word.reviewState {
+                            SM2Scheduler.applyScore(1, to: rs)
+                        }
+                    }
+                }
+            }
+
             try? modelContext.save()
         }
 
@@ -596,12 +725,18 @@ struct StudySessionView: View {
 
     private func advance(reinsert: Bool) {
         isRevealed = false
-        if reinsert {
-            queue.append(currentWord)
+        // In reverse mode, never requeue wrong cards
+        if reinsert && !isReverseMode {
+            let insertIndex = min(currentIndex + 4, queue.count)
+            queue.insert(currentWord, at: insertIndex)
         }
         if currentIndex + 1 < queue.count {
             currentIndex += 1
         } else {
+            // Session complete
+            if isReverseMode {
+                markReverseCompleted()
+            }
             currentIndex = queue.count
             clearProgress()
         }
@@ -774,6 +909,7 @@ struct CompletionView: View {
     let correctCards: Int
     let xpEarned: Int
     var isRandomPractice: Bool = false
+    var isReverseMode: Bool = false
 
     @State private var showConfetti = false
     @State private var scale: CGFloat = 0.8
@@ -813,7 +949,7 @@ struct CompletionView: View {
                 .scaleEffect(scale)
 
                 VStack(spacing: 8) {
-                    Text(isRandomPractice ? "Practice Complete!" : "Session Complete!")
+                    Text(isReverseMode ? "Reverse Complete!" : isRandomPractice ? "Practice Complete!" : "Session Complete!")
                         .font(.title2.weight(.black))
                         .foregroundStyle(AppTheme.primaryText)
                 }
@@ -881,7 +1017,12 @@ struct CompletionView: View {
                     )
                 }
 
-                if isRandomPractice {
+                if isReverseMode {
+                    Text("Reverse mode complete! Your rainbow border awaits.")
+                        .font(.caption.weight(.medium))
+                        .foregroundStyle(AppTheme.purple)
+                        .multilineTextAlignment(.center)
+                } else if isRandomPractice {
                     Text("Practice mode - progress was not affected.")
                         .font(.caption.weight(.medium))
                         .foregroundStyle(AppTheme.secondaryText)
@@ -920,6 +1061,7 @@ struct CompletionView: View {
 struct AllMasteredView: View {
     let level: String
     let onPracticeRandom: () -> Void
+    let onStudyReverse: () -> Void
     @Environment(\.dismiss) private var dismiss
     @State private var scale: CGFloat = 0.8
     @State private var showConfetti = false
@@ -952,7 +1094,7 @@ struct AllMasteredView: View {
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(AppTheme.secondaryText)
 
-                    Text("Come back later when cards are due for review, or practice random cards.")
+                    Text("Come back later when cards are due for review, or challenge yourself in reverse!")
                         .font(.caption)
                         .foregroundStyle(AppTheme.tertiaryText)
                         .multilineTextAlignment(.center)
@@ -960,6 +1102,24 @@ struct AllMasteredView: View {
                 }
 
                 VStack(spacing: 12) {
+                    Button {
+                        onStudyReverse()
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "arrow.left.arrow.right")
+                            Text("Study in Reverse")
+                        }
+                        .font(.headline.weight(.bold))
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                                .fill(AppTheme.purple)
+                        )
+                    }
+                    .buttonStyle(BounceButtonStyle())
+
                     Button {
                         onPracticeRandom()
                     } label: {
