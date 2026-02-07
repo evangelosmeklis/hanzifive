@@ -5,6 +5,7 @@ import UserNotifications
 struct HomeView: View {
     @Query private var words: [Word]
     @State private var showingSettings = false
+    @State private var showingHelp = false
 
     @AppStorage("currentStreak") private var currentStreak: Int = 0
     @AppStorage("lastStudyDate") private var lastStudyDateString: String = ""
@@ -50,6 +51,9 @@ struct HomeView: View {
         }
         .sheet(isPresented: $showingSettings) {
             SettingsView()
+        }
+        .sheet(isPresented: $showingHelp) {
+            HelpView()
         }
     }
 
@@ -101,17 +105,33 @@ struct HomeView: View {
 
                     Spacer()
 
-                    Button {
-                        showingSettings = true
-                    } label: {
-                        ZStack {
-                            Circle()
-                                .fill(.white.opacity(0.20))
-                                .frame(width: 40, height: 40)
+                    HStack(spacing: 10) {
+                        Button {
+                            showingHelp = true
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .fill(.white.opacity(0.20))
+                                    .frame(width: 40, height: 40)
 
-                            Image(systemName: "gearshape.fill")
-                                .font(.system(size: 15))
-                                .foregroundStyle(.white)
+                                Image(systemName: "questionmark")
+                                    .font(.system(size: 15, weight: .semibold))
+                                    .foregroundStyle(.white)
+                            }
+                        }
+
+                        Button {
+                            showingSettings = true
+                        } label: {
+                            ZStack {
+                                Circle()
+                                    .fill(.white.opacity(0.20))
+                                    .frame(width: 40, height: 40)
+
+                                Image(systemName: "gearshape.fill")
+                                    .font(.system(size: 15))
+                                    .foregroundStyle(.white)
+                            }
                         }
                     }
                 }
@@ -468,171 +488,168 @@ struct LevelCardView: View {
     }
 
     var body: some View {
-        VStack(spacing: 8) {
-            NavigationLink {
-                StudySessionView(level: summary.level)
-            } label: {
-                VStack(spacing: 12) {
-                    HStack(spacing: 14) {
-                        // Level icon (60x60)
-                        if hasLevelIcon {
-                            Image(levelIconName)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+        NavigationLink {
+            StudySessionView(level: summary.level)
+        } label: {
+            VStack(spacing: 12) {
+                HStack(spacing: 14) {
+                    // Level icon (60x60)
+                    if hasLevelIcon {
+                        Image(levelIconName)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 60, height: 60)
+                            .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    } else {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .fill(
+                                    LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
                                 .frame(width: 60, height: 60)
-                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                        } else {
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 16, style: .continuous)
-                                    .fill(
-                                        LinearGradient(colors: [levelColor, levelColor.opacity(0.7)], startPoint: .topLeading, endPoint: .bottomTrailing)
-                                    )
-                                    .frame(width: 60, height: 60)
 
-                                Text(summary.level)
-                                    .font(.system(size: 13, weight: .bold))
-                                    .foregroundStyle(.white)
+                            Text(summary.level)
+                                .font(.system(size: 13, weight: .bold))
+                                .foregroundStyle(.white)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: 6) {
+                        HStack {
+                            Text(summary.level)
+                                .font(.subheadline.weight(.bold))
+                                .foregroundStyle(AppTheme.primaryText)
+
+                            Spacer()
+
+                            // Status badge
+                            if summary.isCompleted && summary.isReverseCompleted {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "sparkles")
+                                        .font(.system(size: 8))
+                                    Text("Mastered")
+                                }
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundStyle(AppTheme.purple)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 3)
+                                .background(
+                                    Capsule().fill(AppTheme.purple.opacity(0.12))
+                                )
+                            } else if summary.isCompleted {
+                                HStack(spacing: 3) {
+                                    Image(systemName: "crown.fill")
+                                        .font(.system(size: 8))
+                                    Text("Completed")
+                                }
+                                .font(.system(size: 10, weight: .bold))
+                                .foregroundStyle(AppTheme.goldAccent)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 3)
+                                .background(
+                                    Capsule().fill(AppTheme.goldAccent.opacity(0.12))
+                                )
+                            } else {
+                                let remaining = summary.total - summary.studied
+                                Text("\(remaining) left")
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .foregroundStyle(AppTheme.danger)
+                                    .padding(.horizontal, 8)
+                                    .padding(.vertical, 3)
+                                    .background(
+                                        Capsule().fill(AppTheme.danger.opacity(0.10))
+                                    )
                             }
                         }
 
-                        VStack(alignment: .leading, spacing: 6) {
-                            HStack {
-                                Text(summary.level)
-                                    .font(.subheadline.weight(.bold))
-                                    .foregroundStyle(AppTheme.primaryText)
+                        // Progress bar (8pt height)
+                        GeometryReader { geometry in
+                            ZStack(alignment: .leading) {
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(levelColor.opacity(0.12))
+                                    .frame(height: 8)
 
-                                Spacer()
+                                RoundedRectangle(cornerRadius: 4)
+                                    .fill(
+                                        summary.isCompleted && summary.isReverseCompleted ?
+                                        LinearGradient(colors: [AppTheme.accent, AppTheme.amber, AppTheme.success, AppTheme.purple], startPoint: .leading, endPoint: .trailing) :
+                                        summary.isCompleted ?
+                                        LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
+                                        LinearGradient(colors: [levelColor, levelColor.opacity(0.6)], startPoint: .leading, endPoint: .trailing)
+                                    )
+                                    .frame(width: max(geometry.size.width * progress, 0), height: 8)
+                            }
+                        }
+                        .frame(height: 8)
 
-                                // Status badge
-                                if summary.isCompleted && summary.isReverseCompleted {
-                                    HStack(spacing: 3) {
-                                        Image(systemName: "sparkles")
-                                            .font(.system(size: 8))
-                                        Text("Mastered")
-                                    }
-                                    .font(.system(size: 10, weight: .bold))
-                                    .foregroundStyle(AppTheme.purple)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 3)
-                                    .background(
-                                        Capsule().fill(AppTheme.purple.opacity(0.12))
-                                    )
-                                } else if summary.isCompleted {
-                                    HStack(spacing: 3) {
-                                        Image(systemName: "crown.fill")
-                                            .font(.system(size: 8))
-                                        Text("Completed")
-                                    }
-                                    .font(.system(size: 10, weight: .bold))
-                                    .foregroundStyle(AppTheme.goldAccent)
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 3)
-                                    .background(
-                                        Capsule().fill(AppTheme.goldAccent.opacity(0.12))
-                                    )
-                                } else {
-                                    let remaining = summary.total - summary.studied
-                                    Text("\(remaining) left")
-                                        .font(.system(size: 10, weight: .semibold))
-                                        .foregroundStyle(AppTheme.danger)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 3)
-                                        .background(
-                                            Capsule().fill(AppTheme.danger.opacity(0.10))
-                                        )
-                                }
+                        // Stats row
+                        HStack {
+                            HStack(spacing: 4) {
+                                Text("\(summary.studied)")
+                                    .font(.caption2.weight(.bold))
+                                    .foregroundStyle(levelColor)
+                                Text("of \(summary.total) learned")
+                                    .font(.caption2)
+                                    .foregroundStyle(AppTheme.secondaryText)
                             }
 
-                            // Progress bar (8pt height)
-                            GeometryReader { geometry in
-                                ZStack(alignment: .leading) {
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .fill(levelColor.opacity(0.12))
-                                        .frame(height: 8)
-
-                                    RoundedRectangle(cornerRadius: 4)
-                                        .fill(
-                                            summary.isCompleted && summary.isReverseCompleted ?
-                                            LinearGradient(colors: [AppTheme.accent, AppTheme.amber, AppTheme.success, AppTheme.purple], startPoint: .leading, endPoint: .trailing) :
-                                            summary.isCompleted ?
-                                            LinearGradient(colors: [AppTheme.goldAccent, AppTheme.goldAccent.opacity(0.7)], startPoint: .leading, endPoint: .trailing) :
-                                            LinearGradient(colors: [levelColor, levelColor.opacity(0.6)], startPoint: .leading, endPoint: .trailing)
-                                        )
-                                        .frame(width: max(geometry.size.width * progress, 0), height: 8)
-                                }
-                            }
-                            .frame(height: 8)
-
-                            // Stats row
-                            HStack {
-                                HStack(spacing: 4) {
-                                    Text("\(summary.studied)")
-                                        .font(.caption2.weight(.bold))
-                                        .foregroundStyle(levelColor)
-                                    Text("of \(summary.total) learned")
-                                        .font(.caption2)
-                                        .foregroundStyle(AppTheme.secondaryText)
-                                }
-
-                                if !summary.isCompleted {
-                                    let remaining = summary.total - summary.studied
-                                    Text("•")
-                                        .font(.caption2)
-                                        .foregroundStyle(AppTheme.tertiaryText)
-                                    HStack(spacing: 2) {
-                                        Image(systemName: "flag.fill")
-                                            .font(.system(size: 8))
-                                        Text("\(remaining) to finish")
-                                            .font(.caption2.weight(.medium))
-                                    }
-                                    .foregroundStyle(AppTheme.coral)
-                                }
-
-                                Spacer()
-
-                                // Tap hint
+                            if !summary.isCompleted {
+                                let remaining = summary.total - summary.studied
+                                Text("•")
+                                    .font(.caption2)
+                                    .foregroundStyle(AppTheme.tertiaryText)
                                 HStack(spacing: 2) {
-                                    Text("Tap to study")
-                                        .font(.system(size: 9, weight: .medium))
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 7, weight: .semibold))
+                                    Image(systemName: "flag.fill")
+                                        .font(.system(size: 8))
+                                    Text("\(remaining) to finish")
+                                        .font(.caption2.weight(.medium))
                                 }
-                                .foregroundStyle(AppTheme.tertiaryText)
+                                .foregroundStyle(AppTheme.coral)
                             }
+
+                            Spacer()
+
+                            // Tap hint
+                            HStack(spacing: 2) {
+                                Text("Tap to study")
+                                    .font(.system(size: 9, weight: .medium))
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 7, weight: .semibold))
+                            }
+                            .foregroundStyle(AppTheme.tertiaryText)
                         }
                     }
                 }
-                .padding(14)
-                .background(
-                    RoundedRectangle(cornerRadius: 18, style: .continuous)
-                        .fill(.white)
-                        .shadow(color: summary.isCompleted ? .clear : .black.opacity(0.05), radius: 6, y: 2)
-                )
-                .modifier(ConditionalShimmer(isActive: summary.isCompleted, isRainbow: summary.isReverseCompleted))
             }
-            .buttonStyle(BounceButtonStyle())
-
+            .padding(14)
+            .background(
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .fill(.white)
+                    .shadow(color: summary.isCompleted ? .clear : .black.opacity(0.05), radius: 6, y: 2)
+            )
+            .modifier(ConditionalShimmer(isActive: summary.isCompleted, isRainbow: summary.isReverseCompleted))
+        }
+        .buttonStyle(BounceButtonStyle())
+        .overlay(alignment: .topTrailing) {
             // Study in Reverse button for completed levels
             if summary.isCompleted && !summary.isReverseCompleted {
                 NavigationLink {
                     StudySessionView(level: summary.level, startInReverse: true)
                 } label: {
-                    HStack(spacing: 6) {
+                    HStack(spacing: 4) {
                         Image(systemName: "arrow.left.arrow.right")
-                            .font(.system(size: 11, weight: .semibold))
-                        Text("Study in Reverse")
-                            .font(.caption.weight(.bold))
+                            .font(.system(size: 10, weight: .semibold))
+                        Text("Reverse")
+                            .font(.system(size: 10, weight: .bold))
                     }
-                    .foregroundStyle(AppTheme.purple)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .frame(maxWidth: .infinity)
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
                     .background(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(AppTheme.purple.opacity(0.08))
+                        Capsule().fill(AppTheme.purple)
                     )
                 }
-                .buttonStyle(BounceButtonStyle())
+                .padding(10)
             }
         }
     }
@@ -1020,6 +1037,123 @@ struct StatsBubble: View {
         .background(
             RoundedRectangle(cornerRadius: 14, style: .continuous)
                 .fill(color.opacity(0.08))
+        )
+    }
+}
+
+// MARK: - Help View
+struct HelpView: View {
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 24) {
+                    // Header
+                    VStack(spacing: 8) {
+                        Text("学汉字")
+                            .font(.system(size: 40, weight: .black, design: .serif))
+                            .foregroundStyle(AppTheme.accent)
+
+                        Text("Learn Chinese Characters")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundStyle(AppTheme.secondaryText)
+                    }
+                    .padding(.top, 20)
+
+                    // What is this app
+                    helpSection(
+                        icon: "character.book.closed.fill",
+                        color: AppTheme.accent,
+                        title: "What is Xuehanzi?",
+                        text: "Xuehanzi helps you learn Chinese characters (hanzi) from the HSK curriculum using spaced repetition. Cards you struggle with appear more often, while cards you know well are shown less frequently."
+                    )
+
+                    // How to study
+                    helpSection(
+                        icon: "hand.draw.fill",
+                        color: AppTheme.success,
+                        title: "How to Study",
+                        text: "Tap any HSK level to start studying. You'll see the Chinese character first \u{2014} try to recall its meaning and pinyin. Tap the card to reveal the answer, then swipe right if you got it correct or left if you got it wrong."
+                    )
+
+                    // Reverse mode
+                    helpSection(
+                        icon: "arrow.left.arrow.right",
+                        color: AppTheme.purple,
+                        title: "Reverse Mode",
+                        text: "After completing a level, a \"Reverse\" button appears on the card. In reverse mode you see the meaning and pinyin first, then try to recall the character. Complete both modes to earn the rainbow border!"
+                    )
+
+                    // Spaced repetition
+                    helpSection(
+                        icon: "brain.head.profile.fill",
+                        color: AppTheme.info,
+                        title: "Spaced Repetition",
+                        text: "The app uses the SM2 algorithm to schedule reviews. Words you get wrong are shown again sooner. Words you consistently get right are spaced out over days, helping you build long-term memory."
+                    )
+
+                    // HSK Levels
+                    helpSection(
+                        icon: "stairs",
+                        color: AppTheme.amber,
+                        title: "HSK Levels",
+                        text: "HSK (Hanyu Shuiping Kaoshi) is the standard Chinese proficiency test. Each level builds on the previous one. HSK1 has the most common characters, with higher levels adding more."
+                    )
+
+                    // Badges
+                    helpSection(
+                        icon: "crown.fill",
+                        color: AppTheme.goldAccent,
+                        title: "Achievements",
+                        text: "Complete all cards in a level to earn a gold shimmering border. Master both normal and reverse mode to upgrade to a rainbow border and \"Mastered\" badge."
+                    )
+                }
+                .padding(20)
+            }
+            .background(Color(red: 0.96, green: 0.955, blue: 0.94).ignoresSafeArea())
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .font(.headline.weight(.semibold))
+                    .foregroundStyle(AppTheme.accent)
+                }
+            }
+        }
+    }
+
+    private func helpSection(icon: String, color: Color, title: String, text: String) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            ZStack {
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(color.opacity(0.12))
+                    .frame(width: 36, height: 36)
+
+                Image(systemName: icon)
+                    .font(.system(size: 16))
+                    .foregroundStyle(color)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                Text(title)
+                    .font(.subheadline.weight(.bold))
+                    .foregroundStyle(AppTheme.primaryText)
+
+                Text(text)
+                    .font(.subheadline)
+                    .foregroundStyle(AppTheme.secondaryText)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                .fill(.white)
+                .shadow(color: .black.opacity(0.05), radius: 6, y: 2)
         )
     }
 }
