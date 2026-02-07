@@ -631,25 +631,28 @@ struct LevelCardView: View {
         }
         .buttonStyle(BounceButtonStyle())
         .overlay(alignment: .topTrailing) {
-            // Study in Reverse button for completed levels
+            // Study in Reverse banner for completed levels
             if summary.isCompleted && !summary.isReverseCompleted {
                 NavigationLink {
                     StudySessionView(level: summary.level, startInReverse: true)
                 } label: {
-                    HStack(spacing: 4) {
+                    HStack(spacing: 5) {
                         Image(systemName: "arrow.left.arrow.right")
-                            .font(.system(size: 10, weight: .semibold))
-                        Text("Reverse")
-                            .font(.system(size: 10, weight: .bold))
+                            .font(.system(size: 11, weight: .semibold))
+                        Text("Study in Reverse")
+                            .font(.system(size: 11, weight: .bold))
                     }
                     .foregroundStyle(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 7)
                     .background(
-                        Capsule().fill(AppTheme.purple)
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(AppTheme.purple)
                     )
+                    .shadow(color: AppTheme.purple.opacity(0.3), radius: 6, y: 2)
                 }
-                .padding(10)
+                .offset(y: -12)
+                .padding(.trailing, 8)
             }
         }
     }
