@@ -333,7 +333,7 @@ def main():
                 missing_meanings.append(word)
         
         # Save to JSON
-        output_path = f'xuehanzi/hsk_levels/HSK{level}.json'
+        output_path = f'HanziFive/hsk_levels/HSK{level}.json'
         with open(output_path, 'w', encoding='utf-8') as f:
             json.dump(word_entries, f, ensure_ascii=False, indent=2)
         

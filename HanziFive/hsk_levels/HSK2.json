@@ -96,10 +96,7 @@
           "pinyin": "bié"
         },
         "meanings": [
-          "to leave; to part (from)",
-          "(literary) to differentiate; to distinguish",
-          "(dialect) to turn away; to turn aside; to avert (one's face, gaze etc)"
-        ]
+          "to leave; to part (from)"        ]
       }
     ]
   },
@@ -287,9 +284,7 @@
           "pinyin": "děng"
         },
         "meanings": [
-          "to wait",
-          "etc.",
-          "class; rank"
+          "to wait"
         ]
       }
     ]
@@ -567,10 +562,12 @@
     "forms": [
       {
         "transcriptions": {
-          "pinyin": "gōng"
+          "pinyin": "hóng"
         },
         "meanings": [
-          "used in 女紅|女红[nu : 3 gong1]"
+          "red",
+          "to turn red",
+          "to redden"
         ]
       }
     ]
@@ -596,9 +593,7 @@
           "pinyin": "jī chǎng"
         },
         "meanings": [
-          "airport; airfield",
-          "(slang) service provider for Shadowsocks or similar software for circumventing Internet censorship"
-        ]
+          "airport; airfield"        ]
       }
     ]
   },
@@ -854,9 +849,7 @@
           "pinyin": "lěi"
         },
         "meanings": [
-          "to accumulate",
-          "to involve or implicate (Taiwan pr. [lei4])",
-          "continuous"
+          "tired / weary / to strain / to wear out / to work hard"
         ]
       }
     ]
@@ -914,7 +907,7 @@
           "pinyin": "lù"
         },
         "meanings": [
-          "road (CL:條|条[tiao2])",
+          "road",
           "journey",
           "route"
         ]
@@ -1043,8 +1036,7 @@
           "pinyin": "nán"
         },
         "meanings": [
-          "(bound form) male",
-          "baron, the lowest of the five ranks of nobility 五等爵位[wu3 deng3 jue2 wei4]"
+          "(bound form) male"
         ]
       }
     ]
@@ -1057,7 +1049,7 @@
           "pinyin": "nín"
         },
         "meanings": [
-          "you (courteous, as opposed to informal 你[ni3])"
+          "you (courteous, as opposed to informal 你)"
         ]
       }
     ]
@@ -1084,8 +1076,7 @@
         },
         "meanings": [
           "female",
-          "woman",
-          "daughter"
+          "woman"
         ]
       }
     ]
@@ -1112,8 +1103,7 @@
         },
         "meanings": [
           "to run",
-          "to jog",
-          "(military) to march at the double"
+          "to jog"
         ]
       }
     ]
@@ -1388,8 +1378,7 @@
         },
         "meanings": [
           "to send; to deliver; to transmit",
-          "to give (as a present)",
-          "to see (sb) off"
+          "to give (as a present)"
         ]
       }
     ]
@@ -1643,7 +1632,7 @@
           "pinyin": "xiào"
         },
         "meanings": [
-          "old variant of 笑[xiao4]"
+          "laugh / smile"
         ]
       }
     ]
@@ -1699,8 +1688,7 @@
           "pinyin": "xuě"
         },
         "meanings": [
-          "snow",
-          "(literary) to wipe away (a humiliation etc)"
+          "snow"
         ]
       }
     ]
@@ -1755,8 +1743,7 @@
           "pinyin": "yào"
         },
         "meanings": [
-          "leaf of the iris",
-          "variant of 藥|药[yao4]"
+          "medicine"
         ]
       }
     ]
@@ -1784,9 +1771,7 @@
           "pinyin": "yě"
         },
         "meanings": [
-          "also; too; as well; (not ...) either",
-          "(used after a verbal or nominal expression X to indicate that X is an extreme or unexpected case) even (X)",
-          "(literary) particle having functions similar to 啊[a5]"
+          "also; too; as well; (not ...) either"
         ]
       }
     ]
@@ -1912,8 +1897,7 @@
           "pinyin": "yú"
         },
         "meanings": [
-          "fish (CL:條|条[tiao2],尾[wei3])",
-          "used in the names of various aquatic animals that are not fish (including abalone 鮑魚|鲍鱼[bao4 yu2], alligators and crocodiles 鱷魚|鳄鱼[e4 yu2] and octopi 章魚|章鱼[zhang1 yu2])"
+          "fish"
         ]
       }
     ]
@@ -2099,7 +2083,7 @@
           "pinyin": "zuì"
         },
         "meanings": [
-          "variant of 最[zui4]"
+          "most / the most / -est (superlative suffix)"
         ]
       }
     ]

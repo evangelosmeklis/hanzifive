@@ -1,13 +1,13 @@
 //
-//  xuehanziUITestsLaunchTests.swift
-//  xuehanziUITests
+//  HanziFiveUITestsLaunchTests.swift
+//  HanziFiveUITests
 //
 //  Created by Evangelos Meklis on 1/2/26.
 //
 
 import XCTest
 
-final class xuehanziUITestsLaunchTests: XCTestCase {
+final class HanziFiveUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -6,148 +6,149 @@ struct FlashcardView: View {
     let pinyin: String
     let meaning: String
     let isRevealed: Bool
-    var levelLabel: String? = nil
-    var isReversed: Bool = false
+    
+    @State private var shimmerOffset: CGFloat = -200
 
     var body: some View {
-        VStack(spacing: 28) {
-            if isReversed {
-                // Reverse mode: meaning as prompt, hanzi + pinyin on reveal
-                Text(meaning)
-                    .font(.title.weight(.bold))
-                    .foregroundStyle(AppTheme.primaryText)
-                    .multilineTextAlignment(.center)
-                    .lineSpacing(4)
-                    .padding(.horizontal, 20)
+        VStack(spacing: 24) {
+            // Chinese Character - Large with vibrant gradient
+            ZStack {
+                // Background glow - brighter
+                Text(hanzi)
+                    .font(.system(size: 120, weight: .bold, design: .serif))
+                    .foregroundStyle(AppTheme.characterPrimary.opacity(0.25))
+                    .blur(radius: 25)
+                
+                // Main character with bright gradient
+                Text(hanzi)
+                    .font(.system(size: 120, weight: .bold, design: .serif))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [
+                                AppTheme.characterPrimary,
+                                AppTheme.characterSecondary
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .minimumScaleFactor(0.5)
+                    .lineLimit(1)
+            }
 
-                if isRevealed {
-                    VStack(spacing: 16) {
-                        ZStack {
-                            Text(hanzi)
-                                .font(.system(size: 100, weight: .bold, design: .serif))
-                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
-                                .blur(radius: 30)
+            if isRevealed {
+                VStack(spacing: 18) {
+                    // Pinyin with pill style - brighter
+                    Text(pinyin)
+                        .font(.title2.weight(.bold))
+                        .foregroundStyle(AppTheme.primaryText)
+                        .padding(.horizontal, 28)
+                        .padding(.vertical, 12)
+                        .background(
+                            Capsule()
+                                .fill(AppTheme.mint.opacity(0.15))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(AppTheme.mint.opacity(0.4), lineWidth: 2)
+                                )
+                        )
+                        .transition(.scale.combined(with: .opacity))
 
-                            Text(hanzi)
-                                .font(.system(size: 100, weight: .bold, design: .serif))
-                                .foregroundStyle(AppTheme.characterGradient)
-                                .minimumScaleFactor(0.5)
-                                .lineLimit(1)
-                        }
-
-                        Text(pinyin)
-                            .font(.title2.weight(.bold))
-                            .foregroundStyle(AppTheme.characterPrimary)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 10)
-                            .background(
-                                Capsule()
-                                    .fill(AppTheme.characterPrimary.opacity(0.08))
-                            )
-                    }
-                    .transition(.scale.combined(with: .opacity))
-                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
-                } else {
-                    VStack(spacing: 10) {
-                        ZStack {
-                            Circle()
-                                .fill(AppTheme.characterPrimary.opacity(0.06))
-                                .frame(width: 56, height: 56)
-
-                            Image(systemName: "hand.tap.fill")
-                                .font(.system(size: 24))
-                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.5))
-                                .symbolEffect(.pulse)
-                        }
-
-                        Text("Tap to reveal character")
-                            .font(.subheadline.weight(.medium))
-                            .foregroundStyle(AppTheme.tertiaryText)
-                    }
-                    .padding(.top, 16)
-                    .transition(.opacity)
+                    // Meaning
+                    Text(meaning)
+                        .font(.title3.weight(.medium))
+                        .foregroundStyle(AppTheme.primaryText)
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .padding(.horizontal, 20)
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
+                .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
             } else {
-                // Normal mode: hanzi as prompt, meaning + pinyin on reveal
-                ZStack {
-                    Text(hanzi)
-                        .font(.system(size: 120, weight: .bold, design: .serif))
-                        .foregroundStyle(AppTheme.characterPrimary.opacity(0.15))
-                        .blur(radius: 30)
-
-                    Text(hanzi)
-                        .font(.system(size: 120, weight: .bold, design: .serif))
-                        .foregroundStyle(AppTheme.characterGradient)
-                        .minimumScaleFactor(0.5)
-                        .lineLimit(1)
-                }
-
-                if isRevealed {
-                    VStack(spacing: 16) {
-                        Text(pinyin)
-                            .font(.title2.weight(.bold))
+                // Tap to reveal hint with animation
+                VStack(spacing: 12) {
+                    ZStack {
+                        Circle()
+                            .fill(AppTheme.characterPrimary.opacity(0.1))
+                            .frame(width: 60, height: 60)
+                        
+                        Image(systemName: "hand.tap.fill")
+                            .font(.system(size: 28))
                             .foregroundStyle(AppTheme.characterPrimary)
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 10)
-                            .background(
-                                Capsule()
-                                    .fill(AppTheme.characterPrimary.opacity(0.08))
-                            )
-                            .transition(.scale.combined(with: .opacity))
-
-                        Text(meaning)
-                            .font(.title3.weight(.medium))
-                            .foregroundStyle(AppTheme.primaryText)
-                            .multilineTextAlignment(.center)
-                            .lineSpacing(4)
-                            .padding(.horizontal, 20)
-                            .transition(.move(edge: .bottom).combined(with: .opacity))
+                            .symbolEffect(.pulse)
                     }
-                    .animation(.spring(response: 0.4, dampingFraction: 0.8), value: isRevealed)
-                } else {
-                    VStack(spacing: 10) {
-                        ZStack {
-                            Circle()
-                                .fill(AppTheme.characterPrimary.opacity(0.06))
-                                .frame(width: 56, height: 56)
-
-                            Image(systemName: "hand.tap.fill")
-                                .font(.system(size: 24))
-                                .foregroundStyle(AppTheme.characterPrimary.opacity(0.5))
-                                .symbolEffect(.pulse)
-                        }
-
-                        Text("Tap to reveal")
-                            .font(.subheadline.weight(.medium))
-                            .foregroundStyle(AppTheme.tertiaryText)
-                    }
-                    .padding(.top, 16)
-                    .transition(.opacity)
+                    
+                    Text("Tap to reveal")
+                        .font(.headline.weight(.semibold))
+                        .foregroundStyle(AppTheme.secondaryText)
+                    
+                    Text("点击揭示")
+                        .font(.subheadline)
+                        .foregroundStyle(AppTheme.secondaryText.opacity(0.7))
                 }
+                .padding(.top, 20)
+                .transition(.opacity)
             }
         }
         .padding(.vertical, 40)
         .padding(.horizontal, 24)
         .frame(maxWidth: .infinity, minHeight: 320)
         .background(
-            RoundedRectangle(cornerRadius: 28, style: .continuous)
-                .fill(Color.white)
-        )
-        .overlay(alignment: .topTrailing) {
-            if let levelLabel {
-                Text(levelLabel)
-                    .font(.caption2.weight(.bold))
-                    .foregroundStyle(AppTheme.levelTint(for: levelLabel))
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 5)
-                    .background(
-                        Capsule()
-                            .fill(AppTheme.levelTint(for: levelLabel).opacity(0.12))
+            ZStack {
+                // Base card - pure white
+                RoundedRectangle(cornerRadius: 32, style: .continuous)
+                    .fill(Color.white)
+                
+                // Subtle gradient overlay
+                RoundedRectangle(cornerRadius: 32, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                AppTheme.characterPrimary.opacity(0.03),
+                                AppTheme.characterSecondary.opacity(0.03)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
                     )
-                    .padding(16)
+                
+                // Shimmer effect
+                RoundedRectangle(cornerRadius: 32, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                .clear,
+                                Color.white.opacity(0.6),
+                                .clear
+                            ],
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .offset(x: shimmerOffset)
+                    .mask(RoundedRectangle(cornerRadius: 32, style: .continuous))
+            }
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 32, style: .continuous)
+                .stroke(
+                    LinearGradient(
+                        colors: [
+                            AppTheme.characterPrimary.opacity(0.25),
+                            AppTheme.characterSecondary.opacity(0.2)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 2
+                )
+        )
+        .shadow(color: AppTheme.characterPrimary.opacity(0.1), radius: 20, x: 0, y: 10)
+        .onAppear {
+            withAnimation(.linear(duration: 2.5).repeatForever(autoreverses: false)) {
+                shimmerOffset = 400
             }
         }
-        .warmShadow(0.10)
     }
 }
 
@@ -156,7 +157,7 @@ struct FeedbackOverlayView: View {
     let color: Color
     let isVisible: Bool
     let isCorrect: Bool
-
+    
     @State private var scale: CGFloat = 0.5
 
     var body: some View {
@@ -164,29 +165,32 @@ struct FeedbackOverlayView: View {
             ZStack {
                 // Radial gradient background
                 RadialGradient(
-                    colors: [color.opacity(0.35), color.opacity(0)],
+                    colors: [color.opacity(0.4), color.opacity(0)],
                     center: .center,
                     startRadius: 0,
                     endRadius: 300
                 )
                 .ignoresSafeArea()
-
+                
                 // Icon with animation
                 ZStack {
+                    // Outer pulse ring
                     Circle()
-                        .stroke(color.opacity(0.3), lineWidth: 3)
-                        .frame(width: 110, height: 110)
+                        .stroke(color, lineWidth: 4)
+                        .frame(width: 120, height: 120)
                         .scaleEffect(scale)
                         .opacity(2 - scale)
-
+                    
+                    // Inner circle
                     Circle()
-                        .fill(color.opacity(0.15))
-                        .frame(width: 90, height: 90)
-
+                        .fill(color.opacity(0.2))
+                        .frame(width: 100, height: 100)
+                    
                     Image(systemName: isCorrect ? "checkmark" : "xmark")
-                        .font(.system(size: 44, weight: .bold))
+                        .font(.system(size: 50, weight: .bold))
                         .foregroundStyle(color)
                 }
+                .scaleEffect(isCorrect ? 1.0 : 1.0)
             }
             .transition(.opacity)
             .onAppear {
@@ -201,7 +205,7 @@ struct FeedbackOverlayView: View {
 // MARK: - Celebration Burst View
 struct CelebrationBurstView: View {
     @State private var animate = false
-
+    
     let colors = AppTheme.celebrationColors
 
     var body: some View {
@@ -258,15 +262,16 @@ struct ConfettiView: View {
 
 struct ConfettiShape: Shape {
     let piece: ConfettiPiece
-
+    
     func path(in rect: CGRect) -> Path {
         var path = Path()
+        
         switch piece.shapeType {
-        case 0:
+        case 0: // Circle
             path.addEllipse(in: rect)
-        case 1:
+        case 1: // Rectangle
             path.addRect(rect)
-        case 2:
+        case 2: // Star
             let center = CGPoint(x: rect.midX, y: rect.midY)
             let radius = min(rect.width, rect.height) / 2
             for i in 0..<5 {
@@ -275,13 +280,17 @@ struct ConfettiShape: Shape {
                     x: center.x + CGFloat(Darwin.cos(angle)) * radius,
                     y: center.y + CGFloat(Darwin.sin(angle)) * radius
                 )
-                if i == 0 { path.move(to: point) }
-                else { path.addLine(to: point) }
+                if i == 0 {
+                    path.move(to: point)
+                } else {
+                    path.addLine(to: point)
+                }
             }
             path.closeSubpath()
         default:
             path.addEllipse(in: rect)
         }
+        
         return path
     }
 }
@@ -316,7 +325,7 @@ struct XPPopupView: View {
     let amount: Int
     @State private var offset: CGFloat = 0
     @State private var opacity: Double = 1
-
+    
     var body: some View {
         HStack(spacing: 4) {
             Text("+\(amount)")
@@ -325,11 +334,11 @@ struct XPPopupView: View {
                 .font(.caption.weight(.bold))
         }
         .foregroundStyle(AppTheme.xpColor)
-        .padding(.horizontal, 14)
-        .padding(.vertical, 7)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
         .background(
             Capsule()
-                .fill(AppTheme.xpColor.opacity(0.12))
+                .fill(AppTheme.xpColor.opacity(0.2))
         )
         .offset(y: offset)
         .opacity(opacity)
@@ -347,42 +356,46 @@ struct StreakCelebrationView: View {
     let streak: Int
     @State private var scale: CGFloat = 0.5
     @State private var rotation: Double = -10
-
+    
     var body: some View {
         VStack(spacing: 16) {
             ZStack {
+                // Fire background
                 Circle()
                     .fill(
                         RadialGradient(
-                            colors: [AppTheme.streakColor.opacity(0.3), AppTheme.streakColor.opacity(0)],
+                            colors: [
+                                AppTheme.streakColor.opacity(0.4),
+                                AppTheme.streakColor.opacity(0)
+                            ],
                             center: .center,
                             startRadius: 0,
                             endRadius: 80
                         )
                     )
                     .frame(width: 160, height: 160)
-
+                
                 Text("🔥")
                     .font(.system(size: 80))
                     .rotationEffect(.degrees(rotation))
             }
             .scaleEffect(scale)
-
+            
             VStack(spacing: 4) {
                 Text("\(streak) Day Streak!")
                     .font(.title.weight(.black))
                     .foregroundStyle(AppTheme.primaryText)
-
-                Text("Keep it going!")
+                
+                Text("Keep it going! 继续加油！")
                     .font(.subheadline)
                     .foregroundStyle(AppTheme.secondaryText)
             }
         }
         .padding(32)
         .background(
-            RoundedRectangle(cornerRadius: 24, style: .continuous)
+            RoundedRectangle(cornerRadius: 28, style: .continuous)
                 .fill(Color.white)
-                .warmShadow(0.12)
+                .shadow(color: AppTheme.streakColor.opacity(0.3), radius: 30, x: 0, y: 15)
         )
         .onAppear {
             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
@@ -398,6 +411,8 @@ struct GradeButton: View {
     let title: String
     let color: Color
     let action: () -> Void
+    
+    @State private var isPressed = false
 
     var body: some View {
         Button(action: action) {
@@ -407,10 +422,16 @@ struct GradeButton: View {
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 16)
                 .background(
-                    RoundedRectangle(cornerRadius: 16, style: .continuous)
-                        .fill(color)
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(
+                            LinearGradient(
+                                colors: [color, color.opacity(0.8)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
                 )
-                .warmShadow(0.12)
+                .shadow(color: color.opacity(0.4), radius: 12, x: 0, y: 6)
         }
         .buttonStyle(BounceButtonStyle())
     }
@@ -424,27 +445,42 @@ struct SearchBarView: View {
         HStack(spacing: 12) {
             Image(systemName: "magnifyingglass")
                 .font(.body.weight(.medium))
-                .foregroundStyle(AppTheme.tertiaryText)
-
+                .foregroundStyle(AppTheme.secondaryText)
+            
             Text(placeholder)
                 .font(.subheadline)
-                .foregroundStyle(AppTheme.tertiaryText)
-
+                .foregroundStyle(AppTheme.secondaryText)
+            
             Spacer()
+            
+            Text("Search")
+                .font(.subheadline.weight(.bold))
+                .foregroundStyle(.white)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 8)
+                .background(
+                    Capsule()
+                        .fill(AppTheme.primaryGradient)
+                )
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background(
-            RoundedRectangle(cornerRadius: 14, style: .continuous)
-                .fill(AppTheme.background)
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color.white)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(AppTheme.accent.opacity(0.2), lineWidth: 1.5)
+                )
         )
+        .shadow(color: AppTheme.accent.opacity(0.1), radius: 12, x: 0, y: 4)
     }
 }
 
 // MARK: - Quick Action Card
 struct QuickActionCard: View {
     let action: QuickAction
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(action.title)
@@ -459,10 +495,14 @@ struct QuickActionCard: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(16)
         .background(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
                 .fill(Color.white)
-                .warmShadow(0.06)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .stroke(action.color.opacity(0.3), lineWidth: 2)
+                )
         )
+        .shadow(color: action.color.opacity(0.15), radius: 10, x: 0, y: 5)
     }
 }
 
@@ -472,7 +512,7 @@ struct QuickAction: Identifiable {
     let title: String
     let subtitle: String?
     let color: Color
-
+    
     init(title: String, subtitle: String? = nil, color: Color) {
         self.title = title
         self.subtitle = subtitle
@@ -498,6 +538,8 @@ struct BannerCardView: View {
     let title: String
     let subtitle: String
     let highlight: String
+    
+    @State private var glowOpacity: Double = 0.5
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -506,38 +548,56 @@ struct BannerCardView: View {
                     Text(title)
                         .font(.title3.weight(.bold))
                         .foregroundStyle(.white)
-
+                    
                     Text(subtitle)
                         .font(.subheadline)
-                        .foregroundStyle(.white.opacity(0.85))
+                        .foregroundStyle(.white.opacity(0.9))
                         .lineLimit(2)
                 }
-
+                
                 Spacer()
-
+                
+                // Highlighted stat
                 VStack(spacing: 4) {
                     Text(highlight)
                         .font(.title.weight(.black))
                         .foregroundStyle(.white)
                     Text("Goal")
                         .font(.caption2.weight(.medium))
-                        .foregroundStyle(.white.opacity(0.75))
+                        .foregroundStyle(.white.opacity(0.8))
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(
-                    RoundedRectangle(cornerRadius: 12, style: .continuous)
-                        .fill(Color.white.opacity(0.20))
+                    RoundedRectangle(cornerRadius: 14, style: .continuous)
+                        .fill(Color.white.opacity(0.25))
                 )
             }
         }
         .padding(22)
         .frame(maxWidth: .infinity)
         .background(
-            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(AppTheme.primaryGradient)
+            ZStack {
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(AppTheme.primaryGradient)
+                
+                // Animated glow overlay
+                RoundedRectangle(cornerRadius: 24, style: .continuous)
+                    .fill(
+                        LinearGradient(
+                            colors: [.white.opacity(glowOpacity * 0.3), .clear],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+            }
         )
-        .warmShadow(0.15)
+        .shadow(color: AppTheme.accent.opacity(0.5), radius: 24, x: 0, y: 12)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 2).repeatForever(autoreverses: true)) {
+                glowOpacity = 1.0
+            }
+        }
     }
 }
 
@@ -547,18 +607,20 @@ struct RewardBadgeView: View {
     let title: String
     let subtitle: String
     let color: Color
-
+    
     @State private var isAnimating = false
-
+    
     var body: some View {
         VStack(spacing: 12) {
             ZStack {
+                // Glow effect
                 Circle()
-                    .fill(color.opacity(0.2))
-                    .frame(width: 85, height: 85)
-                    .blur(radius: 12)
-                    .scaleEffect(isAnimating ? 1.15 : 1.0)
-
+                    .fill(color.opacity(0.3))
+                    .frame(width: 90, height: 90)
+                    .blur(radius: 15)
+                    .scaleEffect(isAnimating ? 1.2 : 1.0)
+                
+                // Badge circle
                 Circle()
                     .fill(
                         LinearGradient(
@@ -567,17 +629,21 @@ struct RewardBadgeView: View {
                             endPoint: .bottomTrailing
                         )
                     )
-                    .frame(width: 66, height: 66)
-
+                    .frame(width: 70, height: 70)
+                    .overlay(
+                        Circle()
+                            .stroke(Color.white.opacity(0.3), lineWidth: 2)
+                    )
+                
                 Text(icon)
-                    .font(.system(size: 34))
+                    .font(.system(size: 36))
             }
-
+            
             VStack(spacing: 2) {
                 Text(title)
                     .font(.headline.weight(.bold))
                     .foregroundStyle(AppTheme.primaryText)
-
+                
                 Text(subtitle)
                     .font(.caption)
                     .foregroundStyle(AppTheme.secondaryText)

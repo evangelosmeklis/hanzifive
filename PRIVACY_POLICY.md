@@ -1,12 +1,12 @@
 # Privacy Policy
 
-**Xuehanzi** (学汉字)
+**HanziFive** (汉字5)
 
 *Last updated: February 7, 2026*
 
 ## Overview
 
-Xuehanzi is a Chinese character learning app that respects your privacy. We do not collect, store, or transmit any personal data to external servers.
+HanziFive is a Chinese character learning app that respects your privacy. We do not collect, store, or transmit any personal data to external servers.
 
 ## Data Storage
 
@@ -30,7 +30,7 @@ We do **not** collect:
 
 ## Third-Party Services
 
-Xuehanzi does **not** integrate with any third-party analytics, advertising, or tracking services.
+HanziFive does **not** integrate with any third-party analytics, advertising, or tracking services.
 
 ## Notifications
 
@@ -42,7 +42,7 @@ All app data can be removed by deleting the app from your device. Since no data 
 
 ## Children's Privacy
 
-Xuehanzi does not collect any data from any user, including children. The app is safe for users of all ages.
+HanziFive does not collect any data from any user, including children. The app is safe for users of all ages.
 
 ## Changes to This Policy
 
@@ -50,4 +50,4 @@ If this privacy policy is updated, the changes will be reflected in this documen
 
 ## Contact
 
-If you have questions about this privacy policy, please open an issue on the [GitHub repository](https://github.com/evangelosmeklis/xuehanzi).
+If you have questions about this privacy policy, please open an issue on the [GitHub repository](https://github.com/evangelosmeklis/hanzifive).

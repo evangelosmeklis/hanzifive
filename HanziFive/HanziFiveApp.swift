@@ -1,6 +1,6 @@
 //
-//  xuehanziApp.swift
-//  xuehanzi
+//  HanziFiveApp.swift
+//  HanziFive
 //
 //  Created by Evangelos Meklis on 1/2/26.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct xuehanziApp: App {
+struct HanziFiveApp: App {
     private let modelContainer: ModelContainer
 
     init() {
