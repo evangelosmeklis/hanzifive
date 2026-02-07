@@ -17,12 +17,6 @@ struct ContentView: View {
                 Label("Revise", systemImage: "arrow.triangle.2.circlepath")
             }
 
-            NavigationStack {
-                CustomView()
-            }
-            .tabItem {
-                Label("Custom", systemImage: "tray.full.fill")
-            }
         }
         .tint(AppTheme.accent)
     }
