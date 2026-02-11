@@ -5,6 +5,7 @@ struct StudyLessonSessionView: View {
     let startInReverse: Bool
     let onComplete: (() -> Void)?
     let onReverseComplete: (() -> Void)?
+    let onWritingComplete: (() -> Void)?
 
     @State private var queue: [StudyLessonCard]
     @State private var currentIndex = 0
@@ -22,12 +23,14 @@ struct StudyLessonSessionView: View {
         lesson: StudyLesson,
         startInReverse: Bool = false,
         onComplete: (() -> Void)? = nil,
-        onReverseComplete: (() -> Void)? = nil
+        onReverseComplete: (() -> Void)? = nil,
+        onWritingComplete: (() -> Void)? = nil
     ) {
         self.lesson = lesson
         self.startInReverse = startInReverse
         self.onComplete = onComplete
         self.onReverseComplete = onReverseComplete
+        self.onWritingComplete = onWritingComplete
         _queue = State(initialValue: lesson.cards)
     }
 
@@ -116,9 +119,9 @@ struct StudyLessonSessionView: View {
                         guard !isGrading else { return }
                         let threshold: CGFloat = 100
                         if value.translation.width > threshold {
-                            triggerGrade(isCorrect: true)
+                            triggerGrade(isCorrect: true, showOverlay: false)
                         } else if value.translation.width < -threshold {
-                            triggerGrade(isCorrect: false)
+                            triggerGrade(isCorrect: false, showOverlay: false)
                         } else {
                             withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
                                 dragOffset = .zero
@@ -248,7 +251,7 @@ struct StudyLessonSessionView: View {
 
             if startInReverse {
                 NavigationLink {
-                    StudyLessonWritingView(lesson: lesson)
+                    StudyLessonWritingView(lesson: lesson, onComplete: onWritingComplete)
                 } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "pencil.and.scribble")
@@ -269,7 +272,8 @@ struct StudyLessonSessionView: View {
                     StudyLessonSessionView(
                         lesson: lesson,
                         startInReverse: true,
-                        onComplete: onReverseComplete
+                        onComplete: onReverseComplete,
+                        onWritingComplete: onWritingComplete
                     )
                 } label: {
                     HStack(spacing: 8) {
@@ -288,7 +292,7 @@ struct StudyLessonSessionView: View {
                 .buttonStyle(BounceButtonStyle())
 
                 NavigationLink {
-                    StudyLessonWritingView(lesson: lesson)
+                    StudyLessonWritingView(lesson: lesson, onComplete: onWritingComplete)
                 } label: {
                     HStack(spacing: 8) {
                         Image(systemName: "pencil.and.scribble")
@@ -315,17 +319,17 @@ struct StudyLessonSessionView: View {
         .padding(24)
     }
 
-    private func triggerGrade(isCorrect: Bool) {
+    private func triggerGrade(isCorrect: Bool, showOverlay: Bool = true) {
         guard !isGrading else { return }
         withAnimation(.spring(response: 0.35, dampingFraction: 0.7)) {
             dragOffset = CGSize(width: isCorrect ? 500 : -500, height: 0)
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            gradeCurrentCard(isCorrect: isCorrect)
+            gradeCurrentCard(isCorrect: isCorrect, showOverlay: showOverlay)
         }
     }
 
-    private func gradeCurrentCard(isCorrect: Bool) {
+    private func gradeCurrentCard(isCorrect: Bool, showOverlay: Bool) {
         guard !isGrading else { return }
         guard currentIndex >= 0 && currentIndex < queue.count else { return }
         isGrading = true
@@ -334,13 +338,18 @@ struct StudyLessonSessionView: View {
         if isCorrect { sessionCorrect += 1 }
 
         lastWasCorrect = isCorrect
-        feedbackColor = isCorrect ? AppTheme.success : AppTheme.danger
-        showFeedback = true
+        if showOverlay {
+            feedbackColor = isCorrect ? AppTheme.success : AppTheme.danger
+            showFeedback = true
+        } else {
+            showFeedback = false
+        }
 
         let gradedCard = currentCard
         isRevealed = false
 
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.35) {
+        let advanceDelay: Double = showOverlay ? 0.35 : 0.08
+        DispatchQueue.main.asyncAfter(deadline: .now() + advanceDelay) {
             withAnimation(.easeInOut(duration: 0.2)) {
                 showFeedback = false
             }

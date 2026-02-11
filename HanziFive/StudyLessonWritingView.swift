@@ -163,7 +163,7 @@ struct StudyLessonWritingView: View {
                 .font(.title2.weight(.black))
                 .foregroundStyle(AppTheme.primaryText)
 
-            Text("You finished writing all characters in \(lesson.title). Your lesson now earns the prism mastery outline.")
+            Text("You finished writing all characters in \(lesson.title). This now counts as Writing Complete on the Study tab.")
                 .font(.subheadline)
                 .foregroundStyle(AppTheme.secondaryText)
                 .multilineTextAlignment(.center)

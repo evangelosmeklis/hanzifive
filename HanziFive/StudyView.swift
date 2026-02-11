@@ -93,7 +93,7 @@ struct StudyView: View {
                     .foregroundStyle(.white.opacity(0.82))
 
                 HStack(spacing: 8) {
-                    Image("usebook")
+                    Image("lesson")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 15, height: 15)
@@ -119,31 +119,26 @@ struct StudyView: View {
                 Image("usefire")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 16, height: 16)
+                    .frame(width: 26, height: 26)
             }
             statPill(color: AppTheme.accent, value: "\(totalCards)", label: "Cards") {
                 Image("useflashcards")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 16, height: 16)
+                    .frame(width: 26, height: 26)
             }
             statPill(color: AppTheme.success, value: "\(totalHanzi)", label: "Hanzi") {
                 Image("usehanzi")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 16, height: 16)
+                    .frame(width: 26, height: 26)
             }
         }
     }
 
     private func statPill<Icon: View>(color: Color, value: String, label: String, @ViewBuilder icon: () -> Icon) -> some View {
         HStack(spacing: 8) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 7, style: .continuous)
-                    .fill(color.opacity(0.15))
-                    .frame(width: 28, height: 28)
-                icon()
-            }
+            icon()
 
             VStack(alignment: .leading, spacing: 0) {
                 Text(value)
@@ -167,7 +162,7 @@ struct StudyView: View {
     private var lessonsSectionHeader: some View {
         HStack {
             HStack(spacing: 7) {
-                Image("usebook")
+                Image("lesson")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 16, height: 16)
@@ -236,6 +231,12 @@ struct StudyLessonCardView: View {
         case 3: return "lesson3"
         case 4: return "lesson4"
         case 5: return "lesson5"
+        case 6: return "lesson6"
+        case 7: return "lesson7"
+        case 8: return "lesson8"
+        case 9: return "lesson9"
+        case 10: return "lesson10"
+        case 11: return "lesson11"
         default: return nil
         }
     }
@@ -247,7 +248,8 @@ struct StudyLessonCardView: View {
                     lesson: lesson,
                     startInReverse: false,
                     onComplete: onCompleted,
-                    onReverseComplete: onReverseCompleted
+                    onReverseComplete: onReverseCompleted,
+                    onWritingComplete: onWritingCompleted
                 )
             } label: {
                 HStack(spacing: 14) {
@@ -309,19 +311,20 @@ struct StudyLessonCardView: View {
             .buttonStyle(BounceButtonStyle())
             .modifier(StudyCompletionShimmer(isCompleted: isCompleted, isReverseCompleted: isReverseCompleted, isWritingCompleted: isWritingCompleted))
 
-            if isWritingCompleted {
+            if isCompleted {
                 HStack(spacing: 6) {
                     NavigationLink {
                         StudyLessonSessionView(
                             lesson: lesson,
                             startInReverse: true,
-                            onComplete: onReverseCompleted
+                            onComplete: onReverseCompleted,
+                            onWritingComplete: onWritingCompleted
                         )
                     } label: {
                         HStack(spacing: 4) {
                             Image(systemName: "arrow.left.arrow.right")
                                 .font(.system(size: 9, weight: .bold))
-                            Text("Study in Reverse")
+                            Text(isReverseCompleted ? "Reverse Complete" : "Study in Reverse")
                                 .font(.system(size: 9, weight: .bold))
                         }
                         .foregroundStyle(.white)
@@ -329,7 +332,7 @@ struct StudyLessonCardView: View {
                         .padding(.vertical, 5)
                         .background(
                             RoundedRectangle(cornerRadius: 9, style: .continuous)
-                                .fill(AppTheme.purple)
+                                .fill(isReverseCompleted ? AppTheme.info : AppTheme.purple)
                         )
                     }
 
@@ -342,7 +345,7 @@ struct StudyLessonCardView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "pencil.and.scribble")
                                 .font(.system(size: 9, weight: .bold))
-                            Text("Practice Writing")
+                            Text(isWritingCompleted ? "Writing Complete" : "Practice Writing")
                                 .font(.system(size: 9, weight: .bold))
                         }
                         .foregroundStyle(.white)
@@ -350,33 +353,9 @@ struct StudyLessonCardView: View {
                         .padding(.vertical, 5)
                         .background(
                             RoundedRectangle(cornerRadius: 9, style: .continuous)
-                                .fill(AppTheme.success)
+                                .fill(isWritingCompleted ? AppTheme.info : AppTheme.success)
                         )
                     }
-                }
-                .offset(y: -12)
-                .padding(.trailing, 8)
-            } else if isCompleted {
-                NavigationLink {
-                    StudyLessonWritingView(
-                        lesson: lesson,
-                        onComplete: onWritingCompleted
-                    )
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "pencil.and.scribble")
-                            .font(.system(size: 10, weight: .semibold))
-                        Text(isWritingCompleted ? "Writing Complete" : "Practice Writing")
-                            .font(.system(size: 10, weight: .bold))
-                    }
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 10)
-                    .padding(.vertical, 6)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10, style: .continuous)
-                            .fill(isWritingCompleted ? AppTheme.info : AppTheme.success)
-                    )
-                    .shadow(color: (isWritingCompleted ? AppTheme.info : AppTheme.success).opacity(0.3), radius: 6, y: 2)
                 }
                 .offset(y: -12)
                 .padding(.trailing, 8)
@@ -391,9 +370,9 @@ struct StudyCompletionShimmer: ViewModifier {
     let isWritingCompleted: Bool
 
     func body(content: Content) -> some View {
-        if isWritingCompleted {
-            content.shimmeringPrismBorder(cornerRadius: 18)
-        } else if isCompleted && isReverseCompleted {
+        if isCompleted && isReverseCompleted && isWritingCompleted {
+            content.shimmeringDiamondBorder(cornerRadius: 18)
+        } else if isCompleted && (isReverseCompleted || isWritingCompleted) {
             content.shimmeringRainbowBorder(cornerRadius: 18)
         } else if isCompleted {
             content.shimmeringGoldBorder(cornerRadius: 18)

@@ -145,14 +145,10 @@ struct ReviseView: View {
         HStack(spacing: 10) {
             // Words to revise
             HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.danger.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image(systemName: "exclamationmark.triangle.fill")
-                        .font(.system(size: 12))
-                        .foregroundStyle(AppTheme.danger)
-                }
+                Image("usepencil")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 26, height: 26)
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(reviseWords.count)")
                         .font(.subheadline.weight(.black))
@@ -173,14 +169,10 @@ struct ReviseView: View {
 
             // Levels affected
             HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.info.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image(systemName: "square.stack.3d.up.fill")
-                        .font(.system(size: 12))
-                        .foregroundStyle(AppTheme.info)
-                }
+                Image("usebook")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 26, height: 26)
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(levelsAffected)")
                         .font(.subheadline.weight(.black))
@@ -199,34 +191,6 @@ struct ReviseView: View {
                     .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
             )
 
-            // Hardest ease
-            HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.warning.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image(systemName: "bolt.fill")
-                        .font(.system(size: 12))
-                        .foregroundStyle(AppTheme.warning)
-                }
-                VStack(alignment: .leading, spacing: 0) {
-                    let avgEase = reviseWords.isEmpty ? 0.0 : reviseWords.reduce(0.0) { $0 + ($1.reviewState?.ease ?? 2.5) } / Double(reviseWords.count)
-                    Text(String(format: "%.1f", avgEase))
-                        .font(.subheadline.weight(.black))
-                        .foregroundStyle(AppTheme.primaryText)
-                    Text("Avg Ease")
-                        .font(.system(size: 9, weight: .medium))
-                        .foregroundStyle(AppTheme.secondaryText)
-                }
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 10)
-            .frame(maxWidth: .infinity)
-            .background(
-                RoundedRectangle(cornerRadius: 14, style: .continuous)
-                    .fill(.white)
-                    .shadow(color: .black.opacity(0.08), radius: 8, y: 4)
-            )
         }
     }
 

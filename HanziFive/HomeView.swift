@@ -214,15 +214,10 @@ struct HomeView: View {
         HStack(spacing: 10) {
             // Streak
             HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.warning.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image("usefire")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16, height: 16)
-                }
+                Image("usefire")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 26, height: 26)
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(currentStreak)")
                         .font(.subheadline.weight(.black))
@@ -243,15 +238,10 @@ struct HomeView: View {
 
             // Learned
             HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.success.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image("useflashcards")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16, height: 16)
-                }
+                Image("useflashcards")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 26, height: 26)
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(totalStudied)")
                         .font(.subheadline.weight(.black))
@@ -272,15 +262,10 @@ struct HomeView: View {
 
             // Total words
             HStack(spacing: 8) {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 7, style: .continuous)
-                        .fill(AppTheme.info.opacity(0.15))
-                        .frame(width: 28, height: 28)
-                    Image("usehanzi")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 16, height: 16)
-                }
+                Image("usehanzi")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 26, height: 26)
                 VStack(alignment: .leading, spacing: 0) {
                     Text("\(totalUniqueWords)")
                         .font(.subheadline.weight(.black))
