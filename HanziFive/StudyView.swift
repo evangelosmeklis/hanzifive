@@ -10,6 +10,14 @@ struct StudyView: View {
         lessons.reduce(0) { $0 + $1.cards.count }
     }
 
+    private var totalHanzi: Int {
+        Set(lessons.flatMap { lesson in lesson.cards.map { card in card.character } }).count
+    }
+
+    private var streakCount: Int {
+        writingCompletedSet.count
+    }
+
     private var completedSet: Set<Int> {
         parseLessonSet(studyCompletedLessons)
     }
@@ -85,8 +93,10 @@ struct StudyView: View {
                     .foregroundStyle(.white.opacity(0.82))
 
                 HStack(spacing: 8) {
-                    Image(systemName: "rectangle.on.rectangle")
-                        .font(.caption.weight(.bold))
+                    Image("usebook")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 15, height: 15)
                     Text("Each lesson has separate Flashcards and Writing")
                         .font(.caption.weight(.medium))
                 }
@@ -105,21 +115,34 @@ struct StudyView: View {
 
     private var statsStrip: some View {
         HStack(spacing: 10) {
-            statPill(icon: "book.closed.fill", color: AppTheme.info, value: "\(lessons.count)", label: "Lessons")
-            statPill(icon: "character.book.closed.fill", color: AppTheme.accent, value: "\(totalCards)", label: "Cards")
-            statPill(icon: "pencil.tip.crop.circle", color: AppTheme.success, value: "On", label: "Writing")
+            statPill(color: AppTheme.warning, value: "\(streakCount)", label: "Streak") {
+                Image("usefire")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+            }
+            statPill(color: AppTheme.accent, value: "\(totalCards)", label: "Cards") {
+                Image("useflashcards")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+            }
+            statPill(color: AppTheme.success, value: "\(totalHanzi)", label: "Hanzi") {
+                Image("usehanzi")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+            }
         }
     }
 
-    private func statPill(icon: String, color: Color, value: String, label: String) -> some View {
+    private func statPill<Icon: View>(color: Color, value: String, label: String, @ViewBuilder icon: () -> Icon) -> some View {
         HStack(spacing: 8) {
             ZStack {
                 RoundedRectangle(cornerRadius: 7, style: .continuous)
                     .fill(color.opacity(0.15))
                     .frame(width: 28, height: 28)
-                Image(systemName: icon)
-                    .font(.system(size: 12, weight: .semibold))
-                    .foregroundStyle(color)
+                icon()
             }
 
             VStack(alignment: .leading, spacing: 0) {
@@ -143,9 +166,15 @@ struct StudyView: View {
 
     private var lessonsSectionHeader: some View {
         HStack {
-            Text("Lessons")
-                .font(.headline.weight(.bold))
-                .foregroundStyle(AppTheme.primaryText)
+            HStack(spacing: 7) {
+                Image("usebook")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 16, height: 16)
+                Text("Lessons for HSK1")
+                    .font(.headline.weight(.bold))
+                    .foregroundStyle(AppTheme.primaryText)
+            }
 
             Spacer()
 
@@ -280,7 +309,54 @@ struct StudyLessonCardView: View {
             .buttonStyle(BounceButtonStyle())
             .modifier(StudyCompletionShimmer(isCompleted: isCompleted, isReverseCompleted: isReverseCompleted, isWritingCompleted: isWritingCompleted))
 
-            if isCompleted {
+            if isWritingCompleted {
+                HStack(spacing: 6) {
+                    NavigationLink {
+                        StudyLessonSessionView(
+                            lesson: lesson,
+                            startInReverse: true,
+                            onComplete: onReverseCompleted
+                        )
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "arrow.left.arrow.right")
+                                .font(.system(size: 9, weight: .bold))
+                            Text("Study in Reverse")
+                                .font(.system(size: 9, weight: .bold))
+                        }
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 9, style: .continuous)
+                                .fill(AppTheme.purple)
+                        )
+                    }
+
+                    NavigationLink {
+                        StudyLessonWritingView(
+                            lesson: lesson,
+                            onComplete: onWritingCompleted
+                        )
+                    } label: {
+                        HStack(spacing: 4) {
+                            Image(systemName: "pencil.and.scribble")
+                                .font(.system(size: 9, weight: .bold))
+                            Text("Practice Writing")
+                                .font(.system(size: 9, weight: .bold))
+                        }
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 5)
+                        .background(
+                            RoundedRectangle(cornerRadius: 9, style: .continuous)
+                                .fill(AppTheme.success)
+                        )
+                    }
+                }
+                .offset(y: -12)
+                .padding(.trailing, 8)
+            } else if isCompleted {
                 NavigationLink {
                     StudyLessonWritingView(
                         lesson: lesson,

@@ -51,10 +51,6 @@ struct StudyLessonWritingView: View {
                     .foregroundStyle(AppTheme.secondaryText)
 
                 Spacer()
-
-                Text(currentCard.character)
-                    .font(.title2.weight(.black))
-                    .foregroundStyle(AppTheme.characterPrimary)
             }
 
             AnimatedProgressBar(current: currentIndex + 1, total: lesson.cards.count, color: AppTheme.success)
@@ -68,7 +64,7 @@ struct StudyLessonWritingView: View {
                 .font(.headline.weight(.bold))
                 .foregroundStyle(AppTheme.primaryText)
 
-            Text("\(currentCard.character) • \(currentCard.pinyin)")
+            Text(currentCard.pinyin)
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(AppTheme.secondaryText)
 
