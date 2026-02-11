@@ -1,0 +1,3837 @@
+[
+  {
+    "simplified": "阿姨",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ā yí"
+        },
+        "meanings": [
+          "maternal aunt"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "啊",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ā"
+        },
+        "meanings": [
+          "interjection of surprise"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "矮",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ǎi"
+        },
+        "meanings": [
+          "short"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "爱好",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ài hào"
+        },
+        "meanings": [
+          "to like"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "安静",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ān jìng"
+        },
+        "meanings": [
+          "quiet"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "把",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bǎ"
+        },
+        "meanings": [
+          "to hold"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "班",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bān"
+        },
+        "meanings": [
+          "work shift"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "搬",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bān"
+        },
+        "meanings": [
+          "to move (sth relatively heavy or bulky)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "办法",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bàn fǎ"
+        },
+        "meanings": [
+          "way of handling sth"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "办公室",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bàn gōng shì"
+        },
+        "meanings": [
+          "office"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "半",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bàn"
+        },
+        "meanings": [
+          "half"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "帮忙",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bāng máng"
+        },
+        "meanings": [
+          "to help"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "包",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bāo"
+        },
+        "meanings": [
+          "to cover"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "饱",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bǎo"
+        },
+        "meanings": [
+          "to eat till full"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "北方",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "běi fāng"
+        },
+        "meanings": [
+          "north"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "被",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bèi"
+        },
+        "meanings": [
+          "quilt"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "鼻子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bí zi"
+        },
+        "meanings": [
+          "nose"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "比较",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bǐ jiào"
+        },
+        "meanings": [
+          "to compare"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "比赛",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bǐ sài"
+        },
+        "meanings": [
+          "competition (sports etc)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "笔记本",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bǐ jì běn"
+        },
+        "meanings": [
+          "notebook"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "必须",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bì xū"
+        },
+        "meanings": [
+          "to have to"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "变化",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "biàn huà"
+        },
+        "meanings": [
+          "to change"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "别人",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bié ren"
+        },
+        "meanings": [
+          "other people"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "冰箱",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bīng xiāng"
+        },
+        "meanings": [
+          "refrigerator"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "不但……而且……",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "bù dàn ... ér qiě ..."
+        },
+        "meanings": [
+          "not only... but also..."
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "菜单",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "cài dān"
+        },
+        "meanings": [
+          "menu"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "参加",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "cān jiā"
+        },
+        "meanings": [
+          "to participate"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "草",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "cǎo"
+        },
+        "meanings": [
+          "grass"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "层",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "céng"
+        },
+        "meanings": [
+          "to pile on top of one another"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "差",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chā"
+        },
+        "meanings": [
+          "difference"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "超市",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chāo shì"
+        },
+        "meanings": [
+          "supermarket"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "衬衫",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chèn shān"
+        },
+        "meanings": [
+          "shirt"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "成绩",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chéng jì"
+        },
+        "meanings": [
+          "achievement"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "城市",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chéng shì"
+        },
+        "meanings": [
+          "city"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "迟到",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chí dào"
+        },
+        "meanings": [
+          "to arrive late"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "除了",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chú le"
+        },
+        "meanings": [
+          "apart from"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "船",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chuán"
+        },
+        "meanings": [
+          "boat"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "春",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "chūn"
+        },
+        "meanings": [
+          "spring"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "词典",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "cí diǎn"
+        },
+        "meanings": [
+          "dictionary"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "聪明",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "cōng ming"
+        },
+        "meanings": [
+          "acute (of sight and hearing)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "打扫",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dǎ sǎo"
+        },
+        "meanings": [
+          "to clean"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "打算",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dǎ suàn"
+        },
+        "meanings": [
+          "to plan"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "带",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dài"
+        },
+        "meanings": [
+          "band"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "担心",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dān xīn"
+        },
+        "meanings": [
+          "anxious"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "蛋糕",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dàn gāo"
+        },
+        "meanings": [
+          "cake"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "当然",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dāng rán"
+        },
+        "meanings": [
+          "only natural"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "地",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "de"
+        },
+        "meanings": [
+          "ground"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "灯",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dēng"
+        },
+        "meanings": [
+          "lamp"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "地方",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dì fāng"
+        },
+        "meanings": [
+          "region"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "地铁",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dì tiě"
+        },
+        "meanings": [
+          "subway train"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "地图",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dì tú"
+        },
+        "meanings": [
+          "map"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "电梯",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "diàn tī"
+        },
+        "meanings": [
+          "elevator"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "电子邮件",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "diàn zǐ yóu jiàn"
+        },
+        "meanings": [
+          "email"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "东",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dōng"
+        },
+        "meanings": [
+          "east"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "冬",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dōng"
+        },
+        "meanings": [
+          "winter"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "动物",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "dòng wù"
+        },
+        "meanings": [
+          "animal"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "短",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "duǎn"
+        },
+        "meanings": [
+          "short"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "段",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "duàn"
+        },
+        "meanings": [
+          "paragraph"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "锻炼",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "duàn liàn"
+        },
+        "meanings": [
+          "to toughen"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "多么",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "duō me"
+        },
+        "meanings": [
+          "how (wonderful etc)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "饿",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "è"
+        },
+        "meanings": [
+          "hungry"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "耳朵",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ěr duo"
+        },
+        "meanings": [
+          "ear"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "发",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fā"
+        },
+        "meanings": [
+          "to send out"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "发烧",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fā shāo"
+        },
+        "meanings": [
+          "to have a high temperature (from illness)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "发现",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fā xiàn"
+        },
+        "meanings": [
+          "a discovery"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "方便",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fāng biàn"
+        },
+        "meanings": [
+          "having money to spare"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "放",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fàng"
+        },
+        "meanings": [
+          "to put"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "放心",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fàng xīn"
+        },
+        "meanings": [
+          "to feel relieved"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "分",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fēn"
+        },
+        "meanings": [
+          "to distinguish (good and bad)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "附近",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fù jìn"
+        },
+        "meanings": [
+          "nearby"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "复习",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "fù xí"
+        },
+        "meanings": [
+          "to review"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "干净",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gān jìng"
+        },
+        "meanings": [
+          "clean"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "感冒",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gǎn mào"
+        },
+        "meanings": [
+          "to catch cold"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "感兴趣",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gǎn xìng qù"
+        },
+        "meanings": [
+          "to be interested"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "刚才",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gāng cái"
+        },
+        "meanings": [
+          "just now"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "个子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gè zi"
+        },
+        "meanings": [
+          "stature"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "根据",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gēn jù"
+        },
+        "meanings": [
+          "according to"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "跟",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gēn"
+        },
+        "meanings": [
+          "with"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "更",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gēng"
+        },
+        "meanings": [
+          "to change or replace"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "公斤",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gōng jīn"
+        },
+        "meanings": [
+          "kilogram (kg)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "公园",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gōng yuán"
+        },
+        "meanings": [
+          "park (for public recreation)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "故事",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "gù shì"
+        },
+        "meanings": [
+          "old practice"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "刮风",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guā fēng"
+        },
+        "meanings": [
+          "to be windy"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "关",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guān"
+        },
+        "meanings": [
+          "mountain pass"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "关系",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guān xi"
+        },
+        "meanings": [
+          "relation"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "关心",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guān xīn"
+        },
+        "meanings": [
+          "to be concerned about"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "关于",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guān yú"
+        },
+        "meanings": [
+          "pertaining to"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "国家",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guó jiā"
+        },
+        "meanings": [
+          "country"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "过去",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "guò qù"
+        },
+        "meanings": [
+          "past"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "还是",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "hái shi"
+        },
+        "meanings": [
+          "still (as before)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "害怕",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "hài pà"
+        },
+        "meanings": [
+          "to be afraid"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "黑板",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "hēi bǎn"
+        },
+        "meanings": [
+          "blackboard"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "后来",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "hòu lái"
+        },
+        "meanings": [
+          "newly arrived"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "护照",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "hù zhào"
+        },
+        "meanings": [
+          "passport"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "花",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huā"
+        },
+        "meanings": [
+          "flower"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "画",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huà"
+        },
+        "meanings": [
+          "to draw"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "坏",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huài"
+        },
+        "meanings": [
+          "bad"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "欢迎",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huān yíng"
+        },
+        "meanings": [
+          "to welcome"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "环境",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huán jìng"
+        },
+        "meanings": [
+          "environment"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "换",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huàn"
+        },
+        "meanings": [
+          "to exchange"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "黄河",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "Huáng Hé"
+        },
+        "meanings": [
+          "Yellow River or Huang He"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "回答",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huí dá"
+        },
+        "meanings": [
+          "to answer"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "会议",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huì yì"
+        },
+        "meanings": [
+          "meeting"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "或者",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "huò zhě"
+        },
+        "meanings": [
+          "possibly"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "几乎",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jī hū"
+        },
+        "meanings": [
+          "almost"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "机会",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jī huì"
+        },
+        "meanings": [
+          "opportunity"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "极",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jí"
+        },
+        "meanings": [
+          "extremely"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "记得",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jì de"
+        },
+        "meanings": [
+          "to remember"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "季节",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jì jié"
+        },
+        "meanings": [
+          "time"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "检查",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǎn chá"
+        },
+        "meanings": [
+          "inspection"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "简单",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǎn dān"
+        },
+        "meanings": [
+          "simple"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "见面",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiàn miàn"
+        },
+        "meanings": [
+          "to meet"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "健康",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiàn kāng"
+        },
+        "meanings": [
+          "health"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "讲",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǎng"
+        },
+        "meanings": [
+          "to speak"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "教",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiāo"
+        },
+        "meanings": [
+          "to teach"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "角",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǎo"
+        },
+        "meanings": [
+          "angle"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "脚",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǎo"
+        },
+        "meanings": [
+          "foot"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "接",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiē"
+        },
+        "meanings": [
+          "to receive"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "街道",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiē dào"
+        },
+        "meanings": [
+          "street"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "节目",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jié mù"
+        },
+        "meanings": [
+          "program"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "节日",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jié rì"
+        },
+        "meanings": [
+          "holiday"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "结婚",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jié hūn"
+        },
+        "meanings": [
+          "to marry"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "结束",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jié shù"
+        },
+        "meanings": [
+          "to end"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "解决",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiě jué"
+        },
+        "meanings": [
+          "to solve"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "借",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiè"
+        },
+        "meanings": [
+          "to borrow"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "经常",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jīng cháng"
+        },
+        "meanings": [
+          "frequently"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "经过",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jīng guò"
+        },
+        "meanings": [
+          "to pass"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "经理",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jīng lǐ"
+        },
+        "meanings": [
+          "manager"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "久",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiǔ"
+        },
+        "meanings": [
+          "long"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "旧",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jiù"
+        },
+        "meanings": [
+          "old"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "句子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jù zi"
+        },
+        "meanings": [
+          "sentence"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "决定",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jué dìng"
+        },
+        "meanings": [
+          "to decide (to do something)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "可爱",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kě ài"
+        },
+        "meanings": [
+          "adorable"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "渴",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kě"
+        },
+        "meanings": [
+          "thirsty"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "刻",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kè"
+        },
+        "meanings": [
+          "quarter (hour)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "客人",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kè rén"
+        },
+        "meanings": [
+          "visitor"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "空调",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kōng tiáo"
+        },
+        "meanings": [
+          "air conditioning"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "口",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kǒu"
+        },
+        "meanings": [
+          "mouth"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "哭",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kū"
+        },
+        "meanings": [
+          "to cry"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "裤子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kù zi"
+        },
+        "meanings": [
+          "pants"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "筷子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "kuài zi"
+        },
+        "meanings": [
+          "chopsticks"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "蓝",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lán"
+        },
+        "meanings": [
+          "blue"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "老",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lǎo"
+        },
+        "meanings": [
+          "old (of people)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "离开",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lí kāi"
+        },
+        "meanings": [
+          "to depart"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "礼物",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lǐ wù"
+        },
+        "meanings": [
+          "gift"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "历史",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lì shǐ"
+        },
+        "meanings": [
+          "history"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "脸",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liǎn"
+        },
+        "meanings": [
+          "face"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "练习",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liàn xí"
+        },
+        "meanings": [
+          "to practice"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "辆",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liàng"
+        },
+        "meanings": [
+          "classifier for vehicles"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "聊天",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liáo tiān"
+        },
+        "meanings": [
+          "to chat"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "了解",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liǎo jiě"
+        },
+        "meanings": [
+          "to understand"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "邻居",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lín jū"
+        },
+        "meanings": [
+          "neighbor"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "留学",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "liú xué"
+        },
+        "meanings": [
+          "to study abroad"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "楼",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lóu"
+        },
+        "meanings": [
+          "storied building"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "绿",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "lǜ"
+        },
+        "meanings": [
+          "green"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "马",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "mǎ"
+        },
+        "meanings": [
+          "horse"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "马上",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "mǎ shàng"
+        },
+        "meanings": [
+          "at once"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "满意",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "mǎn yì"
+        },
+        "meanings": [
+          "satisfied"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "帽子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "mào zi"
+        },
+        "meanings": [
+          "hat"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "米",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "mǐ"
+        },
+        "meanings": [
+          "uncooked rice"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "面包",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "miàn bāo"
+        },
+        "meanings": [
+          "bread"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "明白",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "míng bai"
+        },
+        "meanings": [
+          "clear"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "拿",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "ná"
+        },
+        "meanings": [
+          "to take"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "奶奶",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nǎi nai"
+        },
+        "meanings": [
+          "grandma (paternal grandmother)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "南",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nā"
+        },
+        "meanings": [
+          "Taiwan pr. [na2]"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "难",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nán"
+        },
+        "meanings": [
+          "problem"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "难过",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nán guò"
+        },
+        "meanings": [
+          "to feel sad"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "年级",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nián jí"
+        },
+        "meanings": [
+          "grade"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "年轻",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nián qīng"
+        },
+        "meanings": [
+          "young"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "鸟",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "niǎo"
+        },
+        "meanings": [
+          "bird"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "努力",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "nǔ lì"
+        },
+        "meanings": [
+          "to make an effort"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "爬山",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "pá shān"
+        },
+        "meanings": [
+          "to go for a hike (esp. in the hills or mountains)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "盘子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "pán zi"
+        },
+        "meanings": [
+          "tray"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "胖",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "pàng"
+        },
+        "meanings": [
+          "fat"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "皮鞋",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "pí xié"
+        },
+        "meanings": [
+          "leather shoes"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "啤酒",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "pí jiǔ"
+        },
+        "meanings": [
+          "beer (loanword)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "瓶子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "píng zi"
+        },
+        "meanings": [
+          "bottle"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "其实",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qí shí"
+        },
+        "meanings": [
+          "actually"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "其他",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qí tā"
+        },
+        "meanings": [
+          "other"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "奇怪",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qí guài"
+        },
+        "meanings": [
+          "strange"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "骑",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "jì"
+        },
+        "meanings": [
+          "mounted soldier"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "起飞",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qǐ fēi"
+        },
+        "meanings": [
+          "to take off"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "起来",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qǐ lai"
+        },
+        "meanings": [
+          "to stand up"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "清楚",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qīng chu"
+        },
+        "meanings": [
+          "clear"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "请假",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qǐng jià"
+        },
+        "meanings": [
+          "to request leave of absence"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "秋",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qiū"
+        },
+        "meanings": [
+          "autumn"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "裙子",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "qún zi"
+        },
+        "meanings": [
+          "skirt"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "然后",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "rán hòu"
+        },
+        "meanings": [
+          "then"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "热情",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "rè qíng"
+        },
+        "meanings": [
+          "cordial"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "认为",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "rèn wéi"
+        },
+        "meanings": [
+          "to believe"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "认真",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "rèn zhēn"
+        },
+        "meanings": [
+          "conscientious"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "容易",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "róng yì"
+        },
+        "meanings": [
+          "easy"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "如果",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "rú guǒ"
+        },
+        "meanings": [
+          "in case"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "伞",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "sǎn"
+        },
+        "meanings": [
+          "umbrella"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "上网",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shàng wǎng"
+        },
+        "meanings": [
+          "to go online"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "生气",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shēng qì"
+        },
+        "meanings": [
+          "to get angry"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "声音",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shēng yīn"
+        },
+        "meanings": [
+          "voice"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "世界",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shì jiè"
+        },
+        "meanings": [
+          "world"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "试",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shì"
+        },
+        "meanings": [
+          "to test"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "瘦",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shòu"
+        },
+        "meanings": [
+          "thin"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "叔叔",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shū shu"
+        },
+        "meanings": [
+          "form of address used by children for a male one generation older"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "舒服",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shū fu"
+        },
+        "meanings": [
+          "comfortable"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "树",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shù"
+        },
+        "meanings": [
+          "tree"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "数学",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shù xué"
+        },
+        "meanings": [
+          "mathematics"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "刷牙",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shuā yá"
+        },
+        "meanings": [
+          "to brush one's teeth"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "双",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shuāng"
+        },
+        "meanings": [
+          "pair"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "水平",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "shuǐ píng"
+        },
+        "meanings": [
+          "horizontal"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "司机",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "sī jī"
+        },
+        "meanings": [
+          "chauffeur"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "太阳",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tài yang"
+        },
+        "meanings": [
+          "sun"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "特别",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tè bié"
+        },
+        "meanings": [
+          "unusual"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "疼",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "téng"
+        },
+        "meanings": [
+          "to love dearly"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "提高",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tí gāo"
+        },
+        "meanings": [
+          "to raise"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "体育",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tǐ yù"
+        },
+        "meanings": [
+          "sports"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "甜",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tián"
+        },
+        "meanings": [
+          "sweet"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "条",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tiáo"
+        },
+        "meanings": [
+          "strip"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "同事",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tóng shì"
+        },
+        "meanings": [
+          "colleague"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "同意",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tóng yì"
+        },
+        "meanings": [
+          "to agree"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "头发",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tóu fa"
+        },
+        "meanings": [
+          "hair (on the head)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "突然",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tū rán"
+        },
+        "meanings": [
+          "sudden"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "图书馆",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tú shū guǎn"
+        },
+        "meanings": [
+          "library"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "腿",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "tuǐ"
+        },
+        "meanings": [
+          "leg"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "完成",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wán chéng"
+        },
+        "meanings": [
+          "to complete"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "碗",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wǎn"
+        },
+        "meanings": [
+          "bowl"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "万",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wàn"
+        },
+        "meanings": [
+          "ten thousand"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "忘记",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wàng jì"
+        },
+        "meanings": [
+          "to forget"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "为",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wéi"
+        },
+        "meanings": [
+          "as (in the capacity of)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "为了",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wèi le"
+        },
+        "meanings": [
+          "for"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "位",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wèi"
+        },
+        "meanings": [
+          "position"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "文化",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "wén huà"
+        },
+        "meanings": [
+          "culture"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "西",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "Xī"
+        },
+        "meanings": [
+          "the West"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "习惯",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xí guàn"
+        },
+        "meanings": [
+          "habit"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "洗手间",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xǐ shǒu jiān"
+        },
+        "meanings": [
+          "toilet"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "洗澡",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xǐ zǎo"
+        },
+        "meanings": [
+          "to bathe"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "夏",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "Xià"
+        },
+        "meanings": [
+          "the Xia or Hsia dynasty c. 2000 BC"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "先",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiān"
+        },
+        "meanings": [
+          "beforehand"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "相信",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiāng xìn"
+        },
+        "meanings": [
+          "to believe"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "香蕉",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiāng jiāo"
+        },
+        "meanings": [
+          "banana"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "向",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiàng"
+        },
+        "meanings": [
+          "towards"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "像",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiàng"
+        },
+        "meanings": [
+          "to resemble"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "小心",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiǎo xīn"
+        },
+        "meanings": [
+          "to be careful"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "校长",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xiào zhǎng"
+        },
+        "meanings": [
+          "headmaster"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "新闻",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xīn wén"
+        },
+        "meanings": [
+          "news"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "新鲜",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xīn xiān"
+        },
+        "meanings": [
+          "fresh (experience, food etc)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "信用卡",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xìn yòng kǎ"
+        },
+        "meanings": [
+          "credit card"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "行李箱",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xíng li xiāng"
+        },
+        "meanings": [
+          "suitcase"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "熊猫",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xióng māo"
+        },
+        "meanings": [
+          "panda"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "需要",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xū yào"
+        },
+        "meanings": [
+          "needs"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "选择",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "xuǎn zé"
+        },
+        "meanings": [
+          "to select"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "要求",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yāo qiú"
+        },
+        "meanings": [
+          "to request"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "爷爷",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yé ye"
+        },
+        "meanings": [
+          "paternal grandfather"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一般",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī bān"
+        },
+        "meanings": [
+          "same"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一边",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī biān"
+        },
+        "meanings": [
+          "one side"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一定",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī dìng"
+        },
+        "meanings": [
+          "surely"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一共",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī gòng"
+        },
+        "meanings": [
+          "in total"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一会儿",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī huì r"
+        },
+        "meanings": [
+          "a moment"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一样",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī yàng"
+        },
+        "meanings": [
+          "same"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "一直",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yī zhí"
+        },
+        "meanings": [
+          "straight (in a straight line)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "以前",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yǐ qián"
+        },
+        "meanings": [
+          "before"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "音乐",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yīn yuè"
+        },
+        "meanings": [
+          "music"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "银行",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yín háng"
+        },
+        "meanings": [
+          "bank"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "饮料",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yǐn liào"
+        },
+        "meanings": [
+          "drink"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "应该",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yīng gāi"
+        },
+        "meanings": [
+          "ought to"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "影响",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yǐng xiǎng"
+        },
+        "meanings": [
+          "influence"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "用",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yòng"
+        },
+        "meanings": [
+          "to use"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "游戏",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yóu xì"
+        },
+        "meanings": [
+          "to play"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "有名",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yǒu míng"
+        },
+        "meanings": [
+          "famous"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "又",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yòu"
+        },
+        "meanings": [
+          "also"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "遇到",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yù dào"
+        },
+        "meanings": [
+          "to meet"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "元",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yuán"
+        },
+        "meanings": [
+          "currency unit (esp. Chinese yuan)"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "愿意",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yuàn yì"
+        },
+        "meanings": [
+          "to wish"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "月亮",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "yuè liang"
+        },
+        "meanings": [
+          "the moon"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "越",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "Yuè"
+        },
+        "meanings": [
+          "generic word for peoples or states of south China or south Asia at different historical periods"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "站",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhàn"
+        },
+        "meanings": [
+          "station"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "张",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhāng"
+        },
+        "meanings": [
+          "to open up"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "着急",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zháo jí"
+        },
+        "meanings": [
+          "to worry"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "照顾",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhào gu"
+        },
+        "meanings": [
+          "to take care of"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "照片",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhào piàn"
+        },
+        "meanings": [
+          "photograph"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "照相机",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhào xiàng jī"
+        },
+        "meanings": [
+          "camera"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "只",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhī"
+        },
+        "meanings": [
+          "only"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "只有……才……",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhǐ yǒu …… cái ……"
+        },
+        "meanings": [
+          "only if ... then ..."
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "中间",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhōng jiān"
+        },
+        "meanings": [
+          "the middle"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "中文",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "Zhōng wén"
+        },
+        "meanings": [
+          "Chinese language"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "终于",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhōng yú"
+        },
+        "meanings": [
+          "at last"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "种",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhǒng"
+        },
+        "meanings": [
+          "seed"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "重要",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhòng yào"
+        },
+        "meanings": [
+          "important"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "周末",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhōu mò"
+        },
+        "meanings": [
+          "weekend"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "主要",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhǔ yào"
+        },
+        "meanings": [
+          "main"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "注意",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zhù yì"
+        },
+        "meanings": [
+          "to take note of"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "自己",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zì jǐ"
+        },
+        "meanings": [
+          "oneself"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "自行车",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zì xíng chē"
+        },
+        "meanings": [
+          "bicycle"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "总是",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zǒng shì"
+        },
+        "meanings": [
+          "always"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "嘴",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zuǐ"
+        },
+        "meanings": [
+          "mouth"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "最后",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zuì hòu"
+        },
+        "meanings": [
+          "final"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "最近",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zuì jìn"
+        },
+        "meanings": [
+          "recently"
+        ]
+      }
+    ]
+  },
+  {
+    "simplified": "作业",
+    "forms": [
+      {
+        "transcriptions": {
+          "pinyin": "zuò yè"
+        },
+        "meanings": [
+          "school assignment"
+        ]
+      }
+    ]
+  }
+]

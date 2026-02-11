@@ -19,13 +19,10 @@ struct StudySessionView: View {
     @State private var history: [Word] = []
     @State private var showUndoButton = false
     @State private var lastWasCorrect = false
-    @State private var showXPPopup = false
-    @State private var sessionXP = 0
     @State private var correctStreak = 0
 
     @AppStorage("currentStreak") private var currentStreak: Int = 0
     @AppStorage("lastStudyDate") private var lastStudyDateString: String = ""
-    @AppStorage("totalXP") private var totalXP: Int = 0
     @AppStorage("cardsStudiedToday") private var cardsStudiedToday: Int = 0
     @AppStorage("lastCardStudyDate") private var lastCardStudyDate: String = ""
     @AppStorage("uniqueWordsPerLevel") private var uniqueWordsPerLevel: Bool = false
@@ -58,7 +55,7 @@ struct StudySessionView: View {
                     startReverseStudy()
                 })
             } else if queue.isEmpty || currentIndex >= queue.count {
-                CompletionView(level: level, totalCards: sessionTotal, correctCards: sessionCorrect, xpEarned: sessionXP, isRandomPractice: isRandomPractice, isReverseMode: isReverseMode)
+                CompletionView(level: level, totalCards: sessionTotal, correctCards: sessionCorrect, isRandomPractice: isRandomPractice, isReverseMode: isReverseMode)
             } else {
                 VStack(spacing: 16) {
                     headerSection
@@ -77,12 +74,6 @@ struct StudySessionView: View {
                 CelebrationBurstView()
             }
 
-            if showXPPopup {
-                GeometryReader { geometry in
-                    XPPopupView(amount: correctStreak > 2 ? 15 : 10)
-                        .position(x: geometry.size.width / 2, y: 150)
-                }
-            }
         }
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
@@ -137,17 +128,6 @@ struct StudySessionView: View {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
                     HStack(spacing: 8) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "bolt.fill")
-                                .font(.caption)
-                            Text("+\(sessionXP) XP")
-                                .font(.caption.weight(.bold))
-                        }
-                        .foregroundStyle(AppTheme.xpColor)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(Capsule().fill(AppTheme.xpColor.opacity(0.12)))
-
                         HStack(spacing: 4) {
                             Text("✓")
                                 .font(.caption.weight(.bold))
@@ -532,7 +512,6 @@ struct StudySessionView: View {
         queue = Array(allWords.shuffled().prefix(practiceCount))
         sessionTotal = queue.count
         sessionCorrect = 0
-        sessionXP = 0
         currentIndex = 0
         isRevealed = false
         history = []
@@ -550,7 +529,6 @@ struct StudySessionView: View {
         queue = allWords.shuffled()
         sessionTotal = queue.count
         sessionCorrect = 0
-        sessionXP = 0
         currentIndex = 0
         isRevealed = false
         history = []
@@ -639,17 +617,10 @@ struct StudySessionView: View {
 
         if isCorrect {
             correctStreak += 1
-            let xpGained = correctStreak > 2 ? 15 : 10
-            sessionXP += xpGained
-            totalXP += xpGained
-
-            showXPPopup = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                showXPPopup = false
-            }
         } else {
             correctStreak = 0
         }
+
 
         if !isRandomPractice && !isReverseMode {
             let reviewState = currentWord.reviewState ?? ReviewState()
@@ -892,7 +863,6 @@ struct CompletionView: View {
     let level: String
     let totalCards: Int
     let correctCards: Int
-    let xpEarned: Int
     var isRandomPractice: Bool = false
     var isReverseMode: Bool = false
 
@@ -967,25 +937,6 @@ struct CompletionView: View {
 
                 // Stats
                 HStack(spacing: 16) {
-                    VStack(spacing: 4) {
-                        HStack(spacing: 4) {
-                            Image(systemName: "bolt.fill")
-                                .font(.subheadline)
-                            Text("+\(xpEarned)")
-                                .font(.headline.weight(.bold))
-                        }
-                        .foregroundStyle(AppTheme.xpColor)
-                        Text("XP")
-                            .font(.caption2)
-                            .foregroundStyle(AppTheme.secondaryText)
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 12)
-                    .background(
-                        RoundedRectangle(cornerRadius: 12, style: .continuous)
-                            .fill(AppTheme.xpColor.opacity(0.08))
-                    )
-
                     VStack(spacing: 4) {
                         Text(level)
                             .font(.headline.weight(.bold))

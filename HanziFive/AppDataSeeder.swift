@@ -3,7 +3,7 @@ import SwiftData
 
 @MainActor
 enum AppDataSeeder {
-    private static let seedVersion = "2026-02-07-hsk12-v1"
+    private static let seedVersion = "2026-02-07-hsk123-v1"
 
     static func seedIfNeeded(modelContext: ModelContext) {
         let storedVersion = UserDefaults.standard.string(forKey: "seedVersion")
@@ -15,7 +15,7 @@ enum AppDataSeeder {
         let existingCount = (try? modelContext.fetchCount(descriptor)) ?? 0
         guard existingCount == 0 else { return }
 
-        ["HSK1", "HSK2"].forEach { level in
+        ["HSK1", "HSK2", "HSK3"].forEach { level in
             let url = Bundle.main.url(forResource: level, withExtension: "json", subdirectory: "hsk_levels")
                 ?? Bundle.main.url(forResource: level, withExtension: "json")
             guard let url else {
