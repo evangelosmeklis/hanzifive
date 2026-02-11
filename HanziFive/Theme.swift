@@ -319,3 +319,66 @@ extension View {
         modifier(ShimmeringRainbowBorder(cornerRadius: cornerRadius))
     }
 }
+
+// MARK: - Shimmering Prism Border
+struct ShimmeringPrismBorder: ViewModifier {
+    let cornerRadius: CGFloat
+    @State private var rotationA: Double = 0
+    @State private var rotationB: Double = 360
+
+    func body(content: Content) -> some View {
+        content
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(
+                        AngularGradient(
+                            gradient: Gradient(colors: [
+                                Color(red: 0.98, green: 0.95, blue: 1.00),
+                                Color(red: 0.67, green: 0.86, blue: 1.00),
+                                Color(red: 0.73, green: 1.00, blue: 0.90),
+                                Color(red: 1.00, green: 0.90, blue: 0.72),
+                                Color(red: 1.00, green: 0.72, blue: 0.86),
+                                Color(red: 0.80, green: 0.77, blue: 1.00),
+                                Color(red: 0.98, green: 0.95, blue: 1.00),
+                            ]),
+                            center: .center,
+                            angle: .degrees(rotationA)
+                        ),
+                        lineWidth: 3.8
+                    )
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .inset(by: 2)
+                    .stroke(
+                        AngularGradient(
+                            gradient: Gradient(colors: [
+                                Color.white.opacity(0.95),
+                                Color(red: 0.88, green: 1.00, blue: 0.98).opacity(0.55),
+                                Color(red: 1.00, green: 0.90, blue: 0.98).opacity(0.55),
+                                Color.white.opacity(0.95),
+                            ]),
+                            center: .center,
+                            angle: .degrees(rotationB)
+                        ),
+                        lineWidth: 1.8
+                    )
+            )
+            .shadow(color: Color(red: 0.72, green: 0.87, blue: 1.00).opacity(0.30), radius: 14, x: 0, y: 0)
+            .shadow(color: Color(red: 0.98, green: 0.78, blue: 0.95).opacity(0.22), radius: 24, x: 0, y: 0)
+            .onAppear {
+                withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
+                    rotationA = 360
+                }
+                withAnimation(.linear(duration: 3.5).repeatForever(autoreverses: false)) {
+                    rotationB = 0
+                }
+            }
+    }
+}
+
+extension View {
+    func shimmeringPrismBorder(cornerRadius: CGFloat = 18) -> some View {
+        modifier(ShimmeringPrismBorder(cornerRadius: cornerRadius))
+    }
+}

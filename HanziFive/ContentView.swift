@@ -11,6 +11,13 @@ struct ContentView: View {
             }
 
             NavigationStack {
+                StudyView()
+            }
+            .tabItem {
+                Label("Study", systemImage: "character.textbox")
+            }
+
+            NavigationStack {
                 ReviseView()
             }
             .tabItem {
