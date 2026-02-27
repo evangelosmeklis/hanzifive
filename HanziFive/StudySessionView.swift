@@ -405,6 +405,10 @@ struct StudySessionView: View {
         "studyProgress-\(level)"
     }
 
+    private var reverseProgressKey: String {
+        "studyReverseProgress-\(level)"
+    }
+
     private var canReorderNewFirst: Bool {
         guard currentIndex + 1 < queue.count, !isReverseMode, !isRandomPractice else { return false }
         let remaining = queue[(currentIndex + 1)...]
@@ -526,6 +530,28 @@ struct StudySessionView: View {
         isLoading = true
 
         let allWords = fetchWordsForLevel()
+
+        // Restore saved reverse progress if available
+        if let data = UserDefaults.standard.data(forKey: reverseProgressKey),
+           let progress = try? JSONDecoder().decode(StudyProgress.self, from: data),
+           !allWords.isEmpty {
+            let wordMap = Dictionary(uniqueKeysWithValues: allWords.map { ($0.id, $0) })
+            let restored = progress.wordIDs.compactMap { wordMap[$0] }
+            if !restored.isEmpty {
+                queue = restored
+                currentIndex = min(progress.currentIndex, restored.count - 1)
+                sessionTotal = restored.count
+                sessionCorrect = 0
+                isRevealed = false
+                history = []
+                showUndoButton = false
+                correctStreak = 0
+                attemptedCards = []
+                isLoading = false
+                return
+            }
+        }
+
         queue = allWords.shuffled()
         sessionTotal = queue.count
         sessionCorrect = 0
@@ -550,14 +576,15 @@ struct StudySessionView: View {
     }
 
     private func saveProgress() {
+        let key = isReverseMode ? reverseProgressKey : progressKey
         guard !queue.isEmpty && currentIndex < queue.count else {
-            clearProgress()
+            UserDefaults.standard.removeObject(forKey: key)
             return
         }
         let remainingIDs = Array(queue[currentIndex...].map(\.id))
         let progress = StudyProgress(level: level, wordIDs: remainingIDs, currentIndex: 0)
         if let data = try? JSONEncoder().encode(progress) {
-            UserDefaults.standard.set(data, forKey: progressKey)
+            UserDefaults.standard.set(data, forKey: key)
         }
     }
 
@@ -567,7 +594,7 @@ struct StudySessionView: View {
     }
 
     private func clearProgress() {
-        UserDefaults.standard.removeObject(forKey: progressKey)
+        UserDefaults.standard.removeObject(forKey: isReverseMode ? reverseProgressKey : progressKey)
     }
 
     private func updateStreak() {
